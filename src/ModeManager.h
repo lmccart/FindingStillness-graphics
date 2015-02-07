@@ -7,7 +7,7 @@
 //
 
 #include "ofMain.h"
-#include "Mode.h"
+#include "CircleMode.h"
 
 
 class ModeManager {

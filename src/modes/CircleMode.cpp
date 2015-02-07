@@ -28,3 +28,7 @@ void CircleMode::draw() {
 
 void CircleMode::reset() {
 }
+
+void CircleMode::exit() {
+    
+}

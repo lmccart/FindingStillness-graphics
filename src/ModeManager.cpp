@@ -7,7 +7,6 @@
 //
 
 #include "ModeManager.h"
-#include "CircleMode.h"
 
 
 void ModeManager::setup() {
