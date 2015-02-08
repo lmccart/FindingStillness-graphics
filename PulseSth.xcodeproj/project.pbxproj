@@ -126,16 +126,6 @@
 		655E797D1A87ABD700941E4E /* WebSocketRoute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 655E793F1A87ABD700941E4E /* WebSocketRoute.cpp */; };
 		655E797E1A87ABD700941E4E /* WebSocketRouteSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 655E79401A87ABD700941E4E /* WebSocketRouteSettings.cpp */; };
 		655E79811A87AC1E00941E4E /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 655E797F1A87AC1E00941E4E /* Server.cpp */; };
-		65822AE31A87B32600FA3AFE /* BasicJSONRPCServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822AC81A87B32600FA3AFE /* BasicJSONRPCServer.cpp */; };
-		65822AE41A87B32600FA3AFE /* BaseMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822ADA1A87B32600FA3AFE /* BaseMessage.cpp */; };
-		65822AE51A87B32600FA3AFE /* Deserializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822ADB1A87B32600FA3AFE /* Deserializer.cpp */; };
-		65822AE61A87B32600FA3AFE /* Error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822ADC1A87B32600FA3AFE /* Error.cpp */; };
-		65822AE71A87B32600FA3AFE /* Errors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822ADD1A87B32600FA3AFE /* Errors.cpp */; };
-		65822AE81A87B32600FA3AFE /* JSONRPCUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822ADE1A87B32600FA3AFE /* JSONRPCUtils.cpp */; };
-		65822AE91A87B32600FA3AFE /* MethodRegistry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822ADF1A87B32600FA3AFE /* MethodRegistry.cpp */; };
-		65822AEA1A87B32600FA3AFE /* Request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822AE01A87B32600FA3AFE /* Request.cpp */; };
-		65822AEB1A87B32600FA3AFE /* Response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822AE11A87B32600FA3AFE /* Response.cpp */; };
-		65822AEC1A87B32600FA3AFE /* Serializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822AE21A87B32600FA3AFE /* Serializer.cpp */; };
 		65822B2D1A87D5C800FA3AFE /* PictureTaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822B2B1A87D5C800FA3AFE /* PictureTaker.cpp */; };
 		65EA518A1A86CD0E007A182D /* ModeManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA51881A86CD0E007A182D /* ModeManager.cpp */; };
 		65EA51941A86CFB3007A182D /* Mode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA51921A86CFB3007A182D /* Mode.cpp */; };
@@ -523,30 +513,6 @@
 		655E79401A87ABD700941E4E /* WebSocketRouteSettings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WebSocketRouteSettings.cpp; sourceTree = "<group>"; };
 		655E797F1A87AC1E00941E4E /* Server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Server.cpp; sourceTree = "<group>"; };
 		655E79801A87AC1E00941E4E /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
-		65822AC01A87B32600FA3AFE /* ofxJSONRPC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxJSONRPC.h; sourceTree = "<group>"; };
-		65822AC61A87B32600FA3AFE /* BasicJSONRPCServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicJSONRPCServer.h; sourceTree = "<group>"; };
-		65822AC81A87B32600FA3AFE /* BasicJSONRPCServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BasicJSONRPCServer.cpp; sourceTree = "<group>"; };
-		65822ACD1A87B32600FA3AFE /* BaseMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseMessage.h; sourceTree = "<group>"; };
-		65822ACE1A87B32600FA3AFE /* Deserializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Deserializer.h; sourceTree = "<group>"; };
-		65822ACF1A87B32600FA3AFE /* Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
-		65822AD01A87B32600FA3AFE /* Errors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Errors.h; sourceTree = "<group>"; };
-		65822AD11A87B32600FA3AFE /* JSONRPC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONRPC.h; sourceTree = "<group>"; };
-		65822AD21A87B32600FA3AFE /* JSONRPCUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONRPCUtils.h; sourceTree = "<group>"; };
-		65822AD31A87B32600FA3AFE /* Method.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Method.h; sourceTree = "<group>"; };
-		65822AD41A87B32600FA3AFE /* MethodArgs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MethodArgs.h; sourceTree = "<group>"; };
-		65822AD51A87B32600FA3AFE /* MethodRegistry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MethodRegistry.h; sourceTree = "<group>"; };
-		65822AD61A87B32600FA3AFE /* Request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
-		65822AD71A87B32600FA3AFE /* Response.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
-		65822AD81A87B32600FA3AFE /* Serializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Serializer.h; sourceTree = "<group>"; };
-		65822ADA1A87B32600FA3AFE /* BaseMessage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BaseMessage.cpp; sourceTree = "<group>"; };
-		65822ADB1A87B32600FA3AFE /* Deserializer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Deserializer.cpp; sourceTree = "<group>"; };
-		65822ADC1A87B32600FA3AFE /* Error.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Error.cpp; sourceTree = "<group>"; };
-		65822ADD1A87B32600FA3AFE /* Errors.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Errors.cpp; sourceTree = "<group>"; };
-		65822ADE1A87B32600FA3AFE /* JSONRPCUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = JSONRPCUtils.cpp; sourceTree = "<group>"; };
-		65822ADF1A87B32600FA3AFE /* MethodRegistry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MethodRegistry.cpp; sourceTree = "<group>"; };
-		65822AE01A87B32600FA3AFE /* Request.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Request.cpp; sourceTree = "<group>"; };
-		65822AE11A87B32600FA3AFE /* Response.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Response.cpp; sourceTree = "<group>"; };
-		65822AE21A87B32600FA3AFE /* Serializer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Serializer.cpp; sourceTree = "<group>"; };
 		65822B2B1A87D5C800FA3AFE /* PictureTaker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PictureTaker.cpp; sourceTree = "<group>"; };
 		65822B2C1A87D5C800FA3AFE /* PictureTaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureTaker.h; sourceTree = "<group>"; };
 		65EA51881A86CD0E007A182D /* ModeManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModeManager.cpp; sourceTree = "<group>"; };
@@ -1301,135 +1267,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		65822ABE1A87B32600FA3AFE /* ofxJSONRPC */ = {
-			isa = PBXGroup;
-			children = (
-				65822ABF1A87B32600FA3AFE /* src */,
-				65822AC11A87B32600FA3AFE /* libs */,
-			);
-			name = ofxJSONRPC;
-			sourceTree = "<group>";
-		};
-		65822ABF1A87B32600FA3AFE /* src */ = {
-			isa = PBXGroup;
-			children = (
-				65822AC01A87B32600FA3AFE /* ofxJSONRPC.h */,
-			);
-			name = src;
-			path = ../../../addons/ofxJSONRPC/src;
-			sourceTree = "<group>";
-		};
-		65822AC11A87B32600FA3AFE /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				65822AC21A87B32600FA3AFE /* ofxHTTP */,
-				65822AC91A87B32600FA3AFE /* ofxJSONRPC */,
-			);
-			name = libs;
-			path = ../../../addons/ofxJSONRPC/libs;
-			sourceTree = "<group>";
-		};
-		65822AC21A87B32600FA3AFE /* ofxHTTP */ = {
-			isa = PBXGroup;
-			children = (
-				65822AC31A87B32600FA3AFE /* include */,
-				65822AC71A87B32600FA3AFE /* src */,
-			);
-			path = ofxHTTP;
-			sourceTree = "<group>";
-		};
-		65822AC31A87B32600FA3AFE /* include */ = {
-			isa = PBXGroup;
-			children = (
-				65822AC41A87B32600FA3AFE /* ofx */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		65822AC41A87B32600FA3AFE /* ofx */ = {
-			isa = PBXGroup;
-			children = (
-				65822AC51A87B32600FA3AFE /* HTTP */,
-			);
-			path = ofx;
-			sourceTree = "<group>";
-		};
-		65822AC51A87B32600FA3AFE /* HTTP */ = {
-			isa = PBXGroup;
-			children = (
-				65822AC61A87B32600FA3AFE /* BasicJSONRPCServer.h */,
-			);
-			path = HTTP;
-			sourceTree = "<group>";
-		};
-		65822AC71A87B32600FA3AFE /* src */ = {
-			isa = PBXGroup;
-			children = (
-				65822AC81A87B32600FA3AFE /* BasicJSONRPCServer.cpp */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		65822AC91A87B32600FA3AFE /* ofxJSONRPC */ = {
-			isa = PBXGroup;
-			children = (
-				65822ACA1A87B32600FA3AFE /* include */,
-				65822AD91A87B32600FA3AFE /* src */,
-			);
-			path = ofxJSONRPC;
-			sourceTree = "<group>";
-		};
-		65822ACA1A87B32600FA3AFE /* include */ = {
-			isa = PBXGroup;
-			children = (
-				65822ACB1A87B32600FA3AFE /* ofx */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		65822ACB1A87B32600FA3AFE /* ofx */ = {
-			isa = PBXGroup;
-			children = (
-				65822ACC1A87B32600FA3AFE /* JSONRPC */,
-			);
-			path = ofx;
-			sourceTree = "<group>";
-		};
-		65822ACC1A87B32600FA3AFE /* JSONRPC */ = {
-			isa = PBXGroup;
-			children = (
-				65822ACD1A87B32600FA3AFE /* BaseMessage.h */,
-				65822ACE1A87B32600FA3AFE /* Deserializer.h */,
-				65822ACF1A87B32600FA3AFE /* Error.h */,
-				65822AD01A87B32600FA3AFE /* Errors.h */,
-				65822AD11A87B32600FA3AFE /* JSONRPC.h */,
-				65822AD21A87B32600FA3AFE /* JSONRPCUtils.h */,
-				65822AD31A87B32600FA3AFE /* Method.h */,
-				65822AD41A87B32600FA3AFE /* MethodArgs.h */,
-				65822AD51A87B32600FA3AFE /* MethodRegistry.h */,
-				65822AD61A87B32600FA3AFE /* Request.h */,
-				65822AD71A87B32600FA3AFE /* Response.h */,
-				65822AD81A87B32600FA3AFE /* Serializer.h */,
-			);
-			path = JSONRPC;
-			sourceTree = "<group>";
-		};
-		65822AD91A87B32600FA3AFE /* src */ = {
-			isa = PBXGroup;
-			children = (
-				65822ADA1A87B32600FA3AFE /* BaseMessage.cpp */,
-				65822ADB1A87B32600FA3AFE /* Deserializer.cpp */,
-				65822ADC1A87B32600FA3AFE /* Error.cpp */,
-				65822ADD1A87B32600FA3AFE /* Errors.cpp */,
-				65822ADE1A87B32600FA3AFE /* JSONRPCUtils.cpp */,
-				65822ADF1A87B32600FA3AFE /* MethodRegistry.cpp */,
-				65822AE01A87B32600FA3AFE /* Request.cpp */,
-				65822AE11A87B32600FA3AFE /* Response.cpp */,
-				65822AE21A87B32600FA3AFE /* Serializer.cpp */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		65EA51911A86CFB3007A182D /* modes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1490,7 +1327,6 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				65822ABE1A87B32600FA3AFE /* ofxJSONRPC */,
 				655E78B11A87ABD700941E4E /* ofxHTTP */,
 				655E78A51A87ABB600941E4E /* ofxMediaType */,
 				655E789C1A87ABB200941E4E /* ofxTaskQueue */,
@@ -1814,7 +1650,6 @@
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				655E79411A87ABD700941E4E /* AuthScope.cpp in Sources */,
 				655E78931A87ABAD00941E4E /* SLIPEncoding.cpp in Sources */,
-				65822AE71A87B32600FA3AFE /* Errors.cpp in Sources */,
 				655E79581A87ABD700941E4E /* DefaultClientTask.cpp in Sources */,
 				655E796D1A87ABD700941E4E /* PostRoute.cpp in Sources */,
 				655E79521A87ABD700941E4E /* CookieStore.cpp in Sources */,
@@ -1831,7 +1666,6 @@
 				655E780E1A86EB0700941E4E /* VideoMode.cpp in Sources */,
 				655E79791A87ABD700941E4E /* ThreadSettings.cpp in Sources */,
 				655E78841A87ABAD00941E4E /* Compression.cpp in Sources */,
-				65822AE91A87B32600FA3AFE /* MethodRegistry.cpp in Sources */,
 				655E79641A87ABD700941E4E /* HTTPAuthenticationRoute.cpp in Sources */,
 				655E78911A87ABAD00941E4E /* RegexPathFilter.cpp in Sources */,
 				C381F2B7CFD84C0E540EB4BC /* ofxUIBiLabelSlider.cpp in Sources */,
@@ -1857,8 +1691,6 @@
 				655E795F1A87ABD700941E4E /* DefaultSessionProvider.cpp in Sources */,
 				084025DA517D8329301FE1B6 /* ofxUIEventArgs.cpp in Sources */,
 				7252706DA14C1BE63950ADDA /* ofxUIFPS.cpp in Sources */,
-				65822AE81A87B32600FA3AFE /* JSONRPCUtils.cpp in Sources */,
-				65822AE41A87B32600FA3AFE /* BaseMessage.cpp in Sources */,
 				655E78961A87ABAD00941E4E /* snappy.cc in Sources */,
 				655E78831A87ABAD00941E4E /* COBSEncoding.cpp in Sources */,
 				22030CBDCC25D815E7ED6757 /* ofxUIFPSSlider.cpp in Sources */,
@@ -1871,7 +1703,6 @@
 				655E78851A87ABAD00941E4E /* DeviceFilter.cpp in Sources */,
 				655E78871A87ABAD00941E4E /* DirectoryUtils.cpp in Sources */,
 				655E78921A87ABAD00941E4E /* SearchPath.cpp in Sources */,
-				65822AEB1A87B32600FA3AFE /* Response.cpp in Sources */,
 				655E794F1A87ABD700941E4E /* Compression.cpp in Sources */,
 				655E78901A87ABAD00941E4E /* RecursiveDirectoryIteratorStategies.cpp in Sources */,
 				655E78111A86F87300941E4E /* SeparationMode.cpp in Sources */,
@@ -1879,7 +1710,6 @@
 				655E788E1A87ABAD00941E4E /* PathFilterCollection.cpp in Sources */,
 				FB8AA9FA6535767BE31806BC /* ofxUIImageToggle.cpp in Sources */,
 				7C3DC84C9BFCBD2866DB2B6C /* ofxUILabel.cpp in Sources */,
-				65822AE31A87B32600FA3AFE /* BasicJSONRPCServer.cpp in Sources */,
 				655E78B01A87ABB600941E4E /* MediaTypeMap.cpp in Sources */,
 				FFD1EBFCA24DFB4E4427B4FE /* ofxUILabelButton.cpp in Sources */,
 				C30B3A2A37F8F32EE7318718 /* ofxUILabelToggle.cpp in Sources */,
@@ -1888,7 +1718,6 @@
 				655E79511A87ABD700941E4E /* Cookie.cpp in Sources */,
 				655E79431A87ABD700941E4E /* BaseClient.cpp in Sources */,
 				655E79741A87ABD700941E4E /* Session.cpp in Sources */,
-				65822AEC1A87B32600FA3AFE /* Serializer.cpp in Sources */,
 				655E788B1A87ABAD00941E4E /* HexBinaryEncoding.cpp in Sources */,
 				655E79691A87ABD700941E4E /* IPVideoRoute.cpp in Sources */,
 				F440B307990F8F5CE40B9111 /* ofxUIMovingGraph.cpp in Sources */,
@@ -1942,8 +1771,6 @@
 				E3A1109F67D711D6C256031E /* ofxUIToggleMatrix.cpp in Sources */,
 				655E79561A87ABD700941E4E /* DefaultClient.cpp in Sources */,
 				655E78081A86E22000941E4E /* Tweenzor.cpp in Sources */,
-				65822AEA1A87B32600FA3AFE /* Request.cpp in Sources */,
-				65822AE51A87B32600FA3AFE /* Deserializer.cpp in Sources */,
 				65EA51971A86D36E007A182D /* CircleMode.cpp in Sources */,
 				655E78881A87ABAD00941E4E /* DirectoryWatcher.cpp in Sources */,
 				655E79491A87ABD700941E4E /* BasicIPVideoServer.cpp in Sources */,
@@ -1953,7 +1780,6 @@
 				AE281BEBF3A00F1FC37F3DA0 /* ofxUIWaveform.cpp in Sources */,
 				655E78291A87ABAB00941E4E /* ofxJSONElement.cpp in Sources */,
 				655E795A1A87ABD700941E4E /* DefaultCookieProcessor.cpp in Sources */,
-				65822AE61A87B32600FA3AFE /* Error.cpp in Sources */,
 				82845E1F8C90E1F5A99D9868 /* ofxUIWidget.cpp in Sources */,
 				CE5D89B9893EAA12F511DCAC /* ofxUIWidgetWithLabel.cpp in Sources */,
 				655E78821A87ABAD00941E4E /* ByteBufferWriter.cpp in Sources */,
