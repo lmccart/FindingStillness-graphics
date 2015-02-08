@@ -18,7 +18,6 @@ void SwipeMode::onComplete(float* arg) {
 }
 
 void SwipeMode::update() {
-    ofLog() << x;
     Tweenzor::update( ofGetElapsedTimeMillis() );
 }
 

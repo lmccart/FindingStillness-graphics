@@ -3,11 +3,15 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     modeManager.setup();
+    //server.setup();
+    picTaker.setup();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     modeManager.update();
+    //server.update();
+    //picTaker.update();
 
 }
 
@@ -23,6 +27,8 @@ void ofApp::keyPressed(int key){
         modeManager.next(key-'0');
     } else if (key == OF_KEY_RETURN) {
         modeManager.next(-1);
+    } else if (key == 'p') {
+        picTaker.takePic();
     }
 }
 
