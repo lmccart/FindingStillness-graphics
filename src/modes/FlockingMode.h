@@ -83,8 +83,8 @@ public:
     
     void draw() {
         // Draw a triangle rotated in the direction of velocity
-        ofVec2f zero(0, 1);
-        float theta = zero.angle(velocity) + ofDegToRad(90);
+        ofVec2f zero(0, -1);
+        float theta = zero.angle(velocity);
         ofSetColor(255);
         ofPushMatrix();
         ofTranslate(position.x,position.y);
