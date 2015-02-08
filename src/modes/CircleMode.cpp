@@ -23,9 +23,11 @@ void CircleMode::update() {
 
 
 void CircleMode::draw() {
+    ofPushStyle();
     ofBackground(black);
     ofSetColor(255);
     ofEllipse(ofGetWidth()/2, ofGetHeight()/2, scale*diameter, scale*diameter);
+    ofPopStyle();
 }
 
 

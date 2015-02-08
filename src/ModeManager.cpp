@@ -11,13 +11,16 @@
 
 void ModeManager::setup() {
     reset();
+    modes.push_back(new FlockingMode("Flocking", 5000));
+    modes.push_back(new SeparationMode("Separate", 5000));
+    modes.push_back(new VideoMode("Grass", 5000));
     modes.push_back(new CircleMode("Circles", 5000));
     modes.push_back(new FaderMode("Fader", 5000));
 }
 
 void ModeManager::update() {
     if (!playing) {
-        next(-1);
+        next(0);
         playing = true;
     }
     float now = ofGetElapsedTimef();

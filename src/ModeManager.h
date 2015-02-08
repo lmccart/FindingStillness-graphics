@@ -11,6 +11,9 @@
 #include "ofMain.h"
 #include "CircleMode.h"
 #include "FaderMode.h"
+#include "VideoMode.h"
+#include "SeparationMode.h"
+#include "FlockingMode.h"
 
 
 class ModeManager {

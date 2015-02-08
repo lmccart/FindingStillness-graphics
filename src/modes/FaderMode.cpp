@@ -18,6 +18,7 @@ void FaderMode::update() {
 
 
 void FaderMode::draw() {
+    ofPushStyle();
     ofBackground(black);
     int h = 20;
     for (int i=0; i<ofGetHeight(); i+=h) {
@@ -25,6 +26,7 @@ void FaderMode::draw() {
         ofRect(0, i, ofGetWidth(), h);
     }
     x += h;
+    ofPopStyle();
 }
 
 
