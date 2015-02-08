@@ -6,8 +6,11 @@
 //
 //
 
+#pragma once
+
 #include "ofMain.h"
 #include "CircleMode.h"
+#include "FaderMode.h"
 
 
 class ModeManager {

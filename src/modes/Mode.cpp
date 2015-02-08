@@ -8,8 +8,9 @@
 
 #include "Mode.h"
 
-Mode::Mode(float duration) {
-    duration = duration;
+Mode::Mode(string _name, float _duration) {
+    duration = _duration;
+    name = _name;
     
     playing = false;
     black = 0;
@@ -17,7 +18,7 @@ Mode::Mode(float duration) {
 }
 
 void Mode::enter() {
-    ofLog() << "enter";
+    ofLog() << "enter " << name << " - " << fadeInTime;
     reset();
     playing = true;
 }
@@ -41,5 +42,6 @@ void Mode::reset() {
 
 
 void Mode::exit() {
+    playing = false;
     preExit();
 }

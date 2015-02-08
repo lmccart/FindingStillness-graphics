@@ -11,7 +11,8 @@
 
 void ModeManager::setup() {
     reset();
-    modes.push_back(new CircleMode(5000));
+    modes.push_back(new CircleMode("Circles", 5000));
+    modes.push_back(new FaderMode("Fader", 5000));
 }
 
 void ModeManager::update() {
@@ -63,7 +64,9 @@ void ModeManager::next(int i) {
             curMode = 0;
         }
     } else {
-        curMode = i;
+        if (i >= 0 && i < modes.size()) {
+            curMode = i;
+        } else ofLog() << "ModeManager::mode out of range";
     }
     modes[curMode]->enter();
 }

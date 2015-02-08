@@ -8,7 +8,7 @@
 
 #include "CircleMode.h"
 
-CircleMode::CircleMode(float duration) : Mode(duration) {
+CircleMode::CircleMode(string _name, float _duration) : Mode(_name, _duration) {
     Tweenzor::init();
     Tweenzor::add(&diameter, 0, ofGetWidth(), 0.f, 1.f, EASE_IN_OUT_QUAD);
     Tweenzor::getTween(&diameter)->setRepeat( 100, true );
@@ -17,7 +17,6 @@ CircleMode::CircleMode(float duration) : Mode(duration) {
 
 
 void CircleMode::update() {
-    ofLog() << diameter;
     scale+=0.001;
     Tweenzor::update( ofGetElapsedTimeMillis() );
 }
@@ -25,6 +24,7 @@ void CircleMode::update() {
 
 void CircleMode::draw() {
     ofBackground(black);
+    ofSetColor(255);
     ofEllipse(ofGetWidth()/2, ofGetHeight()/2, scale*diameter, scale*diameter);
 }
 
@@ -39,3 +39,4 @@ void CircleMode::reset() {
 void CircleMode::preExit() {
     Tweenzor::pauseAllTweens();
 }
+

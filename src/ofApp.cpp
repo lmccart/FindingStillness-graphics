@@ -18,7 +18,12 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    ofLog() << key;
+    if (key >= 48 && key <= 57) {
+        modeManager.next(key-48);
+    } else if (key == 32) {
+        modeManager.next(-1);
+    }
 }
 
 //--------------------------------------------------------------

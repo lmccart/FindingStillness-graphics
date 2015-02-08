@@ -6,13 +6,15 @@
 //
 //
 
+#pragma once
+
 #include "ofMain.h"
 #include "ofxTweenzor.h"
 
 class Mode {
     
 public:
-    Mode(float duration);
+    Mode(string _name, float _duration);
     virtual void enter();
     virtual void update();
     virtual void draw();
@@ -23,6 +25,7 @@ public:
     bool playing;
     float duration;
     float black;
+    string name;
 
     
 private:
