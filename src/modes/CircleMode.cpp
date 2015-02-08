@@ -9,26 +9,33 @@
 #include "CircleMode.h"
 
 CircleMode::CircleMode(float duration) : Mode(duration) {
-    
+    Tweenzor::init();
+    Tweenzor::add(&diameter, 0, ofGetWidth(), 0.f, 1.f, EASE_IN_OUT_QUAD);
+    Tweenzor::getTween(&diameter)->setRepeat( 100, true );
+    reset();
 }
-
-void CircleMode::enter() {
-    ofLog() << "enter1";
-}
-
 
 
 void CircleMode::update() {
+    ofLog() << diameter;
+    scale+=0.001;
+    Tweenzor::update( ofGetElapsedTimeMillis() );
 }
 
 
 void CircleMode::draw() {
+    ofBackground(black);
+    ofEllipse(ofGetWidth()/2, ofGetHeight()/2, scale*diameter, scale*diameter);
 }
 
 
 void CircleMode::reset() {
+    diameter = 0;
+    scale = 0;
+    Tweenzor::resetAllTweens();
+    Tweenzor::resumeAllTweens();
 }
 
-void CircleMode::exit() {
-    
+void CircleMode::preExit() {
+    Tweenzor::pauseAllTweens();
 }

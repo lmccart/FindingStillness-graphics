@@ -7,23 +7,25 @@
 //
 
 #include "ofMain.h"
+#include "ofxTweenzor.h"
 
 class Mode {
     
 public:
     Mode(float duration);
-    void enter();
-    void update();
-    void draw();
-    void preExit();
+    virtual void enter();
+    virtual void update();
+    virtual void draw();
+    virtual void preExit();
+    virtual void reset();
     void exit();
     
     bool playing;
     float duration;
-    
+    float black;
+
     
 private:
-    float black;
     float fadeInTime;
 };
 

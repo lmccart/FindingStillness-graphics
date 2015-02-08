@@ -17,9 +17,29 @@ Mode::Mode(float duration) {
 }
 
 void Mode::enter() {
-    ofLog() << "enter0";
+    ofLog() << "enter";
+    reset();
+    playing = true;
 }
 
+
+void Mode::update() {
+    ofLog() << "update";
+}
+
+void Mode::draw() {
+    ofLog() << "draw";
+}
+
+void Mode::preExit() {
+    ofLog() << "preExit";
+}
+
+void Mode::reset() {
+    ofLog() << "reset";
+}
+
+
 void Mode::exit() {
-    
+    preExit();
 }

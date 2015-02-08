@@ -11,17 +11,18 @@
 
 class CircleMode : public Mode {
     
-public:
-    CircleMode(float duration);
-    virtual void enter();
-    virtual void update();
-    virtual void draw();
-    virtual void reset();
-    virtual void preExit();
-    void exit();
-    
-    
-private:
+    public:
+        CircleMode(float duration);
+        void update();
+        void draw();
+        void reset();
+        void preExit();
+        
+        
+    private:
+        float diameter;
+        float scale;
+
 };
 
 

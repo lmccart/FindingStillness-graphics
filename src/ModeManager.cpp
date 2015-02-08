@@ -15,13 +15,17 @@ void ModeManager::setup() {
 }
 
 void ModeManager::update() {
+    if (!playing) {
+        next(-1);
+        playing = true;
+    }
     float now = ofGetElapsedTimef();
     if (now - modeStartTime >= modes[curMode]->duration) {
-        next();
+        //next(-1);
     }
     for (int i=0; i<modes.size(); i++) {
         if (modes[i]->playing) {
-            modes[i]->draw();
+            modes[i]->update();
         }
     }
 }
@@ -49,12 +53,17 @@ void ModeManager::start() {
     playing = true;
 }
 
-void ModeManager::next() {
+void ModeManager::next(int i) {
+    ofLog() << "next";
     modeStartTime = ofGetElapsedTimef();
     modes[curMode]->exit();
-    curMode++;
-    if (curMode >= modes.size()) {
-        curMode = 0;
+    if (i == -1) {
+        curMode++;
+        if (curMode >= modes.size()) {
+            curMode = 0;
+        }
+    } else {
+        curMode = i;
     }
     modes[curMode]->enter();
 }
