@@ -2,8 +2,6 @@
 
 #include "ofMain.h"
 #include "ModeManager.h"
-#include "Server.h"
-#include "PictureTaker.h"
 
 class ofApp : public ofBaseApp{
 
@@ -19,6 +17,4 @@ public:
     
 private:
     ModeManager modeManager;
-    Server server;
-    PictureTaker picTaker;
 };
