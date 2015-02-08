@@ -11,6 +11,7 @@
 
 void ModeManager::setup() {
     reset();
+    modes.push_back(new SwipeMode("Swipe", 5000));
     modes.push_back(new FlockingMode("Flocking", 5000));
     modes.push_back(new SeparationMode("Separate", 5000));
     modes.push_back(new VideoMode("Grass", 5000));

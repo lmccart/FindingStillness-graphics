@@ -14,12 +14,12 @@
 #include "VideoMode.h"
 #include "SeparationMode.h"
 #include "FlockingMode.h"
+#include "SwipeMode.h"
 
 
 class ModeManager {
     
     public:
-        
         void setup();
         void update();
         void draw();
