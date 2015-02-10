@@ -17,13 +17,11 @@ void ModeManager::setup() {
     modes.push_back(new VideoMode("Grass", 5000));
     modes.push_back(new CircleMode("Circles", 5000));
     modes.push_back(new FaderMode("Fader", 5000));
+    
+    cur_hr = 0;
 }
 
 void ModeManager::update() {
-    if (!playing) {
-        next(0);
-        playing = true;
-    }
     float now = ofGetElapsedTimef();
     if (now - modeStartTime >= modes[curMode]->duration) {
         //next(-1);
@@ -53,7 +51,8 @@ void ModeManager::reset() {
 }
 
 void ModeManager::start() {
-    modes[curMode]->enter();
+    reset();
+    next(0);
     modeStartTime = ofGetElapsedTimef();
     playing = true;
 }
@@ -73,5 +72,10 @@ void ModeManager::next(int i) {
         } else ofLog() << "ModeManager::mode out of range";
     }
     modes[curMode]->enter();
+}
+
+void ModeManager::updateHeartrate(float hr) {
+    cur_hr = hr;
+    ofLog() << "heartrate updated to " << hr;
 }
 

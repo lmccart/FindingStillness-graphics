@@ -3,11 +3,23 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     modeManager.setup();
+    oscReceiver.setup(3333);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     modeManager.update();
+    if (oscReceiver.hasWaitingMessages()) {
+        oscMessage.clear();
+        oscReceiver.getNextMessage(&oscMessage);
+        if (oscMessage.getAddress() == "/start") {
+            modeManager.start();
+        } else if (oscMessage.getAddress() == "/heartrate") {
+            modeManager.updateHeartrate(oscMessage.getArgAsFloat(0));
+        } else {
+            ofLog() << oscMessage.getAddress();
+        }
+    }
 
 }
 

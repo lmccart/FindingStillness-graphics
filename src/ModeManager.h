@@ -19,18 +19,20 @@
 
 class ModeManager {
     
-    public:
-        void setup();
-        void update();
-        void draw();
-        void reset();
-        void start();
-        void next(int i);
-        
-    private:
-        bool playing;
-        int curMode;
-        float modeStartTime;
-        vector<Mode*> modes;
+public:
+    void setup();
+    void update();
+    void draw();
+    void reset();
+    void start();
+    void next(int i);
+    void updateHeartrate(float hr);
+    
+private:
+    bool playing;
+    int curMode;
+    float modeStartTime;
+    vector<Mode*> modes;
+    float cur_hr;
 
 };

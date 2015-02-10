@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ModeManager.h"
+#include "ofxOscReceiver.h"
 
 class ofApp : public ofBaseApp{
 
@@ -17,4 +18,6 @@ public:
     
 private:
     ModeManager modeManager;
+    ofxOscReceiver oscReceiver;
+    ofxOscMessage oscMessage;
 };
