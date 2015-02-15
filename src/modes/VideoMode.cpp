@@ -8,8 +8,9 @@
 
 #include "VideoMode.h"
 
-VideoMode::VideoMode(string _name, float _duration) : Mode(_name, _duration) {
-    videoPlayer.loadMovie("vids/fingers.mov");
+VideoMode::VideoMode(string _name, float _duration, string file) : Mode(_name, _duration) {
+    videoPlayer.loadMovie(file);
+    videoPlayer.setVolume(0);
     videoPlayer.setLoopState(OF_LOOP_NORMAL);
     reset();
 }

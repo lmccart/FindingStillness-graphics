@@ -29,8 +29,8 @@ public:
         velocity.set(0, 0);
         acceleration.set(0, 0);
         r = 25;
-        maxspeed = 25;    // Maximum speed
-        maxforce = 4;  // Maximum steering force
+        maxspeed = 2;    // Maximum speed
+        maxforce = 0.1;  // Maximum steering force
         maxradius = 25;
     }
     
@@ -67,7 +67,6 @@ public:
             ofVec2f steer = sum - velocity;
             steer.limit(maxforce);
             applyForce(steer);
-            r = 25+maxradius*velocity.length()/maxspeed;
         }
     }
     
@@ -87,12 +86,20 @@ public:
         ofSetColor(255);
         ofPushMatrix();
         ofTranslate(position.x, position.y);
-        ofEllipse(0, 0, r, r);
+//        ofEllipse(0, 0, r, r);
+        
+        ofVec2f zero(0, -1);
+        float theta = zero.angle(velocity);
+        ofRotate(theta);
+        ofTriangle(0, -r*2, -r, r*2, r, r*2);
+        
+        
         ofPopMatrix();
     }
     
     // Wraparound
     void borders() {
+        
         if (position.x < -r) position.x = ofGetWidth()+r;
         if (position.y < -r) position.y = ofGetHeight()+r;
         if (position.x > ofGetWidth()+r) position.x = -r;

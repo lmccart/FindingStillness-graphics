@@ -12,12 +12,13 @@
 void ModeManager::setup() {
     reset();
     modes.push_back(new PixelMode("Pixel", 15));
-    modes.push_back(new VideoMode("Grass", 5));
-    modes.push_back(new FlockingMode("Flocking", 5));
-    modes.push_back(new SeparationMode("Separate", 5));
-    modes.push_back(new SwipeMode("Swipe", 5));
-    modes.push_back(new CircleMode("Circles", 5));
-    modes.push_back(new FaderMode("Fader", 5));
+    modes.push_back(new VideoMode("Waves", 7.5, "vids/waves.mov"));
+    modes.push_back(new VideoMode("Grass", 7.5, "vids/grass.mov"));
+    modes.push_back(new FlockingMode("Flocking", 10));
+    modes.push_back(new SeparationMode("Separate", 10));
+    
+    modes.push_back(new FaderMode("Fader", 20));
+    modes.push_back(new CircleMode("Circles", 20));
     
     cur_hr = 0;
 }

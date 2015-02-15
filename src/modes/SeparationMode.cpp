@@ -33,9 +33,9 @@ void SeparationMode::draw() {
 
 
 void SeparationMode::reset() {
-    vehicles = vector<Vehicle>(50);
+    vehicles = vector<Vehicle>(100);
     for (int i = 0; i < vehicles.size(); i++) {
-        vehicles[i].setup(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()));
+        vehicles[i].setup(ofGetWidth()*ofRandom(0.4, 0.6), ofGetHeight()*ofRandom(0.4, 0.6));
     }
 }
 

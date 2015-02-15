@@ -25,10 +25,10 @@ public:
     
     void setup(float x, float y) {
         position.set(x, y);
-        velocity.set(ofRandom(-1,1), ofRandom(-1,1));
+        velocity.set(ofGetWidth()*0.5-x, ofGetHeight()*0.5-y);
         r = 20;//ofGetWidth()*0.05;
-        maxspeed = 8;    // Maximum speed
-        maxforce = 0.2; // Maximum steering force
+        maxspeed = 4;    // Maximum speed
+        maxforce = 0.4; // Maximum steering force
     }
 
     void run(vector<Boid> boids) {
@@ -96,10 +96,10 @@ public:
     
     // Wraparound
     void borders() {
-        if (position.x < -r)  position.x = ofGetWidth() +r;
-        if (position.y < -r)  position.y = ofGetHeight() +r;
-        if (position.x > ofGetWidth() +r) position.x = -r;
-        if (position.y > ofGetHeight() +r) position.y = -r;
+        if (position.x < -r)  velocity.x = abs(velocity.x);//position.x = ofGetWidth() +r;
+        if (position.y < -r)  velocity.y  = abs(velocity.y);//position.y = ofGetHeight() +r;
+        if (position.x > ofGetWidth() +r) velocity.x = -abs(velocity.x);//position.x = -r;
+        if (position.y > ofGetHeight() +r) velocity.y = -abs(velocity.y);//position.y = -r;
     }
     
     // Separation
@@ -166,7 +166,7 @@ public:
     // Cohesion
     // For the average location (i.e. center) of all nearby boids, calculate steering vector towards that location
     ofVec2f cohesion(vector<Boid> boids) {
-        float neighbordist = 50;
+        float neighbordist = 30;
         ofVec2f sum(0, 0);
         int count = 0;
         for (int i = 0; i < boids.size(); i++) {

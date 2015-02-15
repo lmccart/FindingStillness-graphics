@@ -16,7 +16,6 @@ FlockingMode::FlockingMode(string _name, float _duration) : Mode(_name, _duratio
 void FlockingMode::update() {
     for (int i = 0; i < boids.size(); i++) {
         boids[i].run(boids);  // Passing the entire list of boids to each boid individually
-        boids[i].maxforce = 0.05 + 0.3*sin(ofGetFrameNum()*0.01+100);
     }
 }
 
@@ -30,9 +29,20 @@ void FlockingMode::draw() {
 
 
 void FlockingMode::reset() {
-    boids = vector<Boid>(100);
+    boids = vector<Boid>(200);
     for (int i = 0; i < boids.size(); i++) {
-        boids[i].setup(ofGetWidth()/2, ofGetHeight()/2);
+        float dir = ofRandom(1.0);
+        if (dir < 0.25) { // top
+            boids[i].setup(ofRandom(ofGetWidth()), ofRandom(-ofGetHeight()*0.15));
+        } else if (dir < 0.5) { // right
+            boids[i].setup(ofRandom(ofGetWidth(), ofGetWidth()*1.15), ofRandom(ofGetHeight()));
+        } else if (dir < 0.75) { // bottom
+            boids[i].setup(ofRandom(ofGetWidth()), ofRandom(ofGetHeight(), ofGetHeight()*1.15));
+            
+        } else { // left
+            boids[i].setup(ofRandom(-ofGetWidth()*0.15, 0), ofRandom(ofGetHeight()));
+            
+        }
     }
 }
 
