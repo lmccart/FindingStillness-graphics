@@ -28,18 +28,18 @@ void FlockingMode::draw() {
 
 
 void FlockingMode::reset() {
-    boids = vector<Boid>(200);
+    boids = vector<Boid>(250);
     for (int i = 0; i < boids.size(); i++) {
         float dir = ofRandom(1.0);
         if (dir < 0.25) { // top
-            boids[i].setup(ofRandom(ofGetWidth()), ofRandom(-ofGetHeight()*0.15));
+            boids[i].setup(ofRandom(ofGetWidth()), ofRandom(-ofGetHeight()*0.5));
         } else if (dir < 0.5) { // right
-            boids[i].setup(ofRandom(ofGetWidth(), ofGetWidth()*1.15), ofRandom(ofGetHeight()));
+            boids[i].setup(ofRandom(ofGetWidth(), ofGetWidth()*1.5), ofRandom(ofGetHeight()));
         } else if (dir < 0.75) { // bottom
-            boids[i].setup(ofRandom(ofGetWidth()), ofRandom(ofGetHeight(), ofGetHeight()*1.15));
+            boids[i].setup(ofRandom(ofGetWidth()), ofRandom(ofGetHeight(), ofGetHeight()*1.5));
             
         } else { // left
-            boids[i].setup(ofRandom(-ofGetWidth()*0.15, 0), ofRandom(ofGetHeight()));
+            boids[i].setup(ofRandom(-ofGetWidth()*0.5, 0), ofRandom(ofGetHeight()));
             
         }
     }
