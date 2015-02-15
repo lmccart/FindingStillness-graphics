@@ -9,7 +9,6 @@
 #include "SeparationMode.h"
 
 SeparationMode::SeparationMode(string _name, float _duration) : Mode(_name, _duration) {
-    reset();
 }
 
 

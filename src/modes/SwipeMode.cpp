@@ -10,7 +10,6 @@
 
 SwipeMode::SwipeMode(string _name, float _duration) : Mode(_name, _duration) {
     Tweenzor::init();
-    reset();
 }
 
 void SwipeMode::onComplete(float* arg) {

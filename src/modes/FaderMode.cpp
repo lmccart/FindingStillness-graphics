@@ -9,7 +9,6 @@
 #include "FaderMode.h"
 
 FaderMode::FaderMode(string _name, float _duration) : Mode(_name, _duration) {
-    reset();
 }
 
 

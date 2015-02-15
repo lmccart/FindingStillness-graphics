@@ -11,6 +11,10 @@
 
 void ModeManager::setup() {
     reset();
+    
+    
+    modes.push_back(new FlockingMode("Flocking", 100));
+    
     modes.push_back(new PixelMode("Pixel", 15));
     modes.push_back(new VideoMode("Waves", 7.5, "vids/waves.mov"));
     modes.push_back(new VideoMode("Grass", 7.5, "vids/grass.mov"));

@@ -10,7 +10,6 @@
 
 CircleMode::CircleMode(string _name, float _duration) : Mode(_name, _duration) {
     Tweenzor::init();
-    reset();
 }
 
 

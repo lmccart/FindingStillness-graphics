@@ -9,7 +9,6 @@
 #include "FlockingMode.h"
 
 FlockingMode::FlockingMode(string _name, float _duration) : Mode(_name, _duration) {
-    reset();
 }
 
 

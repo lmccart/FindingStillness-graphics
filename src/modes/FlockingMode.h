@@ -9,26 +9,35 @@
 
 #include "ofMain.h"
 #include "Mode.h"
-
+#include <valarray>
 
 // Vehicle object
 
 
 class Boid {
 public:
+    vector<ofVec2f> prevPositions;
     ofVec2f position;
     ofVec2f velocity;
     ofVec2f acceleration;
     float maxspeed;
     float maxforce;
     float r;
+    int count;
     
     void setup(float x, float y) {
         position.set(x, y);
+        prevPositions = vector<ofVec2f>(3);
+        for (int i=0; i<prevPositions.size(); i++) {
+            prevPositions[i].set(x, y);
+        }
+        
+        ofLog() <<prevPositions[0] << " " << prevPositions[1];
         velocity.set(ofGetWidth()*0.5-x, ofGetHeight()*0.5-y);
         r = 20;//ofGetWidth()*0.05;
-        maxspeed = 4;    // Maximum speed
-        maxforce = 0.4; // Maximum steering force
+        maxspeed = 10;    // Maximum speed
+        maxforce = 0.8; // Maximum steering force
+        count = 0;
     }
 
     void run(vector<Boid> boids) {
@@ -64,8 +73,16 @@ public:
         // Limit speed
         velocity.limit(maxspeed);
         position += velocity;
+        if (count%5 == 0) {
+            for (int i=prevPositions.size()-1; i>0; i--) {
+                prevPositions[i] = prevPositions[i-1];
+            }
+            prevPositions[0] = position;
+        }
+        
         // Reset accelertion to 0 each cycle
         acceleration.set(0, 0);
+        count++;
     }
     
     // A method that calculates and applies a steering force towards a target
@@ -86,12 +103,25 @@ public:
         ofVec2f zero(0, -1);
         float theta = zero.angle(velocity);
         ofSetColor(255);
+        ofSetLineWidth(4.0);
+        //ofSetStrokeColor(255);
+        //ofFill();
         ofPushMatrix();
-        ofTranslate(position.x,position.y);
-        ofRotate(theta);
-        ofTriangle(0, -r*2, -r, r*2, r, r*2);
+        ofBeginShape();
+////        ofLog() << prevPositions[0] << " - " << prevPositions[1] << " - " << prevPositions[2] << " - " << prevPositions[3] << " - " << prevPositions[4];
+        for (int i=0; i<prevPositions.size(); i++) {
+            ofCurveVertex(prevPositions[i].x, prevPositions[i].y);
+//            
+//            //ofPushMatrix();
+//            //ofTranslate(prevPositions[i].x, prevPositions[i].y);
+//            //ofRotate(theta);
+//            //ofEllipse(0, 0, r, r);
+//            //ofPopMatrix();
+        }
+        ofCurveVertex(position.x, position.y);
+        ofEndShape(false);
+        //ofTriangle(0, -r*2, -r, r*2, r, r*2);
         //ofEllipse(0, 0, r, r*2);
-        ofPopMatrix();
     }
     
     // Wraparound

@@ -12,13 +12,11 @@
 PixelMode::PixelMode(string _name, float _duration) : Mode(_name, _duration) {
     Tweenzor::init();
     grays = vector<int>(25*25*25*25*25);
-    reset();
 }
 
 
 void PixelMode::update() {
     Tweenzor::update( ofGetElapsedTimeMillis() );
-    
 }
 
 
@@ -38,10 +36,10 @@ void PixelMode::reset() {
     pixSize = 0;
     pixTimer = 0;
     subdivTimer = 0;
-    Tweenzor::removeAllTweens();
-    addFlash(0);
-    
     freq = 60;
+    Tweenzor::removeAllTweens();
+    Tweenzor::removeAllListeners();
+    addFlash(0);
     Tweenzor::add(&freq, 60, 8, 0.f, 4.0f, EASE_OUT_EXPO);
     Tweenzor::addCompleteListener( Tweenzor::getTween(&freq), this, &PixelMode::flashSlowComplete);
     
@@ -124,5 +122,7 @@ void PixelMode::slideComplete(float* arg) {
 
 void PixelMode::preExit() {
     Tweenzor::pauseAllTweens();
+    Tweenzor::removeAllTweens();
+    Tweenzor::removeAllListeners();
 }
 

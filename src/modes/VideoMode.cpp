@@ -12,7 +12,6 @@ VideoMode::VideoMode(string _name, float _duration, string file) : Mode(_name, _
     videoPlayer.loadMovie(file);
     videoPlayer.setVolume(0);
     videoPlayer.setLoopState(OF_LOOP_NORMAL);
-    reset();
 }
 
 
