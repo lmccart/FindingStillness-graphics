@@ -15,7 +15,7 @@
 #include "SeparationMode.h"
 #include "FlockingMode.h"
 #include "SwipeMode.h"
-
+#include "PixelMode.h"
 
 class ModeManager {
     

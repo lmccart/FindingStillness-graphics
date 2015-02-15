@@ -11,12 +11,13 @@
 
 void ModeManager::setup() {
     reset();
-    modes.push_back(new SwipeMode("Swipe", 5000));
-    modes.push_back(new FlockingMode("Flocking", 5000));
-    modes.push_back(new SeparationMode("Separate", 5000));
-    modes.push_back(new VideoMode("Grass", 5000));
-    modes.push_back(new CircleMode("Circles", 5000));
-    modes.push_back(new FaderMode("Fader", 5000));
+    modes.push_back(new PixelMode("Pixel", 15));
+    modes.push_back(new VideoMode("Grass", 5));
+    modes.push_back(new FlockingMode("Flocking", 5));
+    modes.push_back(new SeparationMode("Separate", 5));
+    modes.push_back(new SwipeMode("Swipe", 5));
+    modes.push_back(new CircleMode("Circles", 5));
+    modes.push_back(new FaderMode("Fader", 5));
     
     cur_hr = 0;
 }
@@ -24,7 +25,7 @@ void ModeManager::setup() {
 void ModeManager::update() {
     float now = ofGetElapsedTimef();
     if (now - modeStartTime >= modes[curMode]->duration) {
-        //next(-1);
+        next(-1);
     }
     for (int i=0; i<modes.size(); i++) {
         if (modes[i]->playing) {

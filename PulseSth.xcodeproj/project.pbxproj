@@ -46,6 +46,7 @@
 		65822B671A88065F00FA3AFE /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822B621A88065F00FA3AFE /* tinyxml.cpp */; };
 		65822B681A88065F00FA3AFE /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822B641A88065F00FA3AFE /* tinyxmlerror.cpp */; };
 		65822B691A88065F00FA3AFE /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822B651A88065F00FA3AFE /* tinyxmlparser.cpp */; };
+		658ABBB11A90ED8E00E28AD3 /* PixelMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 658ABBAF1A90ED8E00E28AD3 /* PixelMode.cpp */; };
 		65EA518A1A86CD0E007A182D /* ModeManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA51881A86CD0E007A182D /* ModeManager.cpp */; };
 		65EA51941A86CFB3007A182D /* Mode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA51921A86CFB3007A182D /* Mode.cpp */; };
 		65EA51971A86D36E007A182D /* CircleMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA51951A86D36E007A182D /* CircleMode.cpp */; };
@@ -235,6 +236,8 @@
 		65822B631A88065F00FA3AFE /* tinyxml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
 		65822B641A88065F00FA3AFE /* tinyxmlerror.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
 		65822B651A88065F00FA3AFE /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
+		658ABBAF1A90ED8E00E28AD3 /* PixelMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PixelMode.cpp; sourceTree = "<group>"; };
+		658ABBB01A90ED8E00E28AD3 /* PixelMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelMode.h; sourceTree = "<group>"; };
 		65EA51881A86CD0E007A182D /* ModeManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModeManager.cpp; sourceTree = "<group>"; };
 		65EA51891A86CD0E007A182D /* ModeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModeManager.h; sourceTree = "<group>"; };
 		65EA51921A86CFB3007A182D /* Mode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mode.cpp; sourceTree = "<group>"; };
@@ -501,6 +504,8 @@
 		65EA51911A86CFB3007A182D /* modes */ = {
 			isa = PBXGroup;
 			children = (
+				658ABBAF1A90ED8E00E28AD3 /* PixelMode.cpp */,
+				658ABBB01A90ED8E00E28AD3 /* PixelMode.h */,
 				655E78181A8707E800941E4E /* SwipeMode.cpp */,
 				655E78191A8707E800941E4E /* SwipeMode.h */,
 				655E78151A86FFE300941E4E /* FlockingMode.cpp */,
@@ -858,6 +863,7 @@
 				FB8AA9FA6535767BE31806BC /* ofxUIImageToggle.cpp in Sources */,
 				656C20E91A8982AF002681DD /* ofxOscReceiver.cpp in Sources */,
 				7C3DC84C9BFCBD2866DB2B6C /* ofxUILabel.cpp in Sources */,
+				658ABBB11A90ED8E00E28AD3 /* PixelMode.cpp in Sources */,
 				FFD1EBFCA24DFB4E4427B4FE /* ofxUILabelButton.cpp in Sources */,
 				C30B3A2A37F8F32EE7318718 /* ofxUILabelToggle.cpp in Sources */,
 				9A83D1B3FB64456BC907667F /* ofxUIMinimalSlider.cpp in Sources */,

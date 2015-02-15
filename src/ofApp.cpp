@@ -35,6 +35,8 @@ void ofApp::keyPressed(int key){
         modeManager.next(key-'0');
     } else if (key == OF_KEY_RETURN) {
         modeManager.next(-1);
+    } else if (key == 's') {
+        modeManager.start();
     }
 }
 
