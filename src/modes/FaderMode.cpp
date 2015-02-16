@@ -30,7 +30,7 @@ void FaderMode::draw() {
 
 void FaderMode::reset() {
     x = 0;
-    Tweenzor::add(&diff, 5, 0.5, 0.f, duration, EASE_LINEAR);
+    Tweenzor::add(&diff, 5, 1.5, 0.f, duration, EASE_LINEAR);
 }
 
 void FaderMode::preExit() {

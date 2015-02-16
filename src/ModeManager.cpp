@@ -22,7 +22,7 @@ void ModeManager::setup() {
     
     modes.push_back(new FaderMode("Fader", 15));
     modes.push_back(new CircleMode("Circles", 15));
-    modes.push_back(new FlickerMode("Flicker", 9));
+    modes.push_back(new FlickerMode("Flicker", 10));
     modes.push_back(new WashMode("White", 100, 255));
     
     cur_hr = 0;
