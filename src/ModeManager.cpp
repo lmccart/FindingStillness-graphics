@@ -12,17 +12,18 @@
 void ModeManager::setup() {
     reset();
     
-    
-    modes.push_back(new FlockingMode("Flocking", 100));
+    Tweenzor::init();
     
     modes.push_back(new PixelMode("Pixel", 15));
-    modes.push_back(new VideoMode("Waves", 7.5, "vids/waves.mov"));
-    modes.push_back(new VideoMode("Grass", 7.5, "vids/grass.mov"));
+    modes.push_back(new VideoMode("Nature", 15));
     modes.push_back(new FlockingMode("Flocking", 10));
-    modes.push_back(new SeparationMode("Separate", 10));
+    modes.push_back(new SeparationMode("Separate", 5, 0));
+    modes.push_back(new SeparationMode("Separate", 5, 255));
     
-    modes.push_back(new FaderMode("Fader", 20));
-    modes.push_back(new CircleMode("Circles", 20));
+    modes.push_back(new FaderMode("Fader", 15));
+    modes.push_back(new CircleMode("Circles", 15));
+    modes.push_back(new FlickerMode("Flicker", 9));
+    modes.push_back(new WashMode("White", 100, 255));
     
     cur_hr = 0;
 }
@@ -37,6 +38,7 @@ void ModeManager::update() {
             modes[i]->update();
         }
     }
+    Tweenzor::update( ofGetElapsedTimeMillis() );
 }
 
 void ModeManager::draw() {
@@ -66,7 +68,7 @@ void ModeManager::start() {
 void ModeManager::next(int i) {
     ofLog() << "next";
     modeStartTime = ofGetElapsedTimef();
-    modes[curMode]->exit();
+    if (playing) modes[curMode]->slowExit();
     if (i == -1) {
         curMode++;
         if (curMode >= modes.size()) {

@@ -9,7 +9,6 @@
 #include "SwipeMode.h"
 
 SwipeMode::SwipeMode(string _name, float _duration) : Mode(_name, _duration) {
-    Tweenzor::init();
 }
 
 void SwipeMode::onComplete(float* arg) {
@@ -17,13 +16,11 @@ void SwipeMode::onComplete(float* arg) {
 }
 
 void SwipeMode::update() {
-    Tweenzor::update( ofGetElapsedTimeMillis() );
 }
 
 
 void SwipeMode::draw() {
     ofPushStyle();
-    ofBackground(black);
     ofSetColor(255);
     ofRect(x, 0, ofGetWidth(), ofGetHeight());
     ofRect(0, y, ofGetWidth(), ofGetHeight());

@@ -89,6 +89,9 @@ public:
         ofPushMatrix();
         ofTranslate(position.x,position.y);
         ofRotate(theta);
+//        ofBeginShape();
+//        ofCurveVertex(<#ofPoint &p#>)
+//        ofEndShape();
         ofTriangle(0, -r*2, -r, r*2, r, r*2);
         //ofEllipse(0, 0, r, r*2);
         ofPopMatrix();

@@ -16,6 +16,8 @@
 #include "FlockingMode.h"
 #include "SwipeMode.h"
 #include "PixelMode.h"
+#include "FlickerMode.h"
+#include "WashMode.h"
 
 class ModeManager {
     

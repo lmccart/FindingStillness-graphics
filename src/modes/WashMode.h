@@ -1,19 +1,20 @@
 //
-//  FaderMode.h
+//  WashMode.h
 //  FindingStillness
 //
-//  Created by Lauren McCarthy on 2/7/15.
+//  Created by Lauren McCarthy on 2/15/15.
 //
 //
+
 #pragma once
 
 #include "ofMain.h"
 #include "Mode.h"
 
-class FaderMode : public Mode {
+class WashMode : public Mode {
     
 public:
-    FaderMode(string _name, float _duration);
+    WashMode(string _name, float _duration, int _color);
     void update();
     void draw();
     void reset();
@@ -21,8 +22,7 @@ public:
     
     
 private:
-    float x;
-    float diff;
+    int color;
 
 };
 

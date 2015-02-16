@@ -20,7 +20,7 @@ void FlockingMode::update() {
 
 
 void FlockingMode::draw() {
-    ofBackground(black);
+    ofBackground(0);
     for (int i = 0; i < boids.size(); i++) {
         boids[i].draw();
     }
@@ -40,7 +40,6 @@ void FlockingMode::reset() {
             
         } else { // left
             boids[i].setup(ofRandom(-ofGetWidth()*0.5, 0), ofRandom(ofGetHeight()));
-            
         }
     }
 }

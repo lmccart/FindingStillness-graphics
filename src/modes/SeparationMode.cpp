@@ -8,7 +8,8 @@
 
 #include "SeparationMode.h"
 
-SeparationMode::SeparationMode(string _name, float _duration) : Mode(_name, _duration) {
+SeparationMode::SeparationMode(string _name, float _duration, int _color) : Mode(_name, _duration) {
+    color = _color;
 }
 
 
@@ -23,7 +24,7 @@ void SeparationMode::update() {
 
 void SeparationMode::draw() {
     ofPushStyle();
-    ofBackground(black);
+    ofBackground(abs(255-color));
     for (int i = 0; i < vehicles.size(); i++) {
         vehicles[i].draw();
     }
@@ -32,9 +33,18 @@ void SeparationMode::draw() {
 
 
 void SeparationMode::reset() {
-    vehicles = vector<Vehicle>(100);
+    vehicles = vector<Vehicle>(400);
     for (int i = 0; i < vehicles.size(); i++) {
-        vehicles[i].setup(ofGetWidth()*ofRandom(0.4, 0.6), ofGetHeight()*ofRandom(0.4, 0.6));
+        float dir = ofRandom(1.0);
+        if (dir < 0.25) { // top
+            vehicles[i].setup(ofRandom(ofGetWidth()), ofRandom(-ofGetHeight()*1), color);
+        } else if (dir < 0.5) { // right
+            vehicles[i].setup(ofRandom(ofGetWidth(), ofGetWidth()*2), ofRandom(ofGetHeight()), color);
+        } else if (dir < 0.75) { // bottom
+            vehicles[i].setup(ofRandom(ofGetWidth()), ofRandom(ofGetHeight(), ofGetHeight()*2), color);
+        } else { // left
+            vehicles[i].setup(ofRandom(-ofGetWidth()*1, 0), ofRandom(ofGetHeight()), color);
+        }
     }
 }
 

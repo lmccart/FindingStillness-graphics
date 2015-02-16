@@ -4,6 +4,12 @@
 void ofApp::setup(){
     modeManager.setup();
     oscReceiver.setup(3333);
+    
+    shaderBlurX.load("shaders/shaderBlurX");
+    shaderBlurY.load("shaders/shaderBlurY");
+    
+    fboBlurOnePass.allocate(ofGetWidth(), ofGetHeight());
+    fboBlurTwoPass.allocate(ofGetWidth(), ofGetHeight());
 }
 
 //--------------------------------------------------------------
@@ -25,6 +31,37 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+//    float blur = 1;//ofMap(mouseX, 0, ofGetWidth(), 0, 10, true);
+//    
+//    //----------------------------------------------------------
+//    fboBlurOnePass.begin();
+//    
+//    shaderBlurX.begin();
+//    shaderBlurX.setUniform1f("blurAmnt", blur);
+//    
+//    modeManager.draw();
+//    
+//    shaderBlurX.end();
+//    
+//    fboBlurOnePass.end();
+//    
+//    //----------------------------------------------------------
+//    fboBlurTwoPass.begin();
+//    
+//    shaderBlurY.begin();
+//    shaderBlurY.setUniform1f("blurAmnt", blur);
+//    
+//    fboBlurOnePass.draw(0, 0);
+//    
+//    shaderBlurY.end();
+//    
+//    fboBlurTwoPass.end();
+//    
+//    //----------------------------------------------------------
+//    ofSetColor(ofColor::white);
+//    fboBlurTwoPass.draw(0, 0);
+
+    ofBackground(0);
     modeManager.draw();
 }
 

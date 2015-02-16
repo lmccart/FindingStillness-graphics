@@ -47,6 +47,8 @@
 		65822B681A88065F00FA3AFE /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822B641A88065F00FA3AFE /* tinyxmlerror.cpp */; };
 		65822B691A88065F00FA3AFE /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65822B651A88065F00FA3AFE /* tinyxmlparser.cpp */; };
 		658ABBB11A90ED8E00E28AD3 /* PixelMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 658ABBAF1A90ED8E00E28AD3 /* PixelMode.cpp */; };
+		658ABBB91A91835B00E28AD3 /* FlickerMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 658ABBB71A91835B00E28AD3 /* FlickerMode.cpp */; };
+		658ABBBC1A91853E00E28AD3 /* WashMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 658ABBBA1A91853E00E28AD3 /* WashMode.cpp */; };
 		65EA518A1A86CD0E007A182D /* ModeManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA51881A86CD0E007A182D /* ModeManager.cpp */; };
 		65EA51941A86CFB3007A182D /* Mode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA51921A86CFB3007A182D /* Mode.cpp */; };
 		65EA51971A86D36E007A182D /* CircleMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA51951A86D36E007A182D /* CircleMode.cpp */; };
@@ -238,6 +240,10 @@
 		65822B651A88065F00FA3AFE /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		658ABBAF1A90ED8E00E28AD3 /* PixelMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PixelMode.cpp; sourceTree = "<group>"; };
 		658ABBB01A90ED8E00E28AD3 /* PixelMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelMode.h; sourceTree = "<group>"; };
+		658ABBB71A91835B00E28AD3 /* FlickerMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlickerMode.cpp; sourceTree = "<group>"; };
+		658ABBB81A91835B00E28AD3 /* FlickerMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickerMode.h; sourceTree = "<group>"; };
+		658ABBBA1A91853E00E28AD3 /* WashMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WashMode.cpp; sourceTree = "<group>"; };
+		658ABBBB1A91853E00E28AD3 /* WashMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WashMode.h; sourceTree = "<group>"; };
 		65EA51881A86CD0E007A182D /* ModeManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModeManager.cpp; sourceTree = "<group>"; };
 		65EA51891A86CD0E007A182D /* ModeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModeManager.h; sourceTree = "<group>"; };
 		65EA51921A86CFB3007A182D /* Mode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mode.cpp; sourceTree = "<group>"; };
@@ -504,6 +510,10 @@
 		65EA51911A86CFB3007A182D /* modes */ = {
 			isa = PBXGroup;
 			children = (
+				658ABBBA1A91853E00E28AD3 /* WashMode.cpp */,
+				658ABBBB1A91853E00E28AD3 /* WashMode.h */,
+				658ABBB71A91835B00E28AD3 /* FlickerMode.cpp */,
+				658ABBB81A91835B00E28AD3 /* FlickerMode.h */,
 				658ABBAF1A90ED8E00E28AD3 /* PixelMode.cpp */,
 				658ABBB01A90ED8E00E28AD3 /* PixelMode.h */,
 				655E78181A8707E800941E4E /* SwipeMode.cpp */,
@@ -837,6 +847,7 @@
 				8BCF02B826253856D7DCF4D1 /* ofxDmx.cpp in Sources */,
 				9F5C6DD965B4F3A6DB5B88F8 /* ofxUI2DGraph.cpp in Sources */,
 				4B3ED367CA852D522E2EE996 /* ofxUI2DPad.cpp in Sources */,
+				658ABBBC1A91853E00E28AD3 /* WashMode.cpp in Sources */,
 				65822B581A8805D700FA3AFE /* Tween.cpp in Sources */,
 				65EA51941A86CFB3007A182D /* Mode.cpp in Sources */,
 				F1E8DE8734BA6F69A5112FA8 /* ofxUIBaseDraws.cpp in Sources */,
@@ -893,6 +904,7 @@
 				C961BE22AB9A8CCF037FC18F /* ofxUITextArea.cpp in Sources */,
 				656C20E71A8982AF002681DD /* ofxOscMessage.cpp in Sources */,
 				65EA518A1A86CD0E007A182D /* ModeManager.cpp in Sources */,
+				658ABBB91A91835B00E28AD3 /* FlickerMode.cpp in Sources */,
 				F8D05F7C7F785CE323983B47 /* ofxUITextInput.cpp in Sources */,
 				656C20EC1A8982AF002681DD /* NetworkingUtils.cpp in Sources */,
 				04C82720B149CE576B8CBB06 /* ofxUIToggle.cpp in Sources */,

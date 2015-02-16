@@ -23,15 +23,19 @@ public:
     float maxspeed;
     float maxforce;
     float maxradius;
+    int type;
+    int color;
     
-    void setup(float x, float y) {
+    void setup(float x, float y, int c) {
+        color = c;
         position.set(x, y);
-        velocity.set(0, 0);
+        velocity.set(ofGetWidth()*0.5-x, ofGetHeight()*0.5-y);
         acceleration.set(0, 0);
         r = 25;
-        maxspeed = 2;    // Maximum speed
+        maxspeed = 5;    // Maximum speed
         maxforce = 0.1;  // Maximum steering force
         maxradius = 25;
+        type = floor(ofRandom(3));
     }
     
     void applyForce(ofVec2f force) {
@@ -80,10 +84,14 @@ public:
         // Reset accelertion to 0 each cycle
         acceleration.set(0, 0);
         maxradius += 0.05;
+        
+        float d = sqrt(pow(abs(ofGetWidth()*0.5-position.x), 2)+pow(abs(ofGetHeight()*0.5-position.y), 2));
+        d = ofMap(d, 0, ofGetWidth(), 2.0, 0.1);
+        r = MAX(25, 25*d);
     }
     
     void draw() {
-        ofSetColor(255);
+        ofSetColor(color);
         ofPushMatrix();
         ofTranslate(position.x, position.y);
 //        ofEllipse(0, 0, r, r);
@@ -91,7 +99,13 @@ public:
         ofVec2f zero(0, -1);
         float theta = zero.angle(velocity);
         ofRotate(theta);
-        ofTriangle(0, -r*2, -r, r*2, r, r*2);
+        if (type == 0) {
+            ofTriangle(0, -r*2, -r, r*2, r, r*2);
+        } else if (type == 1) {
+            ofRect(0, 0, 2*r, 2*r);
+        } else if (type == 2) {
+            ofTriangle(0, -r*2, -r, r*2, r, r*2);
+        }
         
         
         ofPopMatrix();
@@ -99,26 +113,26 @@ public:
     
     // Wraparound
     void borders() {
-        
-        if (position.x < -r) position.x = ofGetWidth()+r;
-        if (position.y < -r) position.y = ofGetHeight()+r;
-        if (position.x > ofGetWidth()+r) position.x = -r;
-        if (position.y > ofGetHeight()+r) position.y = -r;
+        if (position.x < -r)  velocity.x = abs(velocity.x);//position.x = ofGetWidth() +r;
+        if (position.y < -r)  velocity.y  = abs(velocity.y);//position.y = ofGetHeight() +r;
+        if (position.x > ofGetWidth() +r) velocity.x = -abs(velocity.x);//position.x = -r;
+        if (position.y > ofGetHeight() +r) velocity.y = -abs(velocity.y);//position.y = -r;
     }
 };
 
 class SeparationMode : public Mode {
+
+public:
+    SeparationMode(string _name, float _duration, int _color);
+    void update();
+    void draw();
+    void reset();
+    void preExit();
     
-    public:
-        SeparationMode(string _name, float _duration);
-        void update();
-        void draw();
-        void reset();
-        void preExit();
-        
-        
-    private:
-        vector<Vehicle> vehicles;
+    
+private:
+    vector<Vehicle> vehicles;
+    int color;
 };
 
 

@@ -15,6 +15,8 @@ Mode::Mode(string _name, float _duration) {
     playing = false;
     black = 0;
     fadeInTime = 1000;
+    exitTimer = 0;
+    Tweenzor::init();
 }
 
 void Mode::enter() {
@@ -44,4 +46,14 @@ void Mode::reset() {
 void Mode::exit() {
     playing = false;
     preExit();
+}
+
+void Mode::slowExit() {
+    preExit();
+    Tweenzor::add(&exitTimer, 0, 1, 0.f, 1.0f, EASE_LINEAR);
+    Tweenzor::addCompleteListener( Tweenzor::getTween(&exitTimer), this, &Mode::exitComplete);
+}
+
+void Mode::exitComplete(float *arg) {
+    playing = false;
 }

@@ -10,13 +10,11 @@
 
 
 PixelMode::PixelMode(string _name, float _duration) : Mode(_name, _duration) {
-    Tweenzor::init();
     grays = vector<int>(25*25*25*25*25);
 }
 
 
 void PixelMode::update() {
-    Tweenzor::update( ofGetElapsedTimeMillis() );
 }
 
 
