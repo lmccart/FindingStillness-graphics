@@ -14,16 +14,16 @@ void ModeManager::setup() {
     
     Tweenzor::init();
     
-    modes.push_back(new PixelMode("Pixel", 15));
-    modes.push_back(new FlockingMode("Flocking", 10));
-    modes.push_back(new VideoMode("Nature", 15));
-    modes.push_back(new SeparationMode("Separate", 5, 0));
-    modes.push_back(new SeparationMode("Separate", 5, 255));
+    modes.push_back(new PixelMode("Pixel", 15, false));
+    modes.push_back(new FlockingMode("Flocking", 10, true));
+    modes.push_back(new VideoMode("Nature", 15, false));
+    modes.push_back(new SeparationMode("Separate", 5, false, 0));
+    modes.push_back(new SeparationMode("Separate", 5, false, 255));
     
-    modes.push_back(new FaderMode("Fader", 15));
-    modes.push_back(new CircleMode("Circles", 15));
-    modes.push_back(new FlickerMode("Flicker", 10));
-    modes.push_back(new WashMode("White", 100, 255));
+    modes.push_back(new FaderMode("Fader", 15, false));
+    modes.push_back(new CircleMode("Circles", 15, false));
+    modes.push_back(new FlickerMode("Flicker", 10, false));
+    modes.push_back(new WashMode("White", 100, 255, false));
     
     cur_hr = 0;
 }
@@ -44,7 +44,7 @@ void ModeManager::update() {
 void ModeManager::draw() {
     for (int i=0; i<modes.size(); i++) {
         if (modes[i]->playing) {
-            modes[i]->drawWithHR(false);
+            modes[i]->drawWithHR();
         }
     }
 }

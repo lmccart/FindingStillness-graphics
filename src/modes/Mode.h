@@ -14,11 +14,11 @@
 class Mode {
     
 public:
-    Mode(string _name, float _duration);
+    Mode(string _name, float _duration, bool _useHR);
     virtual void enter();
     virtual void update();
     virtual void draw();
-    void drawWithHR(bool useHR);
+    void drawWithHR();
     void updateHR(float _hr);
     virtual void preExit();
     virtual void reset();
@@ -32,6 +32,7 @@ public:
     string name;
     float exitTimer;
     float hr;
+    bool useHR;
 
     
 private:

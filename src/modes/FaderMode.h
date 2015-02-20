@@ -13,7 +13,7 @@
 class FaderMode : public Mode {
     
 public:
-    FaderMode(string _name, float _duration);
+    FaderMode(string _name, float _duration, bool _useHR);
     void update();
     void draw();
     void reset();

@@ -13,7 +13,7 @@
 class VideoMode : public Mode {
     
     public:
-        VideoMode(string _name, float _duration);
+        VideoMode(string _name, float _duration, bool _useHR);
         void update();
         void draw();
         void reset();

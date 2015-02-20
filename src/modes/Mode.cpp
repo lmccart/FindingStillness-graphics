@@ -8,9 +8,10 @@
 
 #include "Mode.h"
 
-Mode::Mode(string _name, float _duration) {
+Mode::Mode(string _name, float _duration, bool _useHR) {
     duration = _duration;
     name = _name;
+    useHR = _useHR;
     
     playing = false;
     black = 0;
@@ -38,7 +39,7 @@ void Mode::draw() {
     ofLog() << "draw";
 }
 
-void Mode::drawWithHR(bool useHR) {
+void Mode::drawWithHR() {
     if (useHR) {
         pulseFbo.begin();
             ofClear(0, 0, 0);

@@ -125,7 +125,7 @@ public:
 class SeparationMode : public Mode {
 
 public:
-    SeparationMode(string _name, float _duration, int _color);
+    SeparationMode(string _name, float _duration, bool _useHR, int _color);
     void update();
     void draw();
     void reset();

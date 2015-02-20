@@ -8,7 +8,7 @@
 
 #include "CircleMode.h"
 
-CircleMode::CircleMode(string _name, float _duration) : Mode(_name, _duration) {
+CircleMode::CircleMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
 }
 
 

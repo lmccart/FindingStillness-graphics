@@ -8,7 +8,7 @@
 
 #include "SeparationMode.h"
 
-SeparationMode::SeparationMode(string _name, float _duration, int _color) : Mode(_name, _duration) {
+SeparationMode::SeparationMode(string _name, float _duration, bool _useHR, int _color) : Mode(_name, _duration, _useHR) {
     color = _color;
 }
 

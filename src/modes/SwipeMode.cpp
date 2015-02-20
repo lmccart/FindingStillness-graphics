@@ -8,7 +8,7 @@
 
 #include "SwipeMode.h"
 
-SwipeMode::SwipeMode(string _name, float _duration) : Mode(_name, _duration) {
+SwipeMode::SwipeMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
 }
 
 void SwipeMode::onComplete(float* arg) {

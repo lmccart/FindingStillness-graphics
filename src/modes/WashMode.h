@@ -14,7 +14,7 @@
 class WashMode : public Mode {
     
 public:
-    WashMode(string _name, float _duration, int _color);
+    WashMode(string _name, float _duration, bool _useHR, int _color);
     void update();
     void draw();
     void reset();

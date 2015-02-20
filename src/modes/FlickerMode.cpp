@@ -8,7 +8,7 @@
 
 #include "FlickerMode.h"
 
-FlickerMode::FlickerMode(string _name, float _duration) : Mode(_name, _duration) {
+FlickerMode::FlickerMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
 }
 
 

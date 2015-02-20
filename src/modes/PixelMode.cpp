@@ -9,7 +9,7 @@
 #include "PixelMode.h"
 
 
-PixelMode::PixelMode(string _name, float _duration) : Mode(_name, _duration) {
+PixelMode::PixelMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
 }
 
 

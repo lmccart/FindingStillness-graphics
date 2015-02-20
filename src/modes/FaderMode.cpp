@@ -8,7 +8,7 @@
 
 #include "FaderMode.h"
 
-FaderMode::FaderMode(string _name, float _duration) : Mode(_name, _duration) {
+FaderMode::FaderMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
 }
 
 

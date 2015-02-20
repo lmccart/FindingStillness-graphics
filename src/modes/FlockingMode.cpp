@@ -8,7 +8,7 @@
 
 #include "FlockingMode.h"
 
-FlockingMode::FlockingMode(string _name, float _duration) : Mode(_name, _duration) {
+FlockingMode::FlockingMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
     fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
     fbo.begin();
     ofBackground(0);

@@ -194,7 +194,7 @@ public:
 class FlockingMode : public Mode {
     
 public:
-    FlockingMode(string _name, float _duration);
+    FlockingMode(string _name, float _duration, bool _useHR);
     void update();
     void draw();
     void reset();

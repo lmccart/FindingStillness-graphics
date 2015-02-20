@@ -14,7 +14,7 @@
 class CircleMode : public Mode {
     
     public:
-        CircleMode(string _name, float _duration);
+        CircleMode(string _name, float _duration, bool _useHR);
         void update();
         void draw();
         void reset();
