@@ -13,11 +13,13 @@ void ModeManager::setup() {
     reset();
     
     Tweenzor::init();
+    modes.push_back(new FaderMode("Fader", 15, false));
     
-    modes.push_back(new SeparationMode("Separate", 25, false, 0));
+    
     modes.push_back(new PixelMode("Pixel", 15, false));
     modes.push_back(new FlockingMode("Flocking", 10, true));
     modes.push_back(new VideoMode("Nature", 15, false));
+    modes.push_back(new SeparationMode("Separate", 5, false, 0));
     modes.push_back(new SeparationMode("Separate", 5, false, 255));
     
     modes.push_back(new FaderMode("Fader", 15, false));

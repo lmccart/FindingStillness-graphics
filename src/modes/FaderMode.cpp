@@ -18,9 +18,9 @@ void FaderMode::update() {
 
 void FaderMode::draw() {
     ofPushStyle();
-    int h = 20;
+    float h = 5;
     for (int i=0; i<ofGetHeight(); i+=h) {
-        ofSetColor(127+128*sin(0.005*(x-i)));
+        ofSetColor(127+128*sin(d*(x-i)));
         ofRect(0, i, ofGetWidth(), h);
     }
     x += diff;
@@ -30,10 +30,13 @@ void FaderMode::draw() {
 
 void FaderMode::reset() {
     x = 0;
+    d = 0.005;
     Tweenzor::add(&diff, 5, 1.5, 0.f, duration, EASE_LINEAR);
+    Tweenzor::add(&d, 0.025, 0.001, 0.f, duration, EASE_LINEAR);
 }
 
 void FaderMode::preExit() {
     Tweenzor::removeTween(&diff);
+    Tweenzor::removeTween(&d);
 }
 

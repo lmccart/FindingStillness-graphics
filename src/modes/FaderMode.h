@@ -22,6 +22,7 @@ public:
     
 private:
     float x;
+    float d;
     float diff;
 
 };
