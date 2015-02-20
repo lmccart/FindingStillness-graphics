@@ -18,6 +18,8 @@ public:
     virtual void enter();
     virtual void update();
     virtual void draw();
+    void drawWithHR(bool useHR);
+    void updateHR(float _hr);
     virtual void preExit();
     virtual void reset();
     void exit();
@@ -34,6 +36,8 @@ public:
     
 private:
     float fadeInTime;
+    ofFbo pulseFbo;
+    float hr, targetHR;
 };
 
 

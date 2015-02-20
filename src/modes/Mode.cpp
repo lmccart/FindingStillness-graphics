@@ -16,6 +16,9 @@ Mode::Mode(string _name, float _duration) {
     black = 0;
     fadeInTime = 1000;
     exitTimer = 0;
+    pulseFbo.allocate(ofGetWidth(), ofGetHeight());
+    hr = 60;
+    targetHR = 60;
     Tweenzor::init();
 }
 
@@ -28,10 +31,28 @@ void Mode::enter() {
 
 void Mode::update() {
     ofLog() << "update";
+    hr = (targetHR - hr)*0.5 + hr;
 }
 
 void Mode::draw() {
     ofLog() << "draw";
+}
+
+void Mode::drawWithHR(bool useHR) {
+    if (useHR) {
+        pulseFbo.begin();
+            ofClear(0, 0, 0);
+            draw();
+        pulseFbo.end();
+        ofSetColor(255, 170+85*sin(0.001*hr*ofGetFrameNum()));
+        pulseFbo.draw(0, 0);
+    } else {
+        draw();
+    }
+}
+
+void Mode::updateHR(float _hr) {
+    targetHR = ofClamp(ofMap(_hr, 0, 80, 0, 255), 0, 255);
 }
 
 void Mode::preExit() {

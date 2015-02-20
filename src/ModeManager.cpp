@@ -44,7 +44,7 @@ void ModeManager::update() {
 void ModeManager::draw() {
     for (int i=0; i<modes.size(); i++) {
         if (modes[i]->playing) {
-            modes[i]->draw();
+            modes[i]->drawWithHR(true);
         }
     }
 }
