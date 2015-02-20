@@ -45,7 +45,7 @@ public:
     // Separation
     // Method checks for nearby vehicles and steers away
     void separate(vector<Vehicle> vehicles) {
-        float desiredseparation = r*2;
+        float desiredseparation = 25;
         ofVec2f sum;
         int count = 0;
         // For every boid in the system, check if it's too close
@@ -102,11 +102,11 @@ public:
         if (type == 0) {
             ofTriangle(0, -r*2, -r, r*2, r, r*2);
         } else if (type == 1) {
-            ofRect(0, 0, 2*r, 2*r);
+            ofRect(-r, -r, 2*r, 2*r);
         } else if (type == 2) {
-            ofTriangle(0, -r*1.5, -r, r*2, r, r*1.5);
+            //ofTriangle(0, -r*1.5, -r, r*2, r, r*1.5);
         } else if (type == 3) {
-            ofRect(0, 0, 2*r, 2.5*r);
+            ofRect(-r, -1.5*r, 2*r, 3*r);
         }
         
         
