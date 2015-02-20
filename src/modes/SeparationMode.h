@@ -25,6 +25,7 @@ public:
     float maxradius;
     int type;
     int color;
+    float baser;
     
     void setup(float x, float y, int c) {
         color = c;
@@ -32,9 +33,10 @@ public:
         velocity.set(ofGetWidth()*0.5-x, ofGetHeight()*0.5-y);
         acceleration.set(0, 0);
         r = 25;
-        maxspeed = 4;    // Maximum speed
-        maxforce = 0.15;  // Maximum steering force
+        maxspeed = 5;    // Maximum speed
+        maxforce = 0.2;  // Maximum steering force
         maxradius = 25;
+        baser = 25;
         type = floor(ofRandom(4));
     }
     
@@ -45,14 +47,13 @@ public:
     // Separation
     // Method checks for nearby vehicles and steers away
     void separate(vector<Vehicle> vehicles) {
-        float desiredseparation = 25;
         ofVec2f sum;
         int count = 0;
         // For every boid in the system, check if it's too close
         for (int i = 0; i < vehicles.size(); i++) {
             float d = position.distance(vehicles[i].position);
             // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
-            if ((d > 0) && (d < r+vehicles[i].r)) {
+            if ((d > 0) && (d < 3*(r+vehicles[i].r))) {
                 // Calculate vector pointing away from neighbor
                 ofVec2f diff = position - vehicles[i].position;
                 diff.normalize();
@@ -76,8 +77,9 @@ public:
     
     // Method to update location
     void update() {
+        baser += 0.07;
         // Update velocity
-        velocity += acceleration;
+        velocity += 0.25*acceleration;
         // Limit speed
         velocity.limit(maxspeed);
         position += velocity;
@@ -87,7 +89,7 @@ public:
         
         float d = sqrt(pow(abs(ofGetWidth()*0.5-position.x), 2)+pow(abs(ofGetHeight()*0.5-position.y), 2));
         d = ofMap(d, 0, ofGetWidth(), 2.0, 0.1);
-        r = MAX(25, 25*d);
+        r = MAX(baser, baser*d);
     }
     
     void draw() {

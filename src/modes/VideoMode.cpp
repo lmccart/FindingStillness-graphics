@@ -9,7 +9,7 @@
 #include "VideoMode.h"
 
 VideoMode::VideoMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
-    videoPlayer.loadMovie("vids/sequence4.mov");
+    videoPlayer.loadMovie("vids/sequence5.mov");
     videoPlayer.setVolume(0);
     videoPlayer.setLoopState(OF_LOOP_NORMAL);
 }

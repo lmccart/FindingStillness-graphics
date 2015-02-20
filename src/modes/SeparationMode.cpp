@@ -33,7 +33,7 @@ void SeparationMode::draw() {
 
 
 void SeparationMode::reset() {
-    vehicles = vector<Vehicle>(400);
+    vehicles = vector<Vehicle>(450);
     for (int i = 0; i < vehicles.size(); i++) {
         float dir = ofRandom(1.0);
         if (dir < 0.25) { // top

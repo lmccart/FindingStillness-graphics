@@ -20,10 +20,11 @@ public:
     void reset();
     void preExit();
     
+    void onComplete(float* arg);
+    
     
 private:
-    float y;
-    float dir;
+    float x, y;
 
 };
 

@@ -10,6 +10,8 @@ void ofApp::setup(){
     
     fboBlurOnePass.allocate(ofGetWidth(), ofGetHeight());
     fboBlurTwoPass.allocate(ofGetWidth(), ofGetHeight());
+    
+    ofEnableAlphaBlending();
 }
 
 //--------------------------------------------------------------

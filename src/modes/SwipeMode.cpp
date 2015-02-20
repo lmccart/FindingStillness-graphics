@@ -11,35 +11,30 @@
 SwipeMode::SwipeMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
 }
 
-void SwipeMode::onComplete(float* arg) {
-    reset();
-}
 
 void SwipeMode::update() {
+    y+= dir*ofGetHeight()/(0.5*duration*ofGetFrameRate());
+    if (y >= ofGetHeight()) {
+        y = ofGetHeight();
+        dir = -1;
+    }
 }
 
 
 void SwipeMode::draw() {
     ofPushStyle();
     ofSetColor(255);
-    ofRect(x, 0, ofGetWidth(), ofGetHeight());
-    ofRect(0, y, ofGetWidth(), ofGetHeight());
+    ofRect(0, y, ofGetWidth(), 2*ofGetHeight());
     ofPopStyle();
 }
 
 
 void SwipeMode::reset() {
-    x = -ofGetWidth();
-    y = -ofGetHeight();
-    Tweenzor::removeAllTweens();
-    Tweenzor::add(&x, -ofGetWidth(), 0, 0.f, 1.f, EASE_IN_EXPO);
-    Tweenzor::add(&y, -ofGetHeight(), 0, 2.f, 1.f, EASE_IN_EXPO);
-    Tweenzor::getTween(&x)->setRepeat( 1, true );
-    Tweenzor::getTween(&y)->setRepeat( 1, true );
-    Tweenzor::addCompleteListener( Tweenzor::getTween(&y), this, &SwipeMode::onComplete);
+    y = 0;
+    dir = 1;
+    
 }
 
 void SwipeMode::preExit() {
-    Tweenzor::pauseAllTweens();
 }
 

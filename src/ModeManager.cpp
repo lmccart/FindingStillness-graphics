@@ -13,8 +13,6 @@ void ModeManager::setup() {
     reset();
     
     Tweenzor::init();
-    modes.push_back(new FaderMode("Fader", 15, false));
-    
     
     modes.push_back(new PixelMode("Pixel", 15, false));
     modes.push_back(new FlockingMode("Flocking", 10, true));
@@ -22,8 +20,10 @@ void ModeManager::setup() {
     modes.push_back(new SeparationMode("Separate", 5, false, 0));
     modes.push_back(new SeparationMode("Separate", 5, false, 255));
     
+    //modes.push_back(new CircleMode("Circles", 15, false));
     modes.push_back(new FaderMode("Fader", 15, false));
-    modes.push_back(new CircleMode("Circles", 15, false));
+    modes.push_back(new SwipeMode("Swipe", 15, true));
+    
     modes.push_back(new FlickerMode("Flicker", 10, false));
     modes.push_back(new WashMode("White", 100, 255, false));
     

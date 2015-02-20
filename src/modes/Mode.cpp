@@ -17,7 +17,7 @@ Mode::Mode(string _name, float _duration, bool _useHR) {
     black = 0;
     exitTimer = 1;
     enterTimer = 0;
-    fadeDur = 2.0;
+    fadeDur = 1.5;
     pulseFbo.allocate(ofGetWidth(), ofGetHeight());
     hr = 60;
     targetHR = 60;
