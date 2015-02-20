@@ -32,8 +32,8 @@ public:
         velocity.set(ofGetWidth()*0.5-x, ofGetHeight()*0.5-y);
         acceleration.set(0, 0);
         r = 25;
-        maxspeed = 5;    // Maximum speed
-        maxforce = 0.1;  // Maximum steering force
+        maxspeed = 4;    // Maximum speed
+        maxforce = 0.15;  // Maximum steering force
         maxradius = 25;
         type = floor(ofRandom(4));
     }
@@ -45,7 +45,7 @@ public:
     // Separation
     // Method checks for nearby vehicles and steers away
     void separate(vector<Vehicle> vehicles) {
-        float desiredseparation = r;
+        float desiredseparation = r*2;
         ofVec2f sum;
         int count = 0;
         // For every boid in the system, check if it's too close
