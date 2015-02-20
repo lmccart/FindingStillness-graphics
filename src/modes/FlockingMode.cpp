@@ -9,6 +9,10 @@
 #include "FlockingMode.h"
 
 FlockingMode::FlockingMode(string _name, float _duration) : Mode(_name, _duration) {
+    fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
+    fbo.begin();
+    ofBackground(0);
+    fbo.end();
 }
 
 
@@ -20,10 +24,15 @@ void FlockingMode::update() {
 
 
 void FlockingMode::draw() {
-    ofBackground(0);
-    for (int i = 0; i < boids.size(); i++) {
-        boids[i].draw();
-    }
+    fbo.begin();
+        ofSetColor(0, 10);
+        ofRect(0, 0, ofGetWidth(), ofGetHeight());
+        for (int i = 0; i < boids.size(); i++) {
+            boids[i].draw();
+        }
+    fbo.end();
+    ofSetColor(255);
+    fbo.draw(0,0);
 }
 
 

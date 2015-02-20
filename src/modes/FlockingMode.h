@@ -11,8 +11,6 @@
 #include "Mode.h"
 
 
-// Vehicle object
-
 
 class Boid {
 public:
@@ -26,14 +24,16 @@ public:
     void setup(float x, float y) {
         position.set(x, y);
         velocity.set(ofRandom(-1, 1), ofRandom(-1, 1));//ofGetWidth()*0.5-x, ofGetHeight()*0.5-y);
+        borders();
         r = 20;//ofGetWidth()*0.05;
-        maxspeed = 3;    // Maximum speed
-        maxforce = 0.4; // Maximum steering force
+        maxspeed = 4;    // Maximum speed
+        maxforce = 0.5; // Maximum steering force
     }
 
     void run(vector<Boid> boids) {
         flock(boids);
         update();
+        grow();
         borders();
     }
     
@@ -68,6 +68,10 @@ public:
         acceleration.set(0, 0);
     }
     
+    void grow() {
+        r += 0.06;
+    }
+    
     // A method that calculates and applies a steering force towards a target
     // STEER = DESIRED MINUS VELOCITY
     ofVec2f seek(ofVec2f target) {
@@ -89,11 +93,8 @@ public:
         ofPushMatrix();
         ofTranslate(position.x,position.y);
         ofRotate(theta);
-//        ofBeginShape();
-//        ofCurveVertex(<#ofPoint &p#>)
-//        ofEndShape();
-        ofTriangle(0, -r*2, -r, r*2, r, r*2);
-        //ofEllipse(0, 0, r, r*2);
+        //ofTriangle(0, -r*2, -r, r*2, r, r*2);
+        ofEllipse(0, 0, r, r);
         ofPopMatrix();
     }
     
@@ -108,7 +109,7 @@ public:
     // Separation
     // Method checks for nearby boids and steers away
     ofVec2f separate(vector<Boid> boids) {
-        float desiredseparation = 40.0;
+        float desiredseparation = 0.5*r+30;
         ofVec2f steer(0, 0);
         int count = 0;
         // For every boid in the system, check if it's too close
@@ -202,6 +203,7 @@ public:
         
 private:
     vector<Boid> boids;
+    ofFbo fbo;
     
 };
 

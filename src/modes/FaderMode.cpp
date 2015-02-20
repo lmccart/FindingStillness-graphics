@@ -34,6 +34,6 @@ void FaderMode::reset() {
 }
 
 void FaderMode::preExit() {
-    Tweenzor::removeAllTweens();
+    Tweenzor::removeTween(&diff);
 }
 

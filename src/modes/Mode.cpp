@@ -49,6 +49,7 @@ void Mode::exit() {
 }
 
 void Mode::slowExit() {
+    ofLog() << "exit " << name;
     preExit();
     Tweenzor::add(&exitTimer, 0, 1, 0.f, 1.0f, EASE_LINEAR);
     Tweenzor::addCompleteListener( Tweenzor::getTween(&exitTimer), this, &Mode::exitComplete);

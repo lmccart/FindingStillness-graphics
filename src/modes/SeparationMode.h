@@ -35,7 +35,7 @@ public:
         maxspeed = 5;    // Maximum speed
         maxforce = 0.1;  // Maximum steering force
         maxradius = 25;
-        type = floor(ofRandom(3));
+        type = floor(ofRandom(4));
     }
     
     void applyForce(ofVec2f force) {
@@ -104,7 +104,9 @@ public:
         } else if (type == 1) {
             ofRect(0, 0, 2*r, 2*r);
         } else if (type == 2) {
-            ofTriangle(0, -r*2, -r, r*2, r, r*2);
+            ofTriangle(0, -r*1.5, -r, r*2, r, r*1.5);
+        } else if (type == 3) {
+            ofRect(0, 0, 2*r, 2.5*r);
         }
         
         

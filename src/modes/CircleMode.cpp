@@ -34,6 +34,7 @@ void CircleMode::reset() {
 }
 
 void CircleMode::preExit() {
-    Tweenzor::removeAllTweens();
+    Tweenzor::removeTween(&scale);
+    Tweenzor::removeTween(&diameter);
 }
 

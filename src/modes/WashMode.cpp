@@ -19,7 +19,7 @@ void WashMode::update() {
 
 void WashMode::draw() {
     ofPushStyle();
-    ofBackground(color);
+    ofBackground(255);
     ofPopStyle();
 }
 

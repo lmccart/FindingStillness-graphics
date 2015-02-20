@@ -35,8 +35,6 @@ void PixelMode::reset() {
     pixTimer = 0;
     subdivTimer = 0;
     freq = 60;
-    Tweenzor::removeAllTweens();
-    Tweenzor::removeAllListeners();
     addFlash(0);
     Tweenzor::add(&freq, 60, 8, 0.f, 4.0f, EASE_OUT_EXPO);
     Tweenzor::addCompleteListener( Tweenzor::getTween(&freq), this, &PixelMode::flashSlowComplete);
@@ -63,7 +61,7 @@ void PixelMode::drawPixels(float l) {
     else {
         int k = 0;
         for (int i=0; i<ofGetWidth(); i+=l) {
-            for (int j=0; j<5*ofGetHeight(); j+=l) {
+            for (int j=0; j<6*ofGetHeight(); j+=l) {
                 ofSetColor(grays[k]);
                 ofRect(i, j, l, l);
                 k++;
@@ -76,7 +74,7 @@ void PixelMode::setPixelColors(float l) {
     if (l != 0) {
         int k = 0;
         for (int i=0; i<ofGetWidth(); i+=l) {
-            for (int j=0; j<5*ofGetHeight(); j+=l) {
+            for (int j=0; j<6*ofGetHeight(); j+=l) {
                 grays[k] = ofRandom(1.0) > 0.5 ? 255 : 0;
                 k++;
             }
@@ -93,11 +91,9 @@ void PixelMode::flashSlowComplete(float* arg) {
 void PixelMode::subdivComplete(float* arg) {
     ofLog() << "subdiv " << pixSize << "complete";
     Tweenzor::removeTween(&subdivTimer);
-    if (numSubdivs < 6) { // split
+    if (numSubdivs < 5) { // split
         if (pixSize == 0) {
-            pixSize = ofGetWidth();
-        } else if (pixSize == ofGetWidth()) {
-            pixSize /= 5;
+            pixSize = ofGetWidth()/5;
         } else {
             pixSize /= 2;
         }
@@ -107,7 +103,7 @@ void PixelMode::subdivComplete(float* arg) {
         Tweenzor::addCompleteListener( Tweenzor::getTween(&subdivTimer), this, &PixelMode::subdivComplete);
         numSubdivs++;
     } else { // slide
-        Tweenzor::add(&y, 0, -4*ofGetHeight(), 0.f, 6.0f, EASE_IN_EXPO);
+        Tweenzor::add(&y, 0, -5*ofGetHeight(), 0.f, 6.0f, EASE_IN_QUAD);
         Tweenzor::addCompleteListener( Tweenzor::getTween(&y), this, &PixelMode::slideComplete);
     }
 }
@@ -119,8 +115,9 @@ void PixelMode::slideComplete(float* arg) {
 
 
 void PixelMode::preExit() {
-    Tweenzor::pauseAllTweens();
-    Tweenzor::removeAllTweens();
-    Tweenzor::removeAllListeners();
+    Tweenzor::removeTween(&freq);
+    Tweenzor::removeTween(&pixTimer);
+    Tweenzor::removeTween(&subdivTimer);
+    Tweenzor::removeTween(&y);
 }
 

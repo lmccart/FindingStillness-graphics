@@ -14,9 +14,9 @@ void ModeManager::setup() {
     
     Tweenzor::init();
     
+    modes.push_back(new FlockingMode("Flocking", 10));
     modes.push_back(new PixelMode("Pixel", 15));
     modes.push_back(new VideoMode("Nature", 15));
-    modes.push_back(new FlockingMode("Flocking", 10));
     modes.push_back(new SeparationMode("Separate", 5, 0));
     modes.push_back(new SeparationMode("Separate", 5, 255));
     
@@ -69,6 +69,7 @@ void ModeManager::next(int i) {
     ofLog() << "next";
     modeStartTime = ofGetElapsedTimef();
     if (playing) modes[curMode]->slowExit();
+    else modes[curMode]->exit();
     if (i == -1) {
         curMode++;
         if (curMode >= modes.size()) {
