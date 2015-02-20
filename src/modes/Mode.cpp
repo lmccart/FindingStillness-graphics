@@ -15,8 +15,9 @@ Mode::Mode(string _name, float _duration, bool _useHR) {
     
     playing = false;
     black = 0;
-    fadeInTime = 1000;
-    exitTimer = 0;
+    exitTimer = 1;
+    enterTimer = 0;
+    fadeDur = 2.0;
     pulseFbo.allocate(ofGetWidth(), ofGetHeight());
     hr = 60;
     targetHR = 60;
@@ -24,7 +25,10 @@ Mode::Mode(string _name, float _duration, bool _useHR) {
 }
 
 void Mode::enter() {
-    ofLog() << "enter " << name << " - " << fadeInTime;
+    ofLog() << "enter " << name;
+    exitTimer = 1;
+    enterTimer = 0;
+    Tweenzor::add(&enterTimer, 0, 1, 0.f, fadeDur, EASE_LINEAR);
     reset();
     playing = true;
 }
@@ -40,16 +44,13 @@ void Mode::draw() {
 }
 
 void Mode::drawWithHR() {
-    if (useHR) {
-        pulseFbo.begin();
-            ofClear(0, 0, 0);
-            draw();
-        pulseFbo.end();
-        ofSetColor(255, 170+85*sin(0.001*hr*ofGetFrameNum()));
-        pulseFbo.draw(0, 0);
-    } else {
+    pulseFbo.begin();
+        ofClear(0, 0, 0);
         draw();
-    }
+    pulseFbo.end();
+    float alpha = useHR ? 170+85*sin(0.001*hr*ofGetFrameNum()) : 255;
+    ofSetColor(255, alpha*exitTimer*enterTimer);
+    pulseFbo.draw(0, 0);
 }
 
 void Mode::updateHR(float _hr) {
@@ -72,11 +73,11 @@ void Mode::exit() {
 
 void Mode::slowExit() {
     ofLog() << "exit " << name;
-    preExit();
-    Tweenzor::add(&exitTimer, 0, 1, 0.f, 1.0f, EASE_LINEAR);
+    Tweenzor::add(&exitTimer, 1, 0, 0.f, fadeDur, EASE_LINEAR);
     Tweenzor::addCompleteListener( Tweenzor::getTween(&exitTimer), this, &Mode::exitComplete);
 }
 
 void Mode::exitComplete(float *arg) {
+    preExit();
     playing = false;
 }

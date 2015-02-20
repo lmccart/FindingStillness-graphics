@@ -30,13 +30,14 @@ public:
     float duration;
     float black;
     string name;
-    float exitTimer;
     float hr;
     bool useHR;
 
     
 private:
-    float fadeInTime;
+    float exitTimer;
+    float enterTimer;
+    float fadeDur;
     ofFbo pulseFbo;
     float targetHR;
 };
