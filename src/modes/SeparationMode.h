@@ -77,7 +77,12 @@ public:
     
     // Method to update location
     void update() {
-        baser += 0.07;
+        if (baser < 30.5) {
+            baser += 0.06;
+        } else {
+            baser += 0.25;
+        }
+        
         // Update velocity
         velocity += 0.25*acceleration;
         // Limit speed
@@ -102,11 +107,11 @@ public:
         float theta = zero.angle(velocity);
         ofRotate(theta);
         if (type == 0) {
-            ofTriangle(0, -r*2, -r, r*2, r, r*2);
+            ofTriangle(0, -r*2, -r, r, r, r);
         } else if (type == 1) {
             ofRect(-r, -r, 2*r, 2*r);
         } else if (type == 2) {
-            //ofTriangle(0, -r*1.5, -r, r*2, r, r*1.5);
+            ofTriangle(0, -r*2, -r, r, r, r);
         } else if (type == 3) {
             ofRect(-r, -1.5*r, 2*r, 3*r);
         }

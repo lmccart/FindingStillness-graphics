@@ -15,17 +15,15 @@ void ModeManager::setup() {
     Tweenzor::init();
     
     modes.push_back(new PixelMode("Pixel", 15, false));
-    modes.push_back(new FlockingMode("Flocking", 10, true));
     modes.push_back(new VideoMode("Nature", 15, false));
+    modes.push_back(new FlockingMode("Flocking", 10, true));
     modes.push_back(new SeparationMode("Separate", 5, false, 0));
     modes.push_back(new SeparationMode("Separate", 5, false, 255));
     
-    //modes.push_back(new CircleMode("Circles", 15, false));
-    modes.push_back(new FaderMode("Fader", 15, false));
-    modes.push_back(new SwipeMode("Swipe", 15, true));
+    modes.push_back(new FaderMode("Fader", 30, false));
     
     modes.push_back(new FlickerMode("Flicker", 10, false));
-    modes.push_back(new WashMode("White", 100, 255, false));
+    modes.push_back(new WashMode("White", 100, false, 100));
     
     cur_hr = 0;
 }
@@ -70,7 +68,7 @@ void ModeManager::start() {
 void ModeManager::next(int i) {
     ofLog() << "next";
     modeStartTime = ofGetElapsedTimef();
-    if (playing) modes[curMode]->slowExit();
+    if (playing) modes[curMode]->exit();
     else modes[curMode]->exit();
     if (i == -1) {
         curMode++;

@@ -25,7 +25,7 @@ public:
         position.set(x, y);
         velocity.set(ofRandom(-1, 1), ofRandom(-1, 1));//ofGetWidth()*0.5-x, ofGetHeight()*0.5-y);
         borders();
-        r = 20;//ofGetWidth()*0.05;
+        r = ofRandom(1.0, 2.5)*20;//ofGetWidth()*0.05;
         maxspeed = 4;    // Maximum speed
         maxforce = 0.5; // Maximum steering force
     }

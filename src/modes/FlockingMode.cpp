@@ -25,7 +25,7 @@ void FlockingMode::update() {
 
 void FlockingMode::draw() {
     fbo.begin();
-        ofSetColor(0, 10);
+        ofSetColor(0, 5);
         ofRect(0, 0, ofGetWidth(), ofGetHeight());
         for (int i = 0; i < boids.size(); i++) {
             boids[i].draw();

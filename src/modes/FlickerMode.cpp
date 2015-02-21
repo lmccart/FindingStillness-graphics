@@ -13,21 +13,22 @@ FlickerMode::FlickerMode(string _name, float _duration, bool _useHR) : Mode(_nam
 
 
 void FlickerMode::update() {
+    if (duration - getModeElapsedTime() <= 2.0) {
+        float dec = 2*125.0/ofGetFrameRate();
+        baseC -= dec;
+    }
 }
 
 
 void FlickerMode::draw() {
     ofPushStyle();
-    ofBackground(255);
-    float r = ofRandom(1.0);
-    if (r < 0.03) {
-        ofBackground(150);
-    }
+    ofBackground(baseC+55*ofNoise(ofGetFrameNum()*0.05));
     ofPopStyle();
 }
 
 
 void FlickerMode::reset() {
+    baseC = 200;
 }
 
 void FlickerMode::preExit() {

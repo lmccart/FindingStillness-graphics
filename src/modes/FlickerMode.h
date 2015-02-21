@@ -13,14 +13,14 @@
 
 class FlickerMode : public Mode {
     
-    public:
-        FlickerMode(string _name, float _duration, bool _useHR);
-        void update();
-        void draw();
-        void reset();
-        void preExit();
+public:
+    FlickerMode(string _name, float _duration, bool _useHR);
+    void update();
+    void draw();
+    void reset();
+    void preExit();
         
-        
+    float baseC;
 
 };
 

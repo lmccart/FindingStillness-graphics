@@ -23,8 +23,7 @@ public:
     virtual void preExit();
     virtual void reset();
     void exit();
-    void slowExit();
-    void exitComplete(float *arg);
+    float getModeElapsedTime();
     
     bool playing;
     float duration;
@@ -32,12 +31,10 @@ public:
     string name;
     float hr;
     bool useHR;
+    float startTime;
 
     
 private:
-    float exitTimer;
-    float enterTimer;
-    float fadeDur;
     ofFbo pulseFbo;
     float targetHR;
 };
