@@ -51,6 +51,9 @@ void FlockingMode::reset() {
             boids[i].setup(ofRandom(-ofGetWidth()*0.5, 0), ofRandom(ofGetHeight()));
         }
     }
+    fbo.begin();
+    ofClear(0);
+    fbo.end();
 }
 
 void FlockingMode::preExit() {
