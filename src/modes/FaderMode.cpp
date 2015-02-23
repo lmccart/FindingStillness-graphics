@@ -13,6 +13,7 @@ FaderMode::FaderMode(string _name, float _duration, bool _useHR) : Mode(_name, _
 
 
 void FaderMode::update() {
+    floorValue = 255*sin(0.1*hr*ofGetElapsedTimef()); //PEND
 }
 
 

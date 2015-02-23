@@ -19,6 +19,7 @@ void SeparationMode::update() {
         vehicles[i].update();
         vehicles[i].borders();
     }
+    floorValue = 175*sin(0.1*hr*ofGetElapsedTimef()); //PEND
 }
 
 

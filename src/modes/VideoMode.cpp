@@ -17,6 +17,7 @@ VideoMode::VideoMode(string _name, float _duration, bool _useHR) : Mode(_name, _
 
 void VideoMode::update() {
     videoPlayer.update();
+    floorValue = 100*sin(0.1*hr*ofGetElapsedTimef()); //PEND
 }
 
 

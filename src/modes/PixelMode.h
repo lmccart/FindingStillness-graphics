@@ -20,6 +20,8 @@ public:
     int x, y;
     float startTime = 0;
     float speed = 1;
+    float alpha;
+    float brightness;
     Oscillator(int x, int y) : x(x), y(y) {
         offset = ofRandom(1);
         fadeInTime = ofRandom(.5, 2);
@@ -31,9 +33,9 @@ public:
     }
 
     void draw(float time) {
-        float alpha = MIN(1, (time - startTime) / fadeInTime);
+        alpha = MIN(1, (time - startTime) / fadeInTime);
         float localTime = time + offset;
-        float brightness = sinnp(localTime * speed);
+        brightness = sinnp(localTime * speed);
         ofSetColor(brightness * 255, alpha * 255);
         ofRect(x, y, 1, 1);
     }

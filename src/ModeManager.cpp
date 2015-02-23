@@ -11,6 +11,11 @@
 
 void ModeManager::setup() {
     
+    dmx.connect(1); // or use a number
+    // dmx.connect("tty.usbserial-ENS8KBA6"); // or use the name
+    //dmx.connect(port, modules * channelsPerModule);
+    dmx.update(true); // black on startup
+    
     reset();
     
     Tweenzor::init();
@@ -42,7 +47,7 @@ void ModeManager::update() {
     Tweenzor::update( ofGetElapsedTimeMillis() );
     if(dmx.isConnected()) {
         int val = modes[curMode]->floorValue;
-        dmx.setLevel(0, val); // channel?
+        dmx.setLevel(1, val); // channel?
         dmx.update();
     }
 }

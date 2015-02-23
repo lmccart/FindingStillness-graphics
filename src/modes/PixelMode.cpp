@@ -17,9 +17,10 @@ void PixelMode::update() {
     
     float speed = 60 / hr;
     float time = ofGetElapsedTimef();
+    float pps;
     if(!ost.exhausted()) {
         // pokes per second is based on how deep we are
-        float pps = 1 << ost.exhaustion();
+        pps = 1 << ost.exhaustion();
         // pokes per second increases exponentially
         pps *= pps;
         // but we slow it down a bit
@@ -38,6 +39,16 @@ void PixelMode::update() {
                 ost.poke(time, speed);
             }
         }
+    }
+    
+    if (ost.grids[0].active.size() > 0) { //pend
+        if (getModeElapsedTime() < 0.5*duration) {
+            floorValue = floor(ost.grids[0].active[0].brightness+0.5)*100;
+        } else {
+            floorValue = ost.grids[0].active[0].brightness*100;
+        }
+    } else {
+        floorValue = 0;
     }
 }
 
