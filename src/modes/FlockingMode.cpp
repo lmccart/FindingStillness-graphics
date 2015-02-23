@@ -9,7 +9,7 @@
 #include "FlockingMode.h"
 
 FlockingMode::FlockingMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
-    fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
+    fbo.allocate(width, height, GL_RGBA);
     fbo.begin();
     ofBackground(0);
     fbo.end();
@@ -26,7 +26,7 @@ void FlockingMode::update() {
 void FlockingMode::draw() {
     fbo.begin();
         ofSetColor(0, 5);
-        ofRect(0, 0, ofGetWidth(), ofGetHeight());
+        ofRect(0, 0, width, height);
         for (int i = 0; i < boids.size(); i++) {
             boids[i].draw();
         }
@@ -41,14 +41,13 @@ void FlockingMode::reset() {
     for (int i = 0; i < boids.size(); i++) {
         float dir = ofRandom(1.0);
         if (dir < 0.25) { // top
-            boids[i].setup(ofRandom(ofGetWidth()), ofRandom(-ofGetHeight()*0.5));
+            boids[i].setup(ofRandom(width), ofRandom(-height*0.5), width, height);
         } else if (dir < 0.5) { // right
-            boids[i].setup(ofRandom(ofGetWidth(), ofGetWidth()*1.5), ofRandom(ofGetHeight()));
+            boids[i].setup(ofRandom(width, width*1.5), ofRandom(height), width, height);
         } else if (dir < 0.75) { // bottom
-            boids[i].setup(ofRandom(ofGetWidth()), ofRandom(ofGetHeight(), ofGetHeight()*1.5));
-            
+            boids[i].setup(ofRandom(width), ofRandom(height, height*1.5), width, height);
         } else { // left
-            boids[i].setup(ofRandom(-ofGetWidth()*0.5, 0), ofRandom(ofGetHeight()));
+            boids[i].setup(ofRandom(-width*0.5, 0), ofRandom(height), width, height);
         }
     }
     fbo.begin();

@@ -5,18 +5,19 @@ void ofApp::setup(){
     modeManager.setup();
     oscReceiver.setup(3333);
     
-    shaderBlurX.load("shaders/shaderBlurX");
-    shaderBlurY.load("shaders/shaderBlurY");
-    
-    fboBlurOnePass.allocate(ofGetWidth(), ofGetHeight());
-    fboBlurTwoPass.allocate(ofGetWidth(), ofGetHeight());
-    
+//    shaderBlurX.load("shaders/shaderBlurX");
+//    shaderBlurY.load("shaders/shaderBlurY");
+//    
+//    fboBlurOnePass.allocate(width, height);
+//    fboBlurTwoPass.allocate(width, height);
+//    
     ofEnableAlphaBlending();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     modeManager.update();
+
     if (oscReceiver.hasWaitingMessages()) {
         oscMessage.clear();
         oscReceiver.getNextMessage(&oscMessage);
@@ -33,7 +34,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-//    float blur = 1;//ofMap(mouseX, 0, ofGetWidth(), 0, 10, true);
+//    float blur = 1;//ofMap(mouseX, 0, width, 0, 10, true);
 //    
 //    //----------------------------------------------------------
 //    fboBlurOnePass.begin();
@@ -92,7 +93,6 @@ void ofApp::mousePressed(int x, int y, int button){
 
 
 
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
+void ofApp::exit() {
+    modeManager.exit();
 }

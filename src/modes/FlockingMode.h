@@ -20,12 +20,15 @@ public:
     float maxspeed;
     float maxforce;
     float r;
+    float w, h;
     
-    void setup(float x, float y) {
+    void setup(float x, float y, float _w, float _h) {
+        w = _w;
+        h = _h;
         position.set(x, y);
-        velocity.set(ofRandom(-1, 1), ofRandom(-1, 1));//ofGetWidth()*0.5-x, ofGetHeight()*0.5-y);
+        velocity.set(ofRandom(-1, 1), ofRandom(-1, 1));//width*0.5-x, height*0.5-y);
         borders();
-        r = ofRandom(1.0, 2.5)*20;//ofGetWidth()*0.05;
+        r = ofRandom(1.0, 2.5)*20;//width*0.05;
         maxspeed = 4;    // Maximum speed
         maxforce = 0.5; // Maximum steering force
     }
@@ -100,10 +103,10 @@ public:
     
     // Wraparound
     void borders() {
-        if (position.x < -r)  velocity.x = abs(velocity.x);//position.x = ofGetWidth() +r;
-        if (position.y < -r)  velocity.y  = abs(velocity.y);//position.y = ofGetHeight() +r;
-        if (position.x > ofGetWidth() +r) velocity.x = -abs(velocity.x);//position.x = -r;
-        if (position.y > ofGetHeight() +r) velocity.y = -abs(velocity.y);//position.y = -r;
+        if (position.x < -r)  velocity.x = abs(velocity.x);//position.x = width +r;
+        if (position.y < -r)  velocity.y  = abs(velocity.y);//position.y = height +r;
+        if (position.x > w +r) velocity.x = -abs(velocity.x);//position.x = -r;
+        if (position.y > h +r) velocity.y = -abs(velocity.y);//position.y = -r;
     }
     
     // Separation

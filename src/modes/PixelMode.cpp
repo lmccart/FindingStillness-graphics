@@ -43,8 +43,6 @@ void PixelMode::update() {
 
 
 void PixelMode::draw() {
-    int width = ofGetWidth();
-    int height = ofGetHeight();
     int side = MAX(width, height);
     // center
     ofTranslate((width - side) / 2, (height - side) / 2);

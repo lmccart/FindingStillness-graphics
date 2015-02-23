@@ -20,7 +20,7 @@ void CircleMode::draw() {
     ofPushStyle();
     ofBackground(black);
     ofSetColor(255);
-    ofEllipse(ofGetWidth()/2, ofGetHeight()/2, scale*diameter, scale*diameter);
+    ofEllipse(width/2, height/2, scale*diameter, scale*diameter);
     ofPopStyle();
 }
 
@@ -29,7 +29,7 @@ void CircleMode::reset() {
     diameter = 0;
     scale = 0;
     Tweenzor::add(&scale, 0, 1.0, 0.f, duration, EASE_LINEAR);
-    Tweenzor::add(&diameter, 0, ofGetWidth()*1.3, 0.f, 1.f, EASE_IN_OUT_QUAD);
+    Tweenzor::add(&diameter, 0, width*1.3, 0.f, 1.f, EASE_IN_OUT_QUAD);
     Tweenzor::getTween(&diameter)->setRepeat( 100, true );
 }
 

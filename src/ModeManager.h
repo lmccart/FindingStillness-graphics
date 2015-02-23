@@ -9,6 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxDmx.h"
 #include "CircleMode.h"
 #include "FaderMode.h"
 #include "VideoMode.h"
@@ -29,6 +30,9 @@ public:
     void start();
     void next(int i);
     void updateHeartrate(float hr);
+    void exit();
+    
+    ofxDmx dmx;
     
 private:
     bool playing;

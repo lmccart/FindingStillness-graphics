@@ -32,6 +32,8 @@ public:
     float hr;
     bool useHR;
     float startTime;
+    float floorValue;
+    float width, height;
 
     
 private:

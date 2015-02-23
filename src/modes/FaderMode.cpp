@@ -20,13 +20,13 @@ void FaderMode::draw() {
     
     ofPushStyle();
     float h = 5;
-    for (int i=0; i<ofGetWidth(); i+=h) {
+    for (int i=0; i<width; i+=h) {
         float c = 127+128*ofClamp(strength*cos(d*(x-i)), -1, 1);
         if (getModeElapsedTime() < 1.0) {
             c = ofMap(c, 0, 255, 255*(1.01-getModeElapsedTime()), 255);
         }
         ofSetColor(c);
-        ofRect(0, i, ofGetWidth(), h);
+        ofRect(0, i, width, h);
     }
     x -= diff;
     ofPopStyle();

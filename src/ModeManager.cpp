@@ -10,6 +10,7 @@
 
 
 void ModeManager::setup() {
+    
     reset();
     
     Tweenzor::init();
@@ -39,14 +40,33 @@ void ModeManager::update() {
         }
     }
     Tweenzor::update( ofGetElapsedTimeMillis() );
+    if(dmx.isConnected()) {
+        int val = modes[curMode]->floorValue;
+        dmx.setLevel(0, val); // channel?
+        dmx.update();
+    }
 }
 
 void ModeManager::draw() {
+    // draw mode
     for (int i=0; i<modes.size(); i++) {
         if (modes[i]->playing) {
             modes[i]->drawWithHR();
         }
     }
+    
+    // draw bg
+    ofPushStyle();
+    ofSetColor(0);
+    ofRect(1024, 0, ofGetWidth()-1024, ofGetHeight());
+    
+    // draw dmx
+    int val = modes[curMode]->floorValue;
+    int w = modes[curMode]->width;
+    ofSetColor(val);
+    ofRect(w+10, 10, ofGetWidth()-20-w, 100);
+    ofPopStyle();
+    
 }
 
 void ModeManager::reset() {
@@ -88,3 +108,7 @@ void ModeManager::updateHeartrate(float hr) {
     ofLog() << "heartrate updated to " << hr;
 }
 
+void ModeManager::exit() {
+    dmx.clear();
+    dmx.update(true); // black on shutdown
+}

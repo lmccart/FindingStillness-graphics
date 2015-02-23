@@ -26,11 +26,14 @@ public:
     int type;
     int color;
     float baser;
+    float w, h;
     
-    void setup(float x, float y, int c) {
+    void setup(float x, float y, float _w, float _h, int c) {
         color = c;
+        w = _w;
+        h = _h;
         position.set(x, y);
-        velocity.set(ofGetWidth()*0.5-x, ofGetHeight()*0.5-y);
+        velocity.set(w*0.5-x, h*0.5-y);
         acceleration.set(0, 0);
         r = 25;
         maxspeed = 5;    // Maximum speed
@@ -92,8 +95,8 @@ public:
         acceleration.set(0, 0);
         maxradius += 0.05;
         
-        float d = sqrt(pow(abs(ofGetWidth()*0.5-position.x), 2)+pow(abs(ofGetHeight()*0.5-position.y), 2));
-        d = ofMap(d, 0, ofGetWidth(), 2.0, 0.1);
+        float d = sqrt(pow(abs(w*0.5-position.x), 2)+pow(abs(h*0.5-position.y), 2));
+        d = ofMap(d, 0, w, 2.0, 0.1);
         r = MAX(baser, baser*d);
     }
     
@@ -122,10 +125,10 @@ public:
     
     // Wraparound
     void borders() {
-        if (position.x < -r)  velocity.x = abs(velocity.x);//position.x = ofGetWidth() +r;
-        if (position.y < -r)  velocity.y  = abs(velocity.y);//position.y = ofGetHeight() +r;
-        if (position.x > ofGetWidth() +r) velocity.x = -abs(velocity.x);//position.x = -r;
-        if (position.y > ofGetHeight() +r) velocity.y = -abs(velocity.y);//position.y = -r;
+        if (position.x < -r)  velocity.x = abs(velocity.x);//position.x = width +r;
+        if (position.y < -r)  velocity.y  = abs(velocity.y);//position.y = height +r;
+        if (position.x > w +r) velocity.x = -abs(velocity.x);//position.x = -r;
+        if (position.y > h +r) velocity.y = -abs(velocity.y);//position.y = -r;
     }
 };
 

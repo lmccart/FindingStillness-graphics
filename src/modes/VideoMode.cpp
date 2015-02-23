@@ -22,7 +22,7 @@ void VideoMode::update() {
 
 void VideoMode::draw() {
     ofPushStyle();
-    videoPlayer.draw(0, 0, ofGetWidth(), ofGetHeight());
+    videoPlayer.draw(0, 0, width, height);
     ofPopStyle();
 }
 

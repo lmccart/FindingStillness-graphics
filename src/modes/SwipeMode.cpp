@@ -13,9 +13,9 @@ SwipeMode::SwipeMode(string _name, float _duration, bool _useHR) : Mode(_name, _
 
 
 void SwipeMode::update() {
-    y+= dir*ofGetHeight()/(0.5*duration*ofGetFrameRate());
-    if (y >= ofGetHeight()) {
-        y = ofGetHeight();
+    y+= dir*height/(0.5*duration*ofGetFrameRate());
+    if (y >= height) {
+        y = height;
         dir = -1;
     }
 }
@@ -24,7 +24,7 @@ void SwipeMode::update() {
 void SwipeMode::draw() {
     ofPushStyle();
     ofSetColor(255);
-    ofRect(0, y, ofGetWidth(), 2*ofGetHeight());
+    ofRect(0, y, width, 2*height);
     ofPopStyle();
 }
 
