@@ -26,7 +26,7 @@ void FaderMode::draw() {
         if (getModeElapsedTime() < 1.0) {
             c = ofMap(c, 0, 255, 255*(1.01-getModeElapsedTime()), 255);
         }
-        ofSetColor(c);
+        ofSetColor(ofClamp(c, 0, 255));
         ofRect(0, i, width, h);
     }
     x -= diff;
