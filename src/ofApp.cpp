@@ -1,3 +1,8 @@
+/*
+ 64x3 = 192
+ 32x5 = 160
+ */
+
 #include "ofApp.h"
 
 //--------------------------------------------------------------
@@ -64,7 +69,7 @@ void ofApp::draw(){
 //    ofSetColor(ofColor::white);
 //    fboBlurTwoPass.draw(0, 0);
 
-    ofBackground(0);
+    ofScale(192./1024., 160./768.);
     modeManager.draw();
 }
 

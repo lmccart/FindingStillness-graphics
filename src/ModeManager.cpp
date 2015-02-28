@@ -10,11 +10,7 @@
 
 
 void ModeManager::setup() {
-    
-    // PEND
-    dmx.connect(1); // or use a number
-    // dmx.connect("tty.usbserial-ENS8KBA6"); // or use the name
-    //dmx.connect(port, modules * channelsPerModule);
+    dmx.connect("tty.usbserial-EN146087", 10);
     dmx.update(true); // black on startup
     
     reset();
@@ -49,7 +45,9 @@ void ModeManager::update() {
     
     if(dmx.isConnected()) {
         int val = modes[curMode]->floorValue;
-        dmx.setLevel(1, val); // PEND channel?
+        for(int chan = 1; chan <= 10; chan++) {
+            dmx.setLevel(chan, val);
+        }
         dmx.update();
     }
 }
