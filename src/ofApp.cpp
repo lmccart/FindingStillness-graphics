@@ -27,7 +27,7 @@ void ofApp::update(){
         oscMessage.clear();
         oscReceiver.getNextMessage(&oscMessage);
         if (oscMessage.getAddress() == "/start") {
-            modeManager.start();
+            //modeManager.start();
         } else if (oscMessage.getAddress() == "/heartrate") {
             modeManager.updateHeartrate(oscMessage.getArgAsFloat(0));
         } else {
@@ -81,7 +81,7 @@ void ofApp::keyPressed(int key){
     } else if (key == OF_KEY_RETURN) {
         modeManager.next(-1);
     } else if (key == 's') {
-        modeManager.start();
+        //modeManager.start();
     }
 }
 
