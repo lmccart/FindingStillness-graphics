@@ -39,7 +39,10 @@ private:
     bool playing;
     int curMode;
     float modeStartTime;
+    float showStartTime;
     vector<Mode*> modes;
     float cur_hr;
+    float totalDuration;
+    float mult;
 
 };

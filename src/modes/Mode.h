@@ -18,7 +18,7 @@ public:
     virtual void enter();
     virtual void update();
     virtual void draw();
-    void drawWithHR();
+    void drawWithHR(float mult);
     void updateHR(float _hr);
     virtual void preExit();
     virtual void reset();

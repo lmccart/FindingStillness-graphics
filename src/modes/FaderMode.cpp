@@ -38,13 +38,14 @@ void FaderMode::reset() {
     x = 0;
     d = 0.005;
     diff = 4;
-    strength = 1;
-    Tweenzor::add(&strength, 1, 100, 2.f, duration, EASE_IN_QUAD);
-    Tweenzor::add(&d, 0.015, 0.0025, 0.f, duration, EASE_LINEAR);
+    strength = 0.5;
+    Tweenzor::add(&strength, 0.5f, 3.0f, 0.0f, (float)0.5*duration, EASE_LINEAR);
+    Tweenzor::getTween(&strength)->setRepeat(1, true);
+    Tweenzor::add(&diff, 4, 1, 0.25*duration, duration, EASE_LINEAR);
 }
 
 void FaderMode::preExit() {
+    Tweenzor::removeTween(&strength);
     Tweenzor::removeTween(&diff);
-    Tweenzor::removeTween(&d);
 }
 
