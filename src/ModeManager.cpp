@@ -13,11 +13,8 @@ void ModeManager::setup() {
     dmx.connect("tty.usbserial-EN146087", 10);
     dmx.update(true); // black on startup
     
-    reset();
-    
     Tweenzor::init();
     
-    modes.push_back(new CircleMode("Circle", 300, false));
     modes.push_back(new PixelMode("Pixel", 15, false));
     modes.push_back(new FlockingMode("Flocking", 10, true));
     modes.push_back(new SeparationMode("Separate", 5, false, 0));
@@ -25,8 +22,10 @@ void ModeManager::setup() {
     modes.push_back(new VideoMode("Nature", 15, false));
     modes.push_back(new FaderMode("Fader", 30, false));
     modes.push_back(new FlickerMode("Flicker", 10, false));
-    modes.push_back(new WashMode("White", 100, false, 100));
+    modes.push_back(new WashMode("White", 30, false, 100));
     //modes.push_back(new CircleMode("Circle", 30, false));
+    
+    idleMode = new CircleMode("Circle", 10000, false);
     
     cur_hr = 0;
     
@@ -39,6 +38,10 @@ void ModeManager::setup() {
     for (int i=0; i<modes.size()-1; i++) {
         totalDuration += modes[i]->duration;
     }
+    
+    reset();
+    idleMode->enter();
+
 }
 
 void ModeManager::update() {
@@ -62,7 +65,6 @@ void ModeManager::update() {
                 modes[i]->update();
             }
         }
-        Tweenzor::update( ofGetElapsedTimeMillis() );
         
         if(dmx.isConnected()) {
             int val = modes[curMode]->floorValue;
@@ -71,7 +73,11 @@ void ModeManager::update() {
             }
             dmx.update();
         }
+    } else {
+        ofLog() << "update";
+        idleMode->update();
     }
+    Tweenzor::update( ofGetElapsedTimeMillis() );
 }
 
 void ModeManager::draw() {
@@ -94,6 +100,8 @@ void ModeManager::draw() {
         ofSetColor(val);
         ofRect(w+10, 10, ofGetWidth()-20-w, 100);
         ofPopStyle();
+    } else {
+        idleMode->draw();
     }
     
 }
@@ -102,6 +110,7 @@ void ModeManager::reset() {
     if (playing) {
         modes[curMode]->exit();
     }
+    idleMode->exit();
     curMode = 0;
     playing = false;
     modeStartTime = 0;
@@ -120,6 +129,7 @@ void ModeManager::start() {
 
 void ModeManager::end() {
     reset();
+    idleMode->enter();
     ofLog() << "ModeManager::end";
 }
 void ModeManager::next(int i) {
