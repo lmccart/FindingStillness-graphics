@@ -18,20 +18,39 @@ void ModeManager::setup() {
     Tweenzor::init();
     
     modes.push_back(new PixelMode("Pixel", 15, false));
-    modes.push_back(new VideoMode("Nature", 15, false));
     modes.push_back(new FlockingMode("Flocking", 10, true));
     modes.push_back(new SeparationMode("Separate", 5, false, 0));
     modes.push_back(new SeparationMode("Separate", 5, false, 255));
-    
+    modes.push_back(new VideoMode("Nature", 15, false));
     modes.push_back(new FaderMode("Fader", 30, false));
-    
     modes.push_back(new FlickerMode("Flicker", 10, false));
     modes.push_back(new WashMode("White", 100, false, 100));
     
     cur_hr = 0;
+    
+    modeStartTime = 0;
+    showStartTime = 0;
+    
+    mult = 0;
+    
+    totalDuration = 0;
+    for (int i=0; i<modes.size()-1; i++) {
+        totalDuration += modes[i]->duration;
+    }
 }
 
 void ModeManager::update() {
+    
+    float portion = (ofGetElapsedTimef() - showStartTime)/totalDuration;
+    if (portion < 0.25) {
+        mult = 0.5;
+    } else if (portion < 0.5) {
+        mult = 0.5 + (portion - 0.25) * 5;
+    } else {
+        mult = 1.0;
+    }
+    
+    
     float now = ofGetElapsedTimef();
     if (now - modeStartTime >= modes[curMode]->duration) {
         next(-1);
@@ -56,7 +75,7 @@ void ModeManager::draw() {
     // draw mode
     for (int i=0; i<modes.size(); i++) {
         if (modes[i]->playing) {
-            modes[i]->drawWithHR();
+            modes[i]->drawWithHR(mult);
         }
     }
     
@@ -81,12 +100,15 @@ void ModeManager::reset() {
     curMode = 0;
     playing = false;
     modeStartTime = 0;
+    showStartTime = 0;
+    mult = 0;
 }
 
 void ModeManager::start() {
     reset();
     next(0);
     modeStartTime = ofGetElapsedTimef();
+    showStartTime = modeStartTime;
     playing = true;
 }
 

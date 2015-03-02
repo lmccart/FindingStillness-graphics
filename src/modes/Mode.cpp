@@ -42,14 +42,16 @@ void Mode::draw() {
     ofLog() << "draw";
 }
 
-void Mode::drawWithHR() {
+void Mode::drawWithHR(float mult) {
     pulseFbo.begin();
         ofClear(0, 0, 0);
         draw();
     pulseFbo.end();
     float alpha = useHR ? 170+85*sin(0.001*hr*ofGetFrameNum()) : 255;
-    ofSetColor(255, alpha);
+    ofPushStyle();
+    ofSetColor(255, alpha*mult);
     pulseFbo.draw(0, 0);
+    ofPopStyle();
 }
 
 float Mode::getModeElapsedTime() {
