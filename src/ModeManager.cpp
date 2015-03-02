@@ -26,51 +26,56 @@ void ModeManager::setup() {
     modes.push_back(new FaderMode("Fader", 30, false));
     
     modes.push_back(new FlickerMode("Flicker", 10, false));
-    modes.push_back(new WashMode("White", 100, false, 100));
+    modes.push_back(new WashMode("White", 10, false, 100));
+    modes.push_back(new CircleMode("Circle", 30, false));
     
     cur_hr = 0;
 }
 
 void ModeManager::update() {
-    float now = ofGetElapsedTimef();
-    if (now - modeStartTime >= modes[curMode]->duration) {
-        next(-1);
-    }
-    for (int i=0; i<modes.size(); i++) {
-        if (modes[i]->playing) {
-            modes[i]->update();
+    if (playing) {
+        float now = ofGetElapsedTimef();
+        if (now - modeStartTime >= modes[curMode]->duration) {
+            next(-1);
         }
-    }
-    Tweenzor::update( ofGetElapsedTimeMillis() );
-    
-    if(dmx.isConnected()) {
-        int val = modes[curMode]->floorValue;
-        for(int chan = 1; chan <= 10; chan++) {
-            dmx.setLevel(chan, val);
+        for (int i=0; i<modes.size(); i++) {
+            if (modes[i]->playing) {
+                modes[i]->update();
+            }
         }
-        dmx.update();
+        Tweenzor::update( ofGetElapsedTimeMillis() );
+        
+        if(dmx.isConnected()) {
+            int val = modes[curMode]->floorValue;
+            for(int chan = 1; chan <= 10; chan++) {
+                dmx.setLevel(chan, val);
+            }
+            dmx.update();
+        }
     }
 }
 
 void ModeManager::draw() {
     // draw mode
-    for (int i=0; i<modes.size(); i++) {
-        if (modes[i]->playing) {
-            modes[i]->drawWithHR();
+    if (playing) {
+        for (int i=0; i<modes.size(); i++) {
+            if (modes[i]->playing) {
+                modes[i]->drawWithHR();
+            }
         }
+        
+        // draw bg
+        ofPushStyle();
+        ofSetColor(0);
+        ofRect(1024, 0, ofGetWidth()-1024, ofGetHeight());
+        
+        // draw dmx
+        int val = modes[curMode]->floorValue;
+        int w = modes[curMode]->width;
+        ofSetColor(val);
+        ofRect(w+10, 10, ofGetWidth()-20-w, 100);
+        ofPopStyle();
     }
-    
-    // draw bg
-    ofPushStyle();
-    ofSetColor(0);
-    ofRect(1024, 0, ofGetWidth()-1024, ofGetHeight());
-    
-    // draw dmx
-    int val = modes[curMode]->floorValue;
-    int w = modes[curMode]->width;
-    ofSetColor(val);
-    ofRect(w+10, 10, ofGetWidth()-20-w, 100);
-    ofPopStyle();
     
 }
 
@@ -88,17 +93,23 @@ void ModeManager::start() {
     next(0);
     modeStartTime = ofGetElapsedTimef();
     playing = true;
+    ofLog() << "ModeManager::start";
 }
 
+void ModeManager::end() {
+    reset();
+    ofLog() << "ModeManager::end";
+}
 void ModeManager::next(int i) {
     ofLog() << "next";
     modeStartTime = ofGetElapsedTimef();
     if (playing) modes[curMode]->exit();
     else modes[curMode]->exit();
     if (i == -1) {
-        curMode++;
-        if (curMode >= modes.size()) {
-            curMode = 0;
+        if (curMode == modes.size()-1) {
+            end();
+        } else {
+            curMode++;
         }
     } else {
         if (i >= 0 && i < modes.size()) {

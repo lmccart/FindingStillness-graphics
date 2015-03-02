@@ -28,6 +28,7 @@ public:
     void draw();
     void reset();
     void start();
+    void end();
     void next(int i);
     void updateHeartrate(float hr);
     void exit();
