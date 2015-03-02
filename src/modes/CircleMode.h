@@ -13,17 +13,18 @@
 
 class CircleMode : public Mode {
     
-    public:
-        CircleMode(string _name, float _duration, bool _useHR);
-        void update();
-        void draw();
-        void reset();
-        void preExit();
-        
-        
-    private:
-        float diameter;
-        float scale;
+public:
+    CircleMode(string _name, float _duration, bool _useHR);
+    void update();
+    void draw();
+    void reset();
+    void preExit();
+    
+    
+private:
+    float diameter;
+    float scale;
+    ofImage img;
 
 };
 

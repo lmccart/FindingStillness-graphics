@@ -40,6 +40,7 @@ private:
     float modeStartTime;
     float showStartTime;
     vector<Mode*> modes;
+    Mode idleMode;
     float cur_hr;
     float totalDuration;
     float mult;

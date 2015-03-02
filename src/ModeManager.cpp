@@ -17,6 +17,7 @@ void ModeManager::setup() {
     
     Tweenzor::init();
     
+    modes.push_back(new CircleMode("Circle", 300, false));
     modes.push_back(new PixelMode("Pixel", 15, false));
     modes.push_back(new FlockingMode("Flocking", 10, true));
     modes.push_back(new SeparationMode("Separate", 5, false, 0));
