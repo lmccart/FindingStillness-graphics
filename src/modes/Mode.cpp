@@ -59,7 +59,7 @@ float Mode::getModeElapsedTime() {
 }
 
 void Mode::updateHR(float _hr) {
-    targetHR = ofClamp(ofMap(_hr, 0, 80, 0, 255), 0, 255);
+    targetHR = ofClamp(ofMap(_hr, 0, 100, 0, 255), 0, 255);
 }
 
 void Mode::preExit() {

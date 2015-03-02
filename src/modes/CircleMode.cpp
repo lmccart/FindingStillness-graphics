@@ -9,6 +9,7 @@
 #include "CircleMode.h"
 
 CircleMode::CircleMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
+    img.loadImage("imgs/ellipse2.png");
 }
 
 
@@ -20,7 +21,9 @@ void CircleMode::draw() {
     ofPushStyle();
     ofBackground(black);
     ofSetColor(255);
-    ofEllipse(width/2, height/2, scale*diameter, scale*diameter);
+    //ofEllipse(width/2, height/2, scale*diameter, scale*diameter);
+    float d = scale*diameter;
+    img.draw(width/2-d/2, height/2-d/2, d, d);
     ofPopStyle();
 }
 
@@ -28,9 +31,10 @@ void CircleMode::draw() {
 void CircleMode::reset() {
     diameter = 0;
     scale = 0;
-    Tweenzor::add(&scale, 0, 1.0, 0.f, duration, EASE_LINEAR);
+    Tweenzor::add(&scale, 0, 1.25, 0.f, 15.0f, EASE_LINEAR);
     Tweenzor::add(&diameter, 0, width*1.3, 0.f, 1.f, EASE_IN_OUT_QUAD);
-    Tweenzor::getTween(&diameter)->setRepeat( 100, true );
+    Tweenzor::getTween(&diameter)->setRepeat( -1, true );
+    Tweenzor::getTween(&scale)->setRepeat( -1, true );
 }
 
 void CircleMode::preExit() {
