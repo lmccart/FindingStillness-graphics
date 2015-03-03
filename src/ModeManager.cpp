@@ -13,6 +13,9 @@ void ModeManager::setup() {
     dmx.connect("tty.usbserial-EN146087", 10);
     dmx.update(true); // black on startup
     
+    midi.listPorts();
+    midi.openPort("IAC Driver Bus 1");
+    
     Tweenzor::init();
     
     modes.push_back(new PixelMode("Pixel", 15, false));
@@ -73,6 +76,7 @@ void ModeManager::update() {
             }
             dmx.update();
         }
+        
     } else {
         ofLog() << "update";
         idleMode->update();
@@ -123,6 +127,11 @@ void ModeManager::start() {
     next(0);
     modeStartTime = ofGetElapsedTimef();
     showStartTime = modeStartTime;
+    
+    midi.sendNoteOn(1, 64);
+    ofSleepMillis(100);
+    midi.sendNoteOff(1, 64);
+    
     playing = true;
     ofLog() << "ModeManager::start";
 }
@@ -159,4 +168,5 @@ void ModeManager::updateHeartrate(float hr) {
 void ModeManager::exit() {
     dmx.clear();
     dmx.update(true); // black on shutdown
+    midi.closePort();
 }

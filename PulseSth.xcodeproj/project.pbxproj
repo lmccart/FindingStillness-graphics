@@ -49,6 +49,15 @@
 		658ABBB11A90ED8E00E28AD3 /* PixelMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 658ABBAF1A90ED8E00E28AD3 /* PixelMode.cpp */; };
 		658ABBB91A91835B00E28AD3 /* FlickerMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 658ABBB71A91835B00E28AD3 /* FlickerMode.cpp */; };
 		658ABBBC1A91853E00E28AD3 /* WashMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 658ABBBA1A91853E00E28AD3 /* WashMode.cpp */; };
+		65D91D7F1AA53D1C0009E8FD /* ofxRtMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D91D541AA53D1C0009E8FD /* ofxRtMidiIn.cpp */; };
+		65D91D801AA53D1C0009E8FD /* ofxRtMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D91D561AA53D1C0009E8FD /* ofxRtMidiOut.cpp */; };
+		65D91D811AA53D1C0009E8FD /* ofxBaseMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D91D631AA53D1C0009E8FD /* ofxBaseMidi.cpp */; };
+		65D91D821AA53D1C0009E8FD /* ofxMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D91D651AA53D1C0009E8FD /* ofxMidi.cpp */; };
+		65D91D831AA53D1C0009E8FD /* ofxMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D91D681AA53D1C0009E8FD /* ofxMidiIn.cpp */; };
+		65D91D841AA53D1C0009E8FD /* ofxMidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D91D6A1AA53D1C0009E8FD /* ofxMidiMessage.cpp */; };
+		65D91D851AA53D1C0009E8FD /* ofxMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D91D6C1AA53D1C0009E8FD /* ofxMidiOut.cpp */; };
+		65D91D861AA53D1C0009E8FD /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D91D7C1AA53D1C0009E8FD /* RtMidi.cpp */; };
+		65D91D871AA53D1C0009E8FD /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D91D7E1AA53D1C0009E8FD /* CoreMIDI.framework */; };
 		65EA518A1A86CD0E007A182D /* ModeManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA51881A86CD0E007A182D /* ModeManager.cpp */; };
 		65EA51941A86CFB3007A182D /* Mode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA51921A86CFB3007A182D /* Mode.cpp */; };
 		65EA51971A86D36E007A182D /* CircleMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA51951A86D36E007A182D /* CircleMode.cpp */; };
@@ -244,6 +253,26 @@
 		658ABBB81A91835B00E28AD3 /* FlickerMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickerMode.h; sourceTree = "<group>"; };
 		658ABBBA1A91853E00E28AD3 /* WashMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WashMode.cpp; sourceTree = "<group>"; };
 		658ABBBB1A91853E00E28AD3 /* WashMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WashMode.h; sourceTree = "<group>"; };
+		65D91D541AA53D1C0009E8FD /* ofxRtMidiIn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRtMidiIn.cpp; sourceTree = "<group>"; };
+		65D91D551AA53D1C0009E8FD /* ofxRtMidiIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxRtMidiIn.h; sourceTree = "<group>"; };
+		65D91D561AA53D1C0009E8FD /* ofxRtMidiOut.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRtMidiOut.cpp; sourceTree = "<group>"; };
+		65D91D571AA53D1C0009E8FD /* ofxRtMidiOut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxRtMidiOut.h; sourceTree = "<group>"; };
+		65D91D631AA53D1C0009E8FD /* ofxBaseMidi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseMidi.cpp; sourceTree = "<group>"; };
+		65D91D641AA53D1C0009E8FD /* ofxBaseMidi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxBaseMidi.h; sourceTree = "<group>"; };
+		65D91D651AA53D1C0009E8FD /* ofxMidi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidi.cpp; sourceTree = "<group>"; };
+		65D91D661AA53D1C0009E8FD /* ofxMidi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidi.h; sourceTree = "<group>"; };
+		65D91D671AA53D1C0009E8FD /* ofxMidiConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiConstants.h; sourceTree = "<group>"; };
+		65D91D681AA53D1C0009E8FD /* ofxMidiIn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiIn.cpp; sourceTree = "<group>"; };
+		65D91D691AA53D1C0009E8FD /* ofxMidiIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiIn.h; sourceTree = "<group>"; };
+		65D91D6A1AA53D1C0009E8FD /* ofxMidiMessage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiMessage.cpp; sourceTree = "<group>"; };
+		65D91D6B1AA53D1C0009E8FD /* ofxMidiMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiMessage.h; sourceTree = "<group>"; };
+		65D91D6C1AA53D1C0009E8FD /* ofxMidiOut.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiOut.cpp; sourceTree = "<group>"; };
+		65D91D6D1AA53D1C0009E8FD /* ofxMidiOut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiOut.h; sourceTree = "<group>"; };
+		65D91D6E1AA53D1C0009E8FD /* ofxMidiTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiTypes.h; sourceTree = "<group>"; };
+		65D91D7B1AA53D1C0009E8FD /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
+		65D91D7C1AA53D1C0009E8FD /* RtMidi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RtMidi.cpp; sourceTree = "<group>"; };
+		65D91D7D1AA53D1C0009E8FD /* RtMidi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RtMidi.h; sourceTree = "<group>"; };
+		65D91D7E1AA53D1C0009E8FD /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = ../../../../../../../../System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<group>"; };
 		65EA51881A86CD0E007A182D /* ModeManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModeManager.cpp; sourceTree = "<group>"; };
 		65EA51891A86CD0E007A182D /* ModeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModeManager.h; sourceTree = "<group>"; };
 		65EA51921A86CFB3007A182D /* Mode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mode.cpp; sourceTree = "<group>"; };
@@ -340,6 +369,7 @@
 				E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */,
 				E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */,
 				E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */,
+				65D91D871AA53D1C0009E8FD /* CoreMIDI.framework in Frameworks */,
 				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
 				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
 				2782C8341A870F310050FE69 /* AVFoundation.framework in Frameworks */,
@@ -507,6 +537,67 @@
 			path = ../../../addons/ofxXmlSettings/libs;
 			sourceTree = "<group>";
 		};
+		65D91D511AA53D1C0009E8FD /* ofxMidi */ = {
+			isa = PBXGroup;
+			children = (
+				65D91D521AA53D1C0009E8FD /* src */,
+				65D91D6F1AA53D1C0009E8FD /* libs */,
+				65D91D7E1AA53D1C0009E8FD /* CoreMIDI.framework */,
+			);
+			name = ofxMidi;
+			sourceTree = "<group>";
+		};
+		65D91D521AA53D1C0009E8FD /* src */ = {
+			isa = PBXGroup;
+			children = (
+				65D91D531AA53D1C0009E8FD /* desktop */,
+				65D91D631AA53D1C0009E8FD /* ofxBaseMidi.cpp */,
+				65D91D641AA53D1C0009E8FD /* ofxBaseMidi.h */,
+				65D91D651AA53D1C0009E8FD /* ofxMidi.cpp */,
+				65D91D661AA53D1C0009E8FD /* ofxMidi.h */,
+				65D91D671AA53D1C0009E8FD /* ofxMidiConstants.h */,
+				65D91D681AA53D1C0009E8FD /* ofxMidiIn.cpp */,
+				65D91D691AA53D1C0009E8FD /* ofxMidiIn.h */,
+				65D91D6A1AA53D1C0009E8FD /* ofxMidiMessage.cpp */,
+				65D91D6B1AA53D1C0009E8FD /* ofxMidiMessage.h */,
+				65D91D6C1AA53D1C0009E8FD /* ofxMidiOut.cpp */,
+				65D91D6D1AA53D1C0009E8FD /* ofxMidiOut.h */,
+				65D91D6E1AA53D1C0009E8FD /* ofxMidiTypes.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxMidi/src;
+			sourceTree = "<group>";
+		};
+		65D91D531AA53D1C0009E8FD /* desktop */ = {
+			isa = PBXGroup;
+			children = (
+				65D91D541AA53D1C0009E8FD /* ofxRtMidiIn.cpp */,
+				65D91D551AA53D1C0009E8FD /* ofxRtMidiIn.h */,
+				65D91D561AA53D1C0009E8FD /* ofxRtMidiOut.cpp */,
+				65D91D571AA53D1C0009E8FD /* ofxRtMidiOut.h */,
+			);
+			path = desktop;
+			sourceTree = "<group>";
+		};
+		65D91D6F1AA53D1C0009E8FD /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				65D91D7A1AA53D1C0009E8FD /* rtmidi */,
+			);
+			name = libs;
+			path = ../../../addons/ofxMidi/libs;
+			sourceTree = "<group>";
+		};
+		65D91D7A1AA53D1C0009E8FD /* rtmidi */ = {
+			isa = PBXGroup;
+			children = (
+				65D91D7B1AA53D1C0009E8FD /* readme */,
+				65D91D7C1AA53D1C0009E8FD /* RtMidi.cpp */,
+				65D91D7D1AA53D1C0009E8FD /* RtMidi.h */,
+			);
+			path = rtmidi;
+			sourceTree = "<group>";
+		};
 		65EA51911A86CFB3007A182D /* modes */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +644,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				65D91D511AA53D1C0009E8FD /* ofxMidi */,
 				656C20BB1A8982AF002681DD /* ofxOsc */,
 				65822B5D1A88065F00FA3AFE /* ofxXmlSettings */,
 				65822B4E1A8805D700FA3AFE /* ofxTweenzor */,
@@ -846,6 +938,7 @@
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				8BCF02B826253856D7DCF4D1 /* ofxDmx.cpp in Sources */,
 				9F5C6DD965B4F3A6DB5B88F8 /* ofxUI2DGraph.cpp in Sources */,
+				65D91D831AA53D1C0009E8FD /* ofxMidiIn.cpp in Sources */,
 				4B3ED367CA852D522E2EE996 /* ofxUI2DPad.cpp in Sources */,
 				658ABBBC1A91853E00E28AD3 /* WashMode.cpp in Sources */,
 				65822B581A8805D700FA3AFE /* Tween.cpp in Sources */,
@@ -859,6 +952,7 @@
 				DF0C851B244C4C867CEA8806 /* ofxUICircleSlider.cpp in Sources */,
 				9BE4AE0AA2B8C436BDFE9D4D /* ofxUIDragableLabelButton.cpp in Sources */,
 				656C20EF1A8982AF002681DD /* OscPrintReceivedElements.cpp in Sources */,
+				65D91D801AA53D1C0009E8FD /* ofxRtMidiOut.cpp in Sources */,
 				65822B661A88065F00FA3AFE /* ofxXmlSettings.cpp in Sources */,
 				F392A99D83698FC099127880 /* ofxUIDropDownList.cpp in Sources */,
 				084025DA517D8329301FE1B6 /* ofxUIEventArgs.cpp in Sources */,
@@ -866,10 +960,13 @@
 				7252706DA14C1BE63950ADDA /* ofxUIFPS.cpp in Sources */,
 				22030CBDCC25D815E7ED6757 /* ofxUIFPSSlider.cpp in Sources */,
 				3D4EA8E172D3E4A30FEFA969 /* ofxUIImage.cpp in Sources */,
+				65D91D7F1AA53D1C0009E8FD /* ofxRtMidiIn.cpp in Sources */,
 				7F2CD93F681F3C1547B3BF2C /* ofxUIImageButton.cpp in Sources */,
 				FBD0CD0AFE3849C14E829CAF /* ofxUIImageSampler.cpp in Sources */,
+				65D91D821AA53D1C0009E8FD /* ofxMidi.cpp in Sources */,
 				655E78111A86F87300941E4E /* SeparationMode.cpp in Sources */,
 				26874B150C8535AEA0F24C8C /* ofxUIImageSlider.cpp in Sources */,
+				65D91D841AA53D1C0009E8FD /* ofxMidiMessage.cpp in Sources */,
 				65822B691A88065F00FA3AFE /* tinyxmlparser.cpp in Sources */,
 				FB8AA9FA6535767BE31806BC /* ofxUIImageToggle.cpp in Sources */,
 				656C20E91A8982AF002681DD /* ofxOscReceiver.cpp in Sources */,
@@ -879,6 +976,7 @@
 				C30B3A2A37F8F32EE7318718 /* ofxUILabelToggle.cpp in Sources */,
 				9A83D1B3FB64456BC907667F /* ofxUIMinimalSlider.cpp in Sources */,
 				F440B307990F8F5CE40B9111 /* ofxUIMovingGraph.cpp in Sources */,
+				65D91D851AA53D1C0009E8FD /* ofxMidiOut.cpp in Sources */,
 				65822B591A8805D700FA3AFE /* Tweenzor.cpp in Sources */,
 				222C3AB10FA3158602718602 /* ofxUIMultiImageButton.cpp in Sources */,
 				F9C20834354ACC8337320B8C /* ofxUIMultiImageToggle.cpp in Sources */,
@@ -892,6 +990,7 @@
 				FE0F1DB69ACCD163E9DA2A15 /* ofxUIRotarySlider.cpp in Sources */,
 				43BADBB2FE0F17D34B57A705 /* ofxUIScrollableCanvas.cpp in Sources */,
 				740A58CBFDFE578C83A349AF /* ofxUISlider.cpp in Sources */,
+				65D91D861AA53D1C0009E8FD /* RtMidi.cpp in Sources */,
 				65822B671A88065F00FA3AFE /* tinyxml.cpp in Sources */,
 				ADE7C2AFC51E3F7E5E389026 /* ofxUISortableList.cpp in Sources */,
 				BFEFCE32DAFE10A8EB519F6C /* ofxUISpacer.cpp in Sources */,
@@ -902,6 +1001,7 @@
 				656C20ED1A8982AF002681DD /* UdpSocket.cpp in Sources */,
 				65822B681A88065F00FA3AFE /* tinyxmlerror.cpp in Sources */,
 				C961BE22AB9A8CCF037FC18F /* ofxUITextArea.cpp in Sources */,
+				65D91D811AA53D1C0009E8FD /* ofxBaseMidi.cpp in Sources */,
 				656C20E71A8982AF002681DD /* ofxOscMessage.cpp in Sources */,
 				65EA518A1A86CD0E007A182D /* ModeManager.cpp in Sources */,
 				658ABBB91A91835B00E28AD3 /* FlickerMode.cpp in Sources */,

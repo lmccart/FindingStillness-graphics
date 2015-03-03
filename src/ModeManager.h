@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "ofxDmx.h"
+#include "ofxMidi.h"
 #include "CircleMode.h"
 #include "FaderMode.h"
 #include "VideoMode.h"
@@ -34,6 +35,7 @@ public:
     void exit();
     
     ofxDmx dmx;
+    ofxMidiOut midi;
     
 private:
     bool playing;
