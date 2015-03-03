@@ -34,12 +34,12 @@ void Mode::enter() {
 
 
 void Mode::update() {
-    ofLog() << "update";
+    //ofLog() << "update";
     hr = (targetHR - hr)*0.5 + hr;
 }
 
 void Mode::draw() {
-    ofLog() << "draw";
+    //ofLog() << "draw";
 }
 
 void Mode::drawWithHR(float mult) {

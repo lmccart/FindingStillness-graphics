@@ -25,10 +25,10 @@ void ModeManager::setup() {
     modes.push_back(new VideoMode("Nature", 15, false));
     modes.push_back(new FaderMode("Fader", 30, false));
     modes.push_back(new FlickerMode("Flicker", 10, false));
-    modes.push_back(new WashMode("White", 30, false, 100));
+    modes.push_back(new WashMode("White", 30, false, 40));
     //modes.push_back(new CircleMode("Circle", 30, false));
     
-    idleMode = new CircleMode("Circle", 10000, false);
+    idleMode = new WashMode("White", 30, false, 40); //new CircleMode("Circle", 10000, false);
     
     cur_hr = 0;
     

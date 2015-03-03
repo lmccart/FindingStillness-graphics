@@ -21,6 +21,7 @@ void WashMode::draw() {
     ofPushStyle();
     ofBackground(color);
     ofPopStyle();
+    floorValue = 0;
 }
 
 

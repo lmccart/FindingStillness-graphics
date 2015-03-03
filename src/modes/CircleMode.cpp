@@ -25,7 +25,6 @@ void CircleMode::draw() {
     float d = scale*diameter;
     img.draw(width/2-d/2, height/2-d/2, d, d);
     ofPopStyle();
-    ofLog() << "draw";
 }
 
 
