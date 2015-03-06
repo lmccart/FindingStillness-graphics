@@ -18,7 +18,7 @@ public:
     virtual void enter();
     virtual void update();
     virtual void draw();
-    void drawWithHR(float mult);
+    void drawWithHR(float _mult);
     void updateHR(float _hr);
     virtual void preExit();
     virtual void reset();
@@ -34,6 +34,7 @@ public:
     float startTime;
     float floorValue;
     float width, height;
+    float mult;
 
     
 private:

@@ -12,16 +12,17 @@
 
 class VideoMode : public Mode {
     
-    public:
-        VideoMode(string _name, float _duration, bool _useHR);
-        void update();
-        void draw();
-        void reset();
-        void preExit();
+public:
+    VideoMode(string _name, float _duration, bool _useHR);
+    void update();
+    void draw();
+    void reset();
+    void preExit();
+    float fadeMult;
         
         
-    private:
-        ofVideoPlayer videoPlayer;
+private:
+    ofVideoPlayer videoPlayer;
 
 };
 

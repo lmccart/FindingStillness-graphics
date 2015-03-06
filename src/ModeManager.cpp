@@ -17,16 +17,14 @@ void ModeManager::setup() {
     midi.openPort("IAC Driver Bus 1");
     
     Tweenzor::init();
-    
     modes.push_back(new PixelMode("Pixel", 15, false));
     modes.push_back(new FlockingMode("Flocking", 10, true));
-    modes.push_back(new SeparationMode("Separate", 5, false, 0));
     modes.push_back(new SeparationMode("Separate", 5, false, 255));
+    modes.push_back(new SeparationMode("Separate", 5, false, 0));
     modes.push_back(new VideoMode("Nature", 15, false));
     modes.push_back(new FaderMode("Fader", 30, false));
     modes.push_back(new FlickerMode("Flicker", 10, false));
     modes.push_back(new WashMode("White", 30, false, 40));
-    //modes.push_back(new CircleMode("Circle", 30, false));
     
     idleMode = new WashMode("White", 30, false, 40); //new CircleMode("Circle", 10000, false);
     
