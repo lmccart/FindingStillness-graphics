@@ -28,14 +28,14 @@ public:
     }
     
     
-    float sinnp(float x) {
-        return (sin(x * TWO_PI) + 1) / 2;
+    float cospp(float x) {
+        return (cos(x * TWO_PI) + 1) / 2;
     }
 
     void draw(float time) {
         alpha = MIN(1, (time - startTime) / fadeInTime);
         float localTime = time + offset;
-        brightness = sinnp(localTime * speed);
+        brightness = cospp(localTime * speed);
         ofSetColor(brightness * 255, alpha * 255);
         ofRect(x, y, 1, 1);
     }
