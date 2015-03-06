@@ -80,10 +80,10 @@ public:
     
     // Method to update location
     void update() {
-        if (baser < 30.5) {
-            baser += 0.06;
+        if (baser < 32.5) {
+            baser += 0.03;
         } else {
-            baser += 0.25;
+            baser += 0.2;
         }
         
         // Update velocity

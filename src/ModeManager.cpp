@@ -17,15 +17,16 @@ void ModeManager::setup() {
     midi.openPort("IAC Driver Bus 1");
     
     Tweenzor::init();
+    
     modes.push_back(new PixelMode("Pixel", 5, false));
-    modes.push_back(new SeparationMode("Separate", 5, false, 0));
     modes.push_back(new FlockingMode("Flocking", 10, false));
-    modes.push_back(new SeparationMode("Separate", 5, false, 0));
-    modes.push_back(new SeparationMode("Separate", 5, false, 255));
+    modes.push_back(new SeparationMode("Separate", 8, false, 0));
+    modes.push_back(new SeparationMode("Separate", 8, false, 255));
     modes.push_back(new VideoMode("Nature", 15, false));
-    modes.push_back(new FaderMode("Fader", 30, false));
+    modes.push_back(new FaderMode("Fader", 24, false));
+    
     modes.push_back(new FlickerMode("Flicker", 10, false));
-    modes.push_back(new WashMode("White", 30, false, 40));
+    modes.push_back(new WashMode("White", 30, false, 10));
     
     idleMode = new WashMode("White", 30, false, 40); //new CircleMode("Circle", 10000, false);
     
@@ -54,12 +55,12 @@ void ModeManager::update() {
         }
     
         float portion = (ofGetElapsedTimef() - showStartTime)/totalDuration;
-        if (portion < 0.25) {
-            mult = 0.5;
-        } else if (portion < 0.5) {
-            mult = 0.5 + (portion - 0.25) * 5;
+        if (portion < 0.5) {
+            mult = portion + 0.25;
         } else {
-            mult = 1.0;
+            if (mult < 1) {
+                mult += 1;
+            }
         }
         
         for (int i=0; i<modes.size(); i++) {
@@ -68,16 +69,16 @@ void ModeManager::update() {
             }
         }
         
-        if(dmx.isConnected()) {
-            int val = modes[curMode]->floorValue;
-            for(int chan = 1; chan <= 10; chan++) {
-                dmx.setLevel(chan, val);
-            }
-            dmx.update();
-        }
+//        if(dmx.isConnected()) {
+//            int val = modes[curMode]->floorValue;
+//            for(int chan = 1; chan <= 10; chan++) {
+//                dmx.setLevel(chan, val);
+//            }
+//            dmx.update();
+//        }
         
     } else {
-        ofLog() << "update";
+        ofLog() << "update " << mult;
         idleMode->update();
     }
     Tweenzor::update( ofGetElapsedTimeMillis() );
@@ -92,12 +93,19 @@ void ModeManager::draw() {
             }
         }
 
+        
+        // draw bg
+        ofPushStyle();
+        ofSetColor(0);
+        ofRect(1024, 0, ofGetWidth()-1024, ofGetHeight());
+        
         // draw dmx
         int val = modes[curMode]->floorValue;
         int w = modes[curMode]->width;
         ofSetColor(val);
         ofRect(w+10, 10, ofGetWidth()-20-w, 100);
         ofPopStyle();
+        
     } else {
         idleMode->draw();
     }
