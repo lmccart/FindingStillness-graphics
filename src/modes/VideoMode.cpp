@@ -36,6 +36,7 @@ void VideoMode::draw() {
 
 
 void VideoMode::reset() {
+    fadeMult = 0;
     videoPlayer.setPosition(0);
     videoPlayer.play();
 }

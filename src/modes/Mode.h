@@ -35,7 +35,9 @@ public:
     float floorValue;
     float width, height;
     float mult;
-
+    float enterMult, exitMult;
+    bool fadeEnter, fadeExit;
+    float fadeDur;
     
 private:
     ofFbo pulseFbo;

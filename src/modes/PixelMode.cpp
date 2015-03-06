@@ -10,11 +10,11 @@
 
 
 PixelMode::PixelMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
+    fadeExit = true;
 }
 
 
 void PixelMode::update() {
-    
     float speed = 60 / hr;
     float time = ofGetElapsedTimef();
     float pps;

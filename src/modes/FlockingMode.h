@@ -28,7 +28,7 @@ public:
         position.set(x, y);
         velocity.set(ofRandom(-1, 1), ofRandom(-1, 1));//width*0.5-x, height*0.5-y);
         borders();
-        r = ofRandom(1.0, 2.5)*20;//width*0.05;
+        r = 60;
         maxspeed = 4;    // Maximum speed
         maxforce = 0.5; // Maximum steering force
     }
@@ -72,7 +72,7 @@ public:
     }
     
     void grow() {
-        r += 0.06;
+        r += 0.04;
     }
     
     // A method that calculates and applies a steering force towards a target

@@ -17,10 +17,11 @@ void ModeManager::setup() {
     midi.openPort("IAC Driver Bus 1");
     
     Tweenzor::init();
-    modes.push_back(new PixelMode("Pixel", 15, false));
-    modes.push_back(new FlockingMode("Flocking", 10, true));
-    modes.push_back(new SeparationMode("Separate", 5, false, 255));
+    modes.push_back(new PixelMode("Pixel", 5, false));
     modes.push_back(new SeparationMode("Separate", 5, false, 0));
+    modes.push_back(new FlockingMode("Flocking", 10, false));
+    modes.push_back(new SeparationMode("Separate", 5, false, 0));
+    modes.push_back(new SeparationMode("Separate", 5, false, 255));
     modes.push_back(new VideoMode("Nature", 15, false));
     modes.push_back(new FaderMode("Fader", 30, false));
     modes.push_back(new FlickerMode("Flicker", 10, false));
@@ -91,11 +92,6 @@ void ModeManager::draw() {
             }
         }
 
-        // draw bg
-        ofPushStyle();
-        ofSetColor(0);
-        ofRect(1024, 0, ofGetWidth()-1024, ofGetHeight());
-        
         // draw dmx
         int val = modes[curMode]->floorValue;
         int w = modes[curMode]->width;
@@ -109,9 +105,7 @@ void ModeManager::draw() {
 }
 
 void ModeManager::reset() {
-    if (playing) {
-        modes[curMode]->exit();
-    }
+    modes[curMode]->exit();
     idleMode->exit();
     curMode = 0;
     playing = false;
@@ -142,8 +136,9 @@ void ModeManager::end() {
 void ModeManager::next(int i) {
     ofLog() << "next";
     modeStartTime = ofGetElapsedTimef();
-    if (playing) modes[curMode]->exit();
-    else modes[curMode]->exit();
+    
+    modes[curMode]->exit();
+    
     if (i == -1) {
         if (curMode == modes.size()-1) {
             end();

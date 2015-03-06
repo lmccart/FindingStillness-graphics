@@ -123,6 +123,7 @@ public:
     void draw();
     void reset();
     void preExit();
+    float fadeMult;
     
 private:
     OscillatorStack ost;
