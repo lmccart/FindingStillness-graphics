@@ -68,7 +68,9 @@ void Mode::drawWithHR(float _mult) {
         ofClear(0, 0, 0);
         draw();
     pulseFbo.end();
+    
     float alpha = useHR ? 170+85*sin(0.001*hr*ofGetFrameNum()) : 255;
+    
     ofPushStyle();
     ofSetColor(alpha*mult*enterMult*exitMult);
     ofLog() << name <<" " << alpha*mult*enterMult*exitMult;
