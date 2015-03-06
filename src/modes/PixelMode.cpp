@@ -54,11 +54,14 @@ void PixelMode::update() {
 
 
 void PixelMode::draw() {
-    int side = MAX(width, height);
-    // center
-    ofTranslate((width - side) / 2, (height - side) / 2);
-    ofScale(side, side);
-    ost.draw(ofGetElapsedTimef());
+//    int side = MAX(width, height);
+//    // center
+//    ofTranslate((width - side) / 2, (height - side) / 2);
+//    ofScale(side, side);
+//    ost.draw(ofGetElapsedTimef());
+
+    
+    ofBackground(255);
 }
 
 

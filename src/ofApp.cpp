@@ -69,8 +69,8 @@ void ofApp::draw(){
 //    ofSetColor(ofColor::white);
 //    fboBlurTwoPass.draw(0, 0);
 
-    ofTranslate(0, 32);
-    ofScale(192./1024., 160./768.);
+//    ofTranslate(0, 32);
+//    ofScale(192./1024., 160./768.);
     modeManager.draw();
 }
 
