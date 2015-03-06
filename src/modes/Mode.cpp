@@ -15,12 +15,12 @@ Mode::Mode(string _name, float _duration, bool _useHR) {
     
     playing = false;
     black = 0;
+    width = 1024;
+    height = 768;
     pulseFbo.allocate(width, height);
     hr = 60;
     targetHR = 60;
     floorValue = 100;
-    width = 1024;
-    height = 768;
     fadeEnter = false;
     fadeExit = false;
     fadeDur = 2.0;
