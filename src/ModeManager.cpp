@@ -89,7 +89,7 @@ void ModeManager::draw() {
     if (playing) {
         for (int i=0; i<modes.size(); i++) {
             if (modes[i]->playing) {
-                modes[i]->drawWithHR(mult);
+                modes[i]->drawWithHR(10);
             }
         }
 

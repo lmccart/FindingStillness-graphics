@@ -27,14 +27,18 @@ void FlockingMode::update() {
 
 void FlockingMode::draw() {
     fbo.begin();
+        ofPushStyle();
         ofSetColor(0, 5);
         ofRect(0, 0, width, height);
         for (int i = 0; i < boids.size(); i++) {
             boids[i].draw();
         }
+        ofPopStyle();
     fbo.end();
+    ofPushStyle();
     ofSetColor(255);
     fbo.draw(0,0);
+    ofPopStyle();
 }
 
 
