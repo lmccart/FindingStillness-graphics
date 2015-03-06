@@ -19,7 +19,7 @@ void FlickerMode::update() {
 
 void FlickerMode::draw() {
     ofPushStyle();
-    ofBackground(MAX(0, baseC+55*ofNoise(ofGetFrameNum()*0.05)));
+    ofClear(MAX(0, baseC+55*ofNoise(ofGetFrameNum()*0.05)), 255);
     ofPopStyle();
 }
 

@@ -19,7 +19,7 @@ void CircleMode::update() {
 
 void CircleMode::draw() {
     ofPushStyle();
-    ofBackground(black);
+    ofClear(black, 255);
     ofSetColor(255);
     //ofEllipse(width/2, height/2, scale*diameter, scale*diameter);
     float d = scale*diameter;
