@@ -65,7 +65,7 @@ void Mode::drawWithHR(float _mult) {
     
     mult = _mult;
     pulseFbo.begin();
-        ofClear(0, 0, 0);
+        ofClear(0, 255);
         draw();
     pulseFbo.end();
     

@@ -26,13 +26,13 @@ void SeparationMode::update() {
 
 void SeparationMode::draw() {
     ofPushStyle();
-    ofBackground(abs(255-color));
-    //ofBackground(MIN(abs(255-color), mult*255));
+    ofClear(abs(255-color), 255);
+    //ofClear(MIN(abs(255-color), mult*255), 255);
     for (int i = 0; i < vehicles.size(); i++) {
         vehicles[i].draw();
     }
     ofPopStyle();
-    //ofBackground(255, 0, 0);
+    //ofClear(255, 0, 0, 255);
 }
 
 

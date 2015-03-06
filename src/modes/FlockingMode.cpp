@@ -12,7 +12,7 @@ FlockingMode::FlockingMode(string _name, float _duration, bool _useHR) : Mode(_n
     fadeEnter = true;
     fbo.allocate(width, height, GL_RGBA);
     fbo.begin();
-    ofBackground(0);
+    ofClear(0, 255);
     fbo.end();
 }
 

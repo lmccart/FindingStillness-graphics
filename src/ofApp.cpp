@@ -17,6 +17,7 @@ void ofApp::setup(){
 //    fboBlurTwoPass.allocate(width, height);
 //    
     ofEnableAlphaBlending();
+    ofBackground(0);
 }
 
 //--------------------------------------------------------------
