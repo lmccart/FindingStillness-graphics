@@ -65,6 +65,7 @@ void PixelMode::draw() {
 void PixelMode::reset() {
     ost = OscillatorStack();
     ost.setup(6);
+    ost.poke(ofGetElapsedTimef(), 1);
 }
 
 void PixelMode::preExit() {
