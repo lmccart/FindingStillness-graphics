@@ -11,7 +11,7 @@
 SeparationMode::SeparationMode(string _name, float _duration, bool _useHR, int _color) : Mode(_name, _duration, _useHR) {
     //fadeEnter = true;
     color = _color;
-    vehicles = vector<Vehicle>(450);
+    vehicles = vector<Vehicle>(400);
 }
 
 

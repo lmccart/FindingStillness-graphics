@@ -79,10 +79,10 @@ public:
     
     void grow() {
         if (maxspeed <= 9.02) {
-            r += ofRandom(0.2, 0.3);
+            r += ofRandom(0.2, 0.38);
             desiredseparation += 0.185;
         }
-        if (n<255) n+=0.25;
+        if (n<255) n+=0.35;
         if (maxspeed > 4) maxspeed -= 0.005;
     }
     

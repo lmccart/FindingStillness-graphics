@@ -12,7 +12,7 @@ FlockingMode::FlockingMode(string _name, float _duration, bool _useHR) : Mode(_n
     fadeEnter = true;
     fadeDur = 1.0;
     fbo.allocate(width, height, GL_RGBA);
-    boids = vector<Boid>(250);
+    boids = vector<Boid>(200);
 }
 
 
@@ -60,7 +60,7 @@ void FlockingMode::reset() {
 //            y += d;
 //        }
         
-        boids[i].setup(ofRandom(width, 2*width), ofRandom(0, height), width, height);
+        boids[i].setup(ofRandom(width, 3*width), ofRandom(0, height), width, height);
 
     }
     

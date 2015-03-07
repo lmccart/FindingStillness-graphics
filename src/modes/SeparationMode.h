@@ -81,7 +81,7 @@ public:
     // Method to update location
     void update() {
         if (baser < 32.5) {
-            baser += 0.03;
+            baser += 0.033;
         } else {
             baser += 0.2;
         }
