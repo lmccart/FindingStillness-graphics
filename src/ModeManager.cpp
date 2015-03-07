@@ -18,11 +18,12 @@ void ModeManager::setup() {
     
     Tweenzor::init();
     
-    modes.push_back(new PixelMode("Pixel", 5, false));
+
+    modes.push_back(new PixelMode("Pixel", 15, false));
     modes.push_back(new FlockingMode("Flocking", 10, false));
     modes.push_back(new SeparationMode("Separate", 8, false, 0));
     modes.push_back(new SeparationMode("Separate", 8, false, 255));
-    modes.push_back(new VideoMode("Nature", 15, false));
+    modes.push_back(new VideoMode("Nature", 13, false));
     modes.push_back(new FaderMode("Fader", 24, false));
     
     modes.push_back(new FlickerMode("Flicker", 10, false));
@@ -89,7 +90,7 @@ void ModeManager::draw() {
     if (playing) {
         for (int i=0; i<modes.size(); i++) {
             if (modes[i]->playing) {
-                modes[i]->drawWithHR(10);
+                modes[i]->drawWithHR(1.0);
             }
         }
 

@@ -10,6 +10,7 @@
 
 FlockingMode::FlockingMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
     fadeEnter = true;
+    fadeExit = true;
     fbo.allocate(width, height, GL_RGBA);
     fbo.begin();
     ofClear(0, 255);
@@ -35,10 +36,16 @@ void FlockingMode::draw() {
         }
         ofPopStyle();
     fbo.end();
+    
     ofPushStyle();
-    ofSetColor(255);
+    //ofSetColor(255);
     fbo.draw(0,0);
     ofPopStyle();
+//
+//    ofPushStyle();
+//    ofSetColor(255, 0, 0);
+//    ofRect(0, 0, width/2, height/2);
+//    ofPopStyle();
 }
 
 

@@ -14,31 +14,25 @@ VideoMode::VideoMode(string _name, float _duration, bool _useHR) : Mode(_name, _
     videoPlayer.loadMovie("vids/sequence5.mov");
     videoPlayer.setVolume(0);
     videoPlayer.setLoopState(OF_LOOP_NORMAL);
-    fadeMult = 0;
 }
 
 
 void VideoMode::update() {
     videoPlayer.update();
     floorValue = 100*sin(0.1*hr*ofGetElapsedTimef()); //PEND
-    if (getModeElapsedTime() < 3.0) {
-        fadeMult = getModeElapsedTime()/3.0;
-    } else if (getModeElapsedTime() > duration-3.0) {
-        fadeMult = (duration - getModeElapsedTime())/3.0;
-    }
 }
 
 
 void VideoMode::draw() {
     ofPushStyle();
-    ofSetColor(fadeMult*255);
+    ofBackground(255);
+    ofSetColor(255);
     videoPlayer.draw(0, 0, width, height);
     ofPopStyle();
 }
 
 
 void VideoMode::reset() {
-    fadeMult = 0;
     videoPlayer.setPosition(0);
     videoPlayer.play();
 }

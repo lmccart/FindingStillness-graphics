@@ -23,7 +23,7 @@ Mode::Mode(string _name, float _duration, bool _useHR) {
     floorValue = 100;
     fadeEnter = false;
     fadeExit = false;
-    fadeDur = 2.0;
+    fadeDur = 1.5;
     
     enterMult = 1;
     exitMult = 1;
@@ -58,22 +58,25 @@ void Mode::drawWithHR(float _mult) {
     if (fadeEnter && getModeElapsedTime() < fadeDur) {
         enterMult = getModeElapsedTime()/fadeDur;
     } else if (fadeExit && getModeElapsedTime() - duration < fadeDur) {
-        exitMult = 1 - ((getModeElapsedTime() - duration) / fadeDur);
+        exitMult = MAX(0, 1 - ((getModeElapsedTime() - duration) / fadeDur));
     } else if (fadeExit &&  getModeElapsedTime() - duration >= fadeDur) {
-        exit();
+        playing = false;
+        preExit();
     }
     
     mult = _mult;
     pulseFbo.begin();
-        ofClear(0, 255);
+        ofPushStyle();
+        ofClear(0);
         draw();
+        ofPopStyle();
     pulseFbo.end();
     
-    float alpha = useHR ? 170+85*sin(0.001*hr*ofGetFrameNum()) : 255;
+    float alpha = 255;//useHR ? 170+85*sin(0.001*hr*ofGetFrameNum()) : 255;
     
     ofPushStyle();
-    ofSetColor(alpha*mult*enterMult*exitMult);
-    ofLog() << name <<" " << alpha*mult*enterMult*exitMult;
+    ofSetColor(255, alpha*mult*enterMult*exitMult);
+    ofLog() << name <<" " << alpha*mult*enterMult*exitMult << " " << mult << " " << exitMult;
     pulseFbo.draw(0, 0);
     ofPopStyle();
 }
@@ -97,7 +100,7 @@ void Mode::reset() {
 void Mode::exit() {
     if (fadeExit) {
         enterMult = 1.0;
-        exitMult = 0;
+        exitMult = 1.0;
     } else {
         ofLog() << "exit " << name;
         playing = false;
