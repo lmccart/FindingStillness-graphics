@@ -10,15 +10,14 @@
 
 FlockingMode::FlockingMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
     fadeEnter = true;
-    fadeExit = true;
+    fadeDur = 1.0;
     fbo.allocate(width, height, GL_RGBA);
-    fbo.begin();
-    ofClear(0, 255);
-    fbo.end();
+    boids = vector<Boid>(250);
 }
 
 
 void FlockingMode::update() {
+    
     for (int i = 0; i < boids.size(); i++) {
         boids[i].run(boids);  // Passing the entire list of boids to each boid individually
     }
@@ -29,7 +28,7 @@ void FlockingMode::update() {
 void FlockingMode::draw() {
     fbo.begin();
         ofPushStyle();
-        ofSetColor(0, 5);
+        ofSetColor(0, 10);
         ofRect(0, 0, width, height);
         for (int i = 0; i < boids.size(); i++) {
             boids[i].draw();
@@ -50,17 +49,19 @@ void FlockingMode::draw() {
 
 
 void FlockingMode::reset() {
-    boids = vector<Boid>(250);
-    float d = boids.size()*height*0.4/width;
-    float x = 0, y = 0;
+//    float d = boids.size()*height*0.4/width;
+//    float x = 0, y = 0;
     for (int i = 0; i < boids.size(); i++) {
         
-        boids[i].setup(x, y, width, height);
-        x += d;
-        if (x >= width) {
-            x = 0;
-            y += d;
-        }
+        //boids[i].setup(x, y, width, height);
+//        x += d;
+//        if (x >= width) {
+//            x = 0;
+//            y += d;
+//        }
+        
+        boids[i].setup(ofRandom(width, 2*width), ofRandom(0, height), width, height);
+
     }
     
         
@@ -75,8 +76,10 @@ void FlockingMode::reset() {
 //            boids[i].setup(ofRandom(-width*0.5, 0), ofRandom(height), width, height);
 //        }
 //    }
+    
     fbo.begin();
-    ofClear(0);
+    ofClear(0, 255);
+    ofBackground(0, 255);
     fbo.end();
 }
 

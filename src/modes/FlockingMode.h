@@ -21,16 +21,22 @@ public:
     float maxforce;
     float r;
     float w, h;
+    float i;
+    float n;
+    float desiredseparation;
     
     void setup(float x, float y, float _w, float _h) {
+        i = ofRandom(0, 200);
         w = _w;
         h = _h;
+        n = 127;
         position.set(x, y);
-        velocity.set(ofRandom(-1, 1), ofRandom(-1, 1));//width*0.5-x, height*0.5-y);
+        velocity.set(ofRandom(-15, -13), ofRandom(-1, 1));//width*0.5-x, height*0.5-y);
         borders();
-        r = 60;
-        maxspeed = 4;    // Maximum speed
+        r = 30;
+        maxspeed = 10;    // Maximum speed
         maxforce = 0.5; // Maximum steering force
+        desiredseparation = 45;
     }
 
     void run(vector<Boid> boids) {
@@ -72,7 +78,12 @@ public:
     }
     
     void grow() {
-        r += 0.04;
+        if (maxspeed <= 9.02) {
+            r += ofRandom(0.2, 0.3);
+            desiredseparation += 0.185;
+        }
+        if (n<255) n+=0.25;
+        if (maxspeed > 4) maxspeed -= 0.005;
     }
     
     // A method that calculates and applies a steering force towards a target
@@ -92,7 +103,7 @@ public:
         // Draw a triangle rotated in the direction of velocity
         ofVec2f zero(0, -1);
         float theta = zero.angle(velocity);
-        ofSetColor(255);
+        ofSetColor(n+(255-n)*sin((ofGetFrameNum()+i)*0.05));
         ofPushMatrix();
         ofTranslate(position.x,position.y);
         ofRotate(theta);
@@ -112,7 +123,6 @@ public:
     // Separation
     // Method checks for nearby boids and steers away
     ofVec2f separate(vector<Boid> boids) {
-        float desiredseparation = 0.5*r+30;
         ofVec2f steer(0, 0);
         int count = 0;
         // For every boid in the system, check if it's too close

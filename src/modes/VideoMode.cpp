@@ -11,11 +11,15 @@
 VideoMode::VideoMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
     fadeEnter = true;
     fadeExit = true;
+    fadeDur = 2.0;
     videoPlayer.loadMovie("vids/sequence5.mov");
     videoPlayer.setVolume(0);
     videoPlayer.setLoopState(OF_LOOP_NORMAL);
 }
 
+void VideoMode::start() {
+    videoPlayer.play();
+}
 
 void VideoMode::update() {
     videoPlayer.update();
@@ -34,7 +38,6 @@ void VideoMode::draw() {
 
 void VideoMode::reset() {
     videoPlayer.setPosition(0);
-    videoPlayer.play();
 }
 
 void VideoMode::preExit() {

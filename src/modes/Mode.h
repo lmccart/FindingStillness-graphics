@@ -15,14 +15,15 @@ class Mode {
     
 public:
     Mode(string _name, float _duration, bool _useHR);
-    virtual void enter();
+    void enter();
+    virtual void start();
     virtual void update();
     virtual void draw();
     void drawWithHR(float _mult);
     void updateHR(float _hr);
     virtual void preExit();
     virtual void reset();
-    void exit();
+    void exit(bool hard);
     float getModeElapsedTime();
     
     bool playing;

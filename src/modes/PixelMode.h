@@ -119,6 +119,7 @@ class PixelMode : public Mode {
     
 public:
     PixelMode(string _name, float _duration, bool _useHR);
+    void start();
     void update();
     void draw();
     void reset();

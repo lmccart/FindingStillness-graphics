@@ -11,11 +11,14 @@
 FlickerMode::FlickerMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
     fadeEnter = true;
     fadeDur = 3.0;
+    holdTime = 5.0;
 }
 
 
 void FlickerMode::update() {
-    baseC = 200*(duration - getModeElapsedTime())/duration;
+    if (getModeElapsedTime() > holdTime) {
+        baseC = 255*(duration - getModeElapsedTime())/(duration - holdTime);
+    }
 }
 
 
@@ -27,7 +30,7 @@ void FlickerMode::draw() {
 
 
 void FlickerMode::reset() {
-    baseC = 200;
+    baseC = 255;
 }
 
 void FlickerMode::preExit() {

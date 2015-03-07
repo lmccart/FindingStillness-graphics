@@ -11,8 +11,12 @@
 
 PixelMode::PixelMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
     fadeExit = true;
+    fadeDur = 3.0;
 }
 
+void PixelMode::start() {
+    ost.poke(ofGetElapsedTimef(), 1);
+}
 
 void PixelMode::update() {
     float speed = 60 / hr;
@@ -65,7 +69,6 @@ void PixelMode::draw() {
 void PixelMode::reset() {
     ost = OscillatorStack();
     ost.setup(6);
-    ost.poke(ofGetElapsedTimef(), 1);
 }
 
 void PixelMode::preExit() {

@@ -41,10 +41,13 @@ void Mode::enter() {
     startTime = ofGetElapsedTimef();
     enterMult = 1.0;
     exitMult = 1.0;
-    reset();
+    start();
     playing = true;
 }
 
+void Mode::start() {
+    ofLog() << "start";
+}
 
 void Mode::update() {
 }
@@ -97,8 +100,8 @@ void Mode::reset() {
     ofLog() << "reset";
 }
 
-void Mode::exit() {
-    if (fadeExit) {
+void Mode::exit(bool hard) {
+    if (!hard && fadeExit) {
         enterMult = 1.0;
         exitMult = 1.0;
     } else {

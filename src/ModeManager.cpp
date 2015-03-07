@@ -23,10 +23,13 @@ void ModeManager::setup() {
     modes.push_back(new FlockingMode("Flocking", 10, false));
     modes.push_back(new SeparationMode("Separate", 8, false, 0));
     modes.push_back(new SeparationMode("Separate", 8, false, 255));
+    modes[modes.size()-1]->fadeExit = true;
     modes.push_back(new VideoMode("Nature", 13, false));
     modes.push_back(new FaderMode("Fader", 24, false));
     
-    modes.push_back(new FlickerMode("Flicker", 10, false));
+    modes.push_back(new FlickerMode("Flicker", 13, false));
+    
+    
     modes.push_back(new WashMode("White", 30, false, 10));
     
     idleMode = new WashMode("White", 30, false, 40); //new CircleMode("Circle", 10000, false);
@@ -114,8 +117,12 @@ void ModeManager::draw() {
 }
 
 void ModeManager::reset() {
-    modes[curMode]->exit();
-    idleMode->exit();
+    for (int i=0; i<modes.size(); i++) {
+        modes[i]->exit(true);
+        modes[i]->reset();
+    }
+    idleMode->exit(true);
+    idleMode->reset();
     curMode = 0;
     playing = false;
     modeStartTime = 0;
@@ -146,17 +153,18 @@ void ModeManager::next(int i) {
     ofLog() << "next";
     modeStartTime = ofGetElapsedTimef();
     
-    modes[curMode]->exit();
-    
-    if (i == -1) {
+    if (i == -1) { // sequential move to next mode
+        modes[curMode]->exit(false);
         if (curMode == modes.size()-1) {
             end();
         } else {
             curMode++;
         }
-    } else {
+    } else { // hard jump to mode
+        modes[curMode]->exit(true);
         if (i >= 0 && i < modes.size()) {
             curMode = i;
+            modes[curMode]->reset();
         } else ofLog() << "ModeManager::mode out of range";
     }
     modes[curMode]->enter();

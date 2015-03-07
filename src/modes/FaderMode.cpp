@@ -14,6 +14,11 @@ FaderMode::FaderMode(string _name, float _duration, bool _useHR) : Mode(_name, _
     fadeDur = 3.0;
 }
 
+void FaderMode::start() {
+    Tweenzor::add(&strength, 0.5f, 3.0f, 0.0f, (float)0.5*duration, EASE_LINEAR);
+    Tweenzor::getTween(&strength)->setRepeat(1, true);
+    Tweenzor::add(&diff, 4, 1, 0.25*duration, duration, EASE_LINEAR);
+}
 
 void FaderMode::update() {
     floorValue = 255*sin(0.1*hr*ofGetElapsedTimef()); //PEND
@@ -42,9 +47,6 @@ void FaderMode::reset() {
     d = 0.005;
     diff = 4;
     strength = 0.5;
-    Tweenzor::add(&strength, 0.5f, 3.0f, 0.0f, (float)0.5*duration, EASE_LINEAR);
-    Tweenzor::getTween(&strength)->setRepeat(1, true);
-    Tweenzor::add(&diff, 4, 1, 0.25*duration, duration, EASE_LINEAR);
 }
 
 void FaderMode::preExit() {
