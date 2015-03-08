@@ -32,6 +32,10 @@ void ofApp::update(){
             modeManager.start();
         } else if (oscMessage.getAddress() == "/reset") {
             modeManager.reset();
+        } else if (oscMessage.getAddress() == "/idle") {
+            modeManager.reset();
+            modeManager.modeStartTime = 0;
+            modeManager.hold = false;
         } else if (oscMessage.getAddress() == "/heartrate") {
             modeManager.updateHeartrate(oscMessage.getArgAsFloat(0));
         } else {

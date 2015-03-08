@@ -37,17 +37,18 @@ public:
     ofxDmx dmx;
     ofxMidiOut midi;
     
+    float modeStartTime;
+    bool hold;
+    
 private:
     bool playing;
     int curMode;
-    float modeStartTime;
     float showStartTime;
     vector<Mode*> modes;
     Mode *idleMode;
     float cur_hr;
     float totalDuration;
     float mult;
-    bool hold;
     float holdDuration;
 
 };

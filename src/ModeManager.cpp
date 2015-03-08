@@ -81,7 +81,6 @@ void ModeManager::update() {
         }
         
     } else {
-        ofLog() << "update " << mult;
         
         if (hold && ofGetElapsedTimef() - modeStartTime > holdDuration) {
             hold = false;
