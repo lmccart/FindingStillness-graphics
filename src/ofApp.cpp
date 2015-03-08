@@ -25,12 +25,13 @@ void ofApp::update(){
     modeManager.update();
 
     if (oscReceiver.hasWaitingMessages()) {
+        ofLog() << "message" << oscMessage.getAddress();
         oscMessage.clear();
         oscReceiver.getNextMessage(&oscMessage);
         if (oscMessage.getAddress() == "/start") {
             modeManager.start();
         } else if (oscMessage.getAddress() == "/reset") {
-            modeManager.start();
+            modeManager.reset();
         } else if (oscMessage.getAddress() == "/heartrate") {
             modeManager.updateHeartrate(oscMessage.getArgAsFloat(0));
         } else {
