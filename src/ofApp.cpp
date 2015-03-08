@@ -29,6 +29,8 @@ void ofApp::update(){
         oscReceiver.getNextMessage(&oscMessage);
         if (oscMessage.getAddress() == "/start") {
             modeManager.start();
+        } else if (oscMessage.getAddress() == "/reset") {
+            modeManager.start();
         } else if (oscMessage.getAddress() == "/heartrate") {
             modeManager.updateHeartrate(oscMessage.getArgAsFloat(0));
         } else {
@@ -40,35 +42,6 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-//    float blur = 1;//ofMap(mouseX, 0, width, 0, 10, true);
-//    
-//    //----------------------------------------------------------
-//    fboBlurOnePass.begin();
-//    
-//    shaderBlurX.begin();
-//    shaderBlurX.setUniform1f("blurAmnt", blur);
-//    
-//    modeManager.draw();
-//    
-//    shaderBlurX.end();
-//    
-//    fboBlurOnePass.end();
-//    
-//    //----------------------------------------------------------
-//    fboBlurTwoPass.begin();
-//    
-//    shaderBlurY.begin();
-//    shaderBlurY.setUniform1f("blurAmnt", blur);
-//    
-//    fboBlurOnePass.draw(0, 0);
-//    
-//    shaderBlurY.end();
-//    
-//    fboBlurTwoPass.end();
-//    
-//    //----------------------------------------------------------
-//    ofSetColor(ofColor::white);
-//    fboBlurTwoPass.draw(0, 0);
 
 //    ofTranslate(0, 32);
 //    ofScale(192./1024., 160./768.);
@@ -84,6 +57,8 @@ void ofApp::keyPressed(int key){
         modeManager.next(-1);
     } else if (key == 's') {
         modeManager.start();
+    } else if (key == 'r') {
+        modeManager.reset();
     }
 }
 

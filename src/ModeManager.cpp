@@ -26,13 +26,10 @@ void ModeManager::setup() {
     modes[modes.size()-1]->fadeExit = true;
     modes.push_back(new VideoMode("Nature", 13, false));
     modes.push_back(new FaderMode("Fader", 24, false));
-    
     modes.push_back(new FlickerMode("Flicker", 13, false));
     
     
-    modes.push_back(new WashMode("White", 30, false, 10));
-    
-    idleMode = new WashMode("White", 30, false, 40); //new CircleMode("Circle", 10000, false);
+    idleMode = new CircleMode("Circle", 10000, false);
     
     cur_hr = 0;
     
@@ -42,12 +39,14 @@ void ModeManager::setup() {
     mult = 0;
     
     totalDuration = 0;
-    for (int i=0; i<modes.size()-1; i++) {
+    for (int i=0; i<modes.size(); i++) {
         totalDuration += modes[i]->duration;
     }
     
+    holdDuration = 10;
+    hold = false;
+    
     reset();
-    idleMode->enter();
 
 }
 
@@ -73,17 +72,22 @@ void ModeManager::update() {
             }
         }
         
-//        if(dmx.isConnected()) {
-//            int val = modes[curMode]->floorValue;
-//            for(int chan = 1; chan <= 10; chan++) {
-//                dmx.setLevel(chan, val);
-//            }
-//            dmx.update();
-//        }
+        if(dmx.isConnected()) {
+            int val = modes[curMode]->floorValue;
+            for(int chan = 1; chan <= 10; chan++) {
+                dmx.setLevel(chan, val);
+            }
+            dmx.update();
+        }
         
     } else {
         ofLog() << "update " << mult;
-        idleMode->update();
+        
+        if (hold && ofGetElapsedTimef() - modeStartTime > holdDuration) {
+            hold = false;
+            idleMode->enter();
+        }
+        if (!hold) idleMode->update();
     }
     Tweenzor::update( ofGetElapsedTimeMillis() );
 }
@@ -111,7 +115,11 @@ void ModeManager::draw() {
         ofPopStyle();
         
     } else {
-        idleMode->draw();
+        if (!hold) { // idle
+            idleMode->draw();
+        } else { // black
+            ofClear(0, 255);
+        }
     }
     
 }
@@ -125,9 +133,12 @@ void ModeManager::reset() {
     idleMode->reset();
     curMode = 0;
     playing = false;
-    modeStartTime = 0;
     showStartTime = 0;
     mult = 0;
+    
+    hold = true;
+    modeStartTime = ofGetElapsedTimef();
+    ofLog() << "ModeManager::reset";
 }
 
 void ModeManager::start() {
@@ -146,7 +157,6 @@ void ModeManager::start() {
 
 void ModeManager::end() {
     reset();
-    idleMode->enter();
     ofLog() << "ModeManager::end";
 }
 void ModeManager::next(int i) {

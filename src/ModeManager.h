@@ -47,5 +47,7 @@ private:
     float cur_hr;
     float totalDuration;
     float mult;
+    bool hold;
+    float holdDuration;
 
 };
