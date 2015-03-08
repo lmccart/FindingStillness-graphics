@@ -43,7 +43,7 @@ void ModeManager::setup() {
         totalDuration += modes[i]->duration;
     }
     
-    holdDuration = 10;
+    holdDuration = 120; // secs to wait after person before idle starts
     hold = false;
     
     reset();
