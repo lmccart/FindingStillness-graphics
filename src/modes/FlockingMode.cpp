@@ -8,7 +8,7 @@
 
 #include "FlockingMode.h"
 
-FlockingMode::FlockingMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
+FlockingMode::FlockingMode(string _name, float _duration) : Mode(_name, _duration) {
     fadeEnter = true;
     fadeDur = 1.0;
     fbo.allocate(width, height, GL_RGBA);
@@ -16,7 +16,7 @@ FlockingMode::FlockingMode(string _name, float _duration, bool _useHR) : Mode(_n
 }
 
 
-void FlockingMode::update() {
+void FlockingMode::update(float hr) {
     
     for (int i = 0; i < boids.size(); i++) {
         boids[i].run(boids);  // Passing the entire list of boids to each boid individually

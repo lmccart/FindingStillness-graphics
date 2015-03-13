@@ -8,14 +8,14 @@
 
 #include "FlickerMode.h"
 
-FlickerMode::FlickerMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
+FlickerMode::FlickerMode(string _name, float _duration) : Mode(_name, _duration) {
     fadeEnter = true;
     fadeDur = 3.0;
     holdTime = 5.0;
 }
 
 
-void FlickerMode::update() {
+void FlickerMode::update(float hr) {
     if (getModeElapsedTime() > holdTime) {
         baseC = 255*(duration - getModeElapsedTime())/(duration - holdTime);
     }

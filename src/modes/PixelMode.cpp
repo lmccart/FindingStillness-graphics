@@ -9,7 +9,7 @@
 #include "PixelMode.h"
 
 
-PixelMode::PixelMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
+PixelMode::PixelMode(string _name, float _duration) : Mode(_name, _duration) {
     fadeExit = true;
     fadeDur = 3.0;
 }
@@ -18,7 +18,7 @@ void PixelMode::start() {
     ost.poke(ofGetElapsedTimef(), 1);
 }
 
-void PixelMode::update() {
+void PixelMode::update(float hr) {
     float speed = 60 / hr;
     float time = ofGetElapsedTimef();
     float pps;

@@ -118,9 +118,9 @@ public:
 class PixelMode : public Mode {
     
 public:
-    PixelMode(string _name, float _duration, bool _useHR);
+    PixelMode(string _name, float _duration);
     void start();
-    void update();
+    void update(float hr);
     void draw();
     void reset();
     void preExit();

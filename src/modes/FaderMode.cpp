@@ -8,7 +8,7 @@
 
 #include "FaderMode.h"
 
-FaderMode::FaderMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
+FaderMode::FaderMode(string _name, float _duration) : Mode(_name, _duration) {
     fadeEnter = true;
     fadeExit = true;
     fadeDur = 3.0;
@@ -20,7 +20,7 @@ void FaderMode::start() {
     Tweenzor::add(&diff, 4, 1, 0.25*duration, duration, EASE_LINEAR);
 }
 
-void FaderMode::update() {
+void FaderMode::update(float hr) {
     floorValue = 255*sin(0.1*hr*ofGetElapsedTimef()); //PEND
 }
 

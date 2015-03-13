@@ -14,8 +14,8 @@
 class SwipeMode : public Mode {
     
 public:
-    SwipeMode(string _name, float _duration, bool _useHR);
-    void update();
+    SwipeMode(string _name, float _duration);
+    void update(float hr);
     void draw();
     void reset();
     void preExit();

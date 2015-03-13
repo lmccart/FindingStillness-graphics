@@ -8,7 +8,7 @@
 
 #include "WashMode.h"
 
-WashMode::WashMode(string _name, float _duration, bool _useHR, int _color) : Mode(_name, _duration, _useHR) {
+WashMode::WashMode(string _name, float _duration, int _color) : Mode(_name, _duration) {
     color = _color;
 }
 

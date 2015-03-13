@@ -8,14 +8,14 @@
 
 #include "SeparationMode.h"
 
-SeparationMode::SeparationMode(string _name, float _duration, bool _useHR, int _color) : Mode(_name, _duration, _useHR) {
+SeparationMode::SeparationMode(string _name, float _duration, int _color) : Mode(_name, _duration) {
     //fadeEnter = true;
     color = _color;
     vehicles = vector<Vehicle>(400);
 }
 
 
-void SeparationMode::update() {
+void SeparationMode::update(float hr) {
     for (int i = 0; i < vehicles.size(); i++) {
         vehicles[i].separate(vehicles);
         vehicles[i].update();

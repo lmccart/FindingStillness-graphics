@@ -8,18 +8,14 @@
 
 #include "Mode.h"
 
-Mode::Mode(string _name, float _duration, bool _useHR) {
+Mode::Mode(string _name, float _duration) {
     duration = _duration;
     name = _name;
-    useHR = _useHR;
-    
     playing = false;
     black = 0;
     width = 1024;
     height = 768;
     pulseFbo.allocate(width, height);
-    hr = 60;
-    targetHR = 60;
     floorValue = 100;
     fadeEnter = false;
     fadeExit = false;
@@ -49,20 +45,20 @@ void Mode::start() {
     ofLog() << "start";
 }
 
-void Mode::update() {
+void Mode::update(float hr) {
 }
 
 void Mode::draw() {
     //ofLog() << "draw";
 }
 
-void Mode::drawWithHR(float _mult) {
+void Mode::drawWithHR(float _mult, float _hr) {
     
     if (fadeEnter && getModeElapsedTime() < fadeDur) {
         enterMult = getModeElapsedTime()/fadeDur;
-    } else if (fadeExit && getModeElapsedTime() - duration < fadeDur) {
+    } else if (fadeExit && getModeElapsedTime() - duration < fadeDur && getModeElapsedTime() - duration >= 0) {
         exitMult = MAX(0, 1 - ((getModeElapsedTime() - duration) / fadeDur));
-    } else if (fadeExit &&  getModeElapsedTime() - duration >= fadeDur) {
+    } else if (fadeExit && getModeElapsedTime() - duration >= fadeDur) {
         playing = false;
         preExit();
     }
@@ -75,7 +71,7 @@ void Mode::drawWithHR(float _mult) {
         ofPopStyle();
     pulseFbo.end();
     
-    float alpha = 255;//useHR ? 170+85*sin(0.001*hr*ofGetFrameNum()) : 255;
+    float alpha =  200+55*sin(0.001*_hr*ofGetFrameNum()); // PEND KYLE
     
     ofPushStyle();
     ofSetColor(255, alpha*mult*enterMult*exitMult);
@@ -86,10 +82,6 @@ void Mode::drawWithHR(float _mult) {
 
 float Mode::getModeElapsedTime() {
     return ofGetElapsedTimef() - startTime;
-}
-
-void Mode::updateHR(float _hr) {
-    targetHR = ofClamp(ofMap(_hr, 0, 100, 0, 255), 0, 255);
 }
 
 void Mode::preExit() {

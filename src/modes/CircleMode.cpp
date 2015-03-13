@@ -8,12 +8,12 @@
 
 #include "CircleMode.h"
 
-CircleMode::CircleMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
+CircleMode::CircleMode(string _name, float _duration) : Mode(_name, _duration) {
     img.loadImage("imgs/ellipse2.png");
 }
 
 
-void CircleMode::update() {
+void CircleMode::update(float hr) {
 }
 
 

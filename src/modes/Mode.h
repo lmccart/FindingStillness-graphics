@@ -14,13 +14,12 @@
 class Mode {
     
 public:
-    Mode(string _name, float _duration, bool _useHR);
+    Mode(string _name, float _duration);
     void enter();
     virtual void start();
-    virtual void update();
+    virtual void update(float hr);
     virtual void draw();
-    void drawWithHR(float _mult);
-    void updateHR(float _hr);
+    void drawWithHR(float _mult, float _hr);
     virtual void preExit();
     virtual void reset();
     void exit(bool hard);
@@ -30,8 +29,6 @@ public:
     float duration;
     float black;
     string name;
-    float hr;
-    bool useHR;
     float startTime;
     float floorValue;
     float width, height;
@@ -42,7 +39,6 @@ public:
     
 private:
     ofFbo pulseFbo;
-    float targetHR;
 };
 
 

@@ -14,8 +14,8 @@
 class FlickerMode : public Mode {
     
 public:
-    FlickerMode(string _name, float _duration, bool _useHR);
-    void update();
+    FlickerMode(string _name, float _duration);
+    void update(float hr);
     void draw();
     void reset();
     void preExit();

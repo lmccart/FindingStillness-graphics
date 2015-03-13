@@ -33,6 +33,7 @@ public:
     void next(int i);
     void updateHeartrate(float hr);
     void exit();
+    void onCompleteRampDown(float* arg);
     
     ofxDmx dmx;
     ofxMidiOut midi;

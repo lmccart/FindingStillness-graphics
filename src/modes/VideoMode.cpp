@@ -8,7 +8,7 @@
 
 #include "VideoMode.h"
 
-VideoMode::VideoMode(string _name, float _duration, bool _useHR) : Mode(_name, _duration, _useHR) {
+VideoMode::VideoMode(string _name, float _duration) : Mode(_name, _duration) {
     fadeEnter = true;
     fadeExit = true;
     fadeDur = 2.0;
@@ -21,7 +21,7 @@ void VideoMode::start() {
     videoPlayer.play();
 }
 
-void VideoMode::update() {
+void VideoMode::update(float hr) {
     videoPlayer.update();
     floorValue = 100*sin(0.1*hr*ofGetElapsedTimef()); //PEND
 }
@@ -29,7 +29,7 @@ void VideoMode::update() {
 
 void VideoMode::draw() {
     ofPushStyle();
-    ofBackground(255);
+    ofBackground(255*mult);
     ofSetColor(255);
     videoPlayer.draw(0, 0, width, height);
     ofPopStyle();

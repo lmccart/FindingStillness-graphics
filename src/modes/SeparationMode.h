@@ -147,8 +147,8 @@ public:
 class SeparationMode : public Mode {
 
 public:
-    SeparationMode(string _name, float _duration, bool _useHR, int _color);
-    void update();
+    SeparationMode(string _name, float _duration, int _color);
+    void update(float hr);
     void draw();
     void reset();
     void preExit();
