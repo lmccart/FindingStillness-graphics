@@ -19,6 +19,9 @@ public:
     ofVec2f position;
     ofVec2f velocity;
     ofVec2f acceleration;
+    ofVec2f displayVelocity;
+    ofVec2f zero;
+    float theta;
     float r;
     float maxspeed;
     float maxforce;
@@ -34,7 +37,10 @@ public:
         h = _h;
         position.set(x, y);
         velocity.set(w*0.5-x, h*0.5-y);
+        displayVelocity.set(velocity.x, velocity.y);
         acceleration.set(0, 0);
+        zero.set(0, -1);
+        theta = 0;
         r = 25;
         maxspeed = 5;    // Maximum speed
         maxforce = 0.2;  // Maximum steering force
@@ -83,7 +89,7 @@ public:
         if (baser < 32.5) {
             baser += 0.033;
         } else {
-            baser += 0.2;
+            baser += 0.29;
         }
         
         // Update velocity
@@ -94,6 +100,10 @@ public:
         // Reset accelertion to 0 each cycle
         acceleration.set(0, 0);
         maxradius += 0.05;
+    
+        displayVelocity += (velocity - displayVelocity)*0.02;
+        
+        theta = zero.angle(displayVelocity);
         
         float d = sqrt(pow(abs(w*0.5-position.x), 2)+pow(abs(h*0.5-position.y), 2));
         d = ofMap(d, 0, w, 2.0, 0.1);
@@ -104,19 +114,21 @@ public:
         ofSetColor(color);
         ofPushMatrix();
         ofTranslate(position.x, position.y);
-//        ofEllipse(0, 0, r, r);
         
-        ofVec2f zero(0, -1);
-        float theta = zero.angle(velocity);
         ofRotate(theta);
+        
         if (type == 0) {
-            ofTriangle(0, -r*2, -r, r, r, r);
+            ofSetCircleResolution(3);
+            ofCircle(0, 0, r);
         } else if (type == 1) {
-            ofRect(-r, -r, 2*r, 2*r);
+            ofSetCircleResolution(5);
+            ofCircle(0, 0, r);
         } else if (type == 2) {
-            ofTriangle(0, -r*2, -r, r, r, r);
+            ofSetCircleResolution(7);
+            ofCircle(0, 0, r);
         } else if (type == 3) {
-            ofRect(-r, -1.5*r, 2*r, 3*r);
+            ofSetCircleResolution(9);
+            ofCircle(0, 0, r);
         }
         
         
