@@ -71,7 +71,9 @@ void Mode::drawWithHR(float _mult, float _hr) {
         ofPopStyle();
     pulseFbo.end();
     
-    float alpha =  200+55*sin(0.001*_hr*ofGetFrameNum()); // PEND KYLE
+    float t = ofGetElapsedTimef();
+    float alpha = cos(t * TWO_PI * _hr / 60);
+    alpha = ofMap(alpha, -1, 1, 100, 255);
     
     ofPushStyle();
     ofSetColor(255, alpha*mult*enterMult*exitMult);

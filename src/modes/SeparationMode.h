@@ -55,7 +55,7 @@ public:
     
     // Separation
     // Method checks for nearby vehicles and steers away
-    void separate(vector<Vehicle> vehicles) {
+    void separate(const vector<Vehicle>& vehicles) {
         ofVec2f sum;
         int count = 0;
         // For every boid in the system, check if it's too close

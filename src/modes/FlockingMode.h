@@ -39,7 +39,7 @@ public:
         desiredseparation = 45;
     }
 
-    void run(vector<Boid> boids) {
+    void run(const vector<Boid>& boids) {
         flock(boids);
         update();
         grow();
@@ -52,7 +52,7 @@ public:
     }
     
     // We accumulate a new acceleration each time based on three rules
-    void flock(vector<Boid> boids) {
+    void flock(const vector<Boid>& boids) {
         ofVec2f sep = separate(boids);   // Separation
         ofVec2f ali = align(boids);      // Alignment
         ofVec2f coh = cohesion(boids);   // Cohesion
@@ -122,7 +122,7 @@ public:
     
     // Separation
     // Method checks for nearby boids and steers away
-    ofVec2f separate(vector<Boid> boids) {
+    ofVec2f separate(const vector<Boid>& boids) {
         ofVec2f steer(0, 0);
         int count = 0;
         // For every boid in the system, check if it's too close
@@ -156,7 +156,7 @@ public:
     
     // Alignment
     // For every nearby boid in the system, calculate the average velocity
-    ofVec2f align(vector<Boid> boids) {
+    ofVec2f align(const vector<Boid>& boids) {
         float neighbordist = 50;
         ofVec2f sum(0, 0);
         int count = 0;
@@ -182,7 +182,7 @@ public:
     
     // Cohesion
     // For the average location (i.e. center) of all nearby boids, calculate steering vector towards that location
-    ofVec2f cohesion(vector<Boid> boids) {
+    ofVec2f cohesion(const vector<Boid>& boids) {
         float neighbordist = 30;
         ofVec2f sum(0, 0);
         int count = 0;

@@ -80,7 +80,7 @@ void ModeManager::update() {
         if (!hold) idleMode->update(255);
     }
     Tweenzor::update( ofGetElapsedTimeMillis() );
-    ofLog() << mult;
+//    ofLog() << mult;
 }
 
 void ModeManager::draw() {
