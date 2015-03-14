@@ -13,7 +13,7 @@ WashMode::WashMode(string _name, float _duration, int _color) : Mode(_name, _dur
 }
 
 
-void WashMode::update() {
+void WashMode::update(float hr) {
 }
 
 

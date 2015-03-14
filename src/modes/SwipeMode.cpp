@@ -12,7 +12,7 @@ SwipeMode::SwipeMode(string _name, float _duration) : Mode(_name, _duration) {
 }
 
 
-void SwipeMode::update() {
+void SwipeMode::update(float hr) {
     y+= dir*height/(0.5*duration*ofGetFrameRate());
     if (y >= height) {
         y = height;
