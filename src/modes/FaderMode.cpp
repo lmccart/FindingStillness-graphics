@@ -21,7 +21,6 @@ void FaderMode::start() {
 }
 
 void FaderMode::update(float hr) {
-    floorValue = 255*sin(0.1*hr*ofGetElapsedTimef()); //PEND
 }
 
 

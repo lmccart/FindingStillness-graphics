@@ -18,6 +18,7 @@ void ofApp::setup(){
 //    
     ofEnableAlphaBlending();
     ofBackground(0);
+    ofSetFrameRate(60);
 }
 
 //--------------------------------------------------------------
@@ -25,6 +26,7 @@ void ofApp::update(){
     modeManager.update();
 
     if (oscReceiver.hasWaitingMessages()) {
+        ofxOscMessage oscMessage;
         ofLog() << "message" << oscMessage.getAddress();
         oscMessage.clear();
         oscReceiver.getNextMessage(&oscMessage);

@@ -51,5 +51,7 @@ private:
     float totalDuration;
     float mult;
     float holdDuration;
+    unsigned long heartRateTime;
+    float heartAmplitude;
 
 };

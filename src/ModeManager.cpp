@@ -17,7 +17,6 @@ void ModeManager::setup() {
     midi.openPort("IAC Driver Bus 1");
     
     Tweenzor::init();
-    
 
     modes.push_back(new PixelMode("Pixel", 15));
     modes.push_back(new FlockingMode("Flocking", 10));
@@ -32,6 +31,7 @@ void ModeManager::setup() {
     idleMode = new CircleMode("Circle", 10000);
     
     cur_hr = 60;
+    heartRateTime = 0;
     
     modeStartTime = 0;
     showStartTime = 0;
@@ -51,6 +51,10 @@ void ModeManager::setup() {
 }
 
 void ModeManager::update() {
+    heartRateTime += ((cur_hr / 60.) * 1000.) / ofGetTargetFrameRate();
+    heartAmplitude = cos(TWO_PI * (heartRateTime / 1000.));
+    heartAmplitude = ofMap(heartAmplitude, -1, +1, 0, 1);
+    
     if (playing) {
         float now = ofGetElapsedTimef();
         if (now - modeStartTime >= modes[curMode]->duration) {
@@ -59,6 +63,8 @@ void ModeManager::update() {
     
         for (int i=0; i<modes.size(); i++) {
             if (modes[i]->playing) {
+                // base value for floorValue, can be overridden by mode
+                modes[i]->floorValue = 255 * heartAmplitude;
                 modes[i]->update(cur_hr);
             }
         }
@@ -88,7 +94,7 @@ void ModeManager::draw() {
     if (playing) {
         for (int i=0; i<modes.size(); i++) {
             if (modes[i]->playing) {
-                modes[i]->drawWithHR(mult, cur_hr);
+                modes[i]->drawWithHR(mult, heartAmplitude);
             }
         }
 

@@ -19,7 +19,6 @@ public:
 private:
     ModeManager modeManager;
     ofxOscReceiver oscReceiver;
-    ofxOscMessage oscMessage;
 //    ofShader shaderBlurX, shaderBlurY;
 //    ofFbo fboBlurOnePass, fboBlurTwoPass;
 };

@@ -52,7 +52,7 @@ void Mode::draw() {
     //ofLog() << "draw";
 }
 
-void Mode::drawWithHR(float _mult, float _hr) {
+void Mode::drawWithHR(float _mult, float _ha) {
     
     if (fadeEnter && getModeElapsedTime() < fadeDur) {
         enterMult = getModeElapsedTime()/fadeDur;
@@ -71,12 +71,9 @@ void Mode::drawWithHR(float _mult, float _hr) {
         ofPopStyle();
     pulseFbo.end();
     
-    float t = ofGetElapsedTimef();
-    float alpha = cos(t * TWO_PI * _hr / 60);
-    alpha = ofMap(alpha, -1, 1, 100, 255);
-    
     ofPushStyle();
-    ofSetColor(255, alpha*mult*enterMult*exitMult);
+    _ha = ofLerp(.5, 1, _ha);
+    ofSetColor(255, 255*_ha*mult*enterMult*exitMult);
     //ofLog() << name <<" " << alpha*mult*enterMult*exitMult << " " << mult << " " << exitMult;
     pulseFbo.draw(0, 0);
     ofPopStyle();

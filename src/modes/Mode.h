@@ -19,7 +19,7 @@ public:
     virtual void start();
     virtual void update(float hr);
     virtual void draw();
-    void drawWithHR(float _mult, float _hr);
+    void drawWithHR(float _mult, float _ha);
     virtual void preExit();
     virtual void reset();
     void exit(bool hard);

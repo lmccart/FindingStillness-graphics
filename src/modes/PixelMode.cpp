@@ -18,7 +18,7 @@ void PixelMode::start() {
     ost.poke(ofGetElapsedTimef(), 1);
 }
 
-void PixelMode::update(float hr) {
+void PixelMode::update(float hr) {    
     float speed = 60 / hr;
     float time = ofGetElapsedTimef();
     float pps;
@@ -43,16 +43,6 @@ void PixelMode::update(float hr) {
                 ost.poke(time, speed);
             }
         }
-    }
-    
-    if (ost.grids[0].active.size() > 0) { //pend
-        if (getModeElapsedTime() < 0.5*duration) {
-            floorValue = floor(ost.grids[0].active[0].brightness+0.5)*100;
-        } else {
-            floorValue = ost.grids[0].active[0].brightness*100;
-        }
-    } else {
-        floorValue = 0;
     }
 }
 

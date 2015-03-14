@@ -23,7 +23,6 @@ void VideoMode::start() {
 
 void VideoMode::update(float hr) {
     videoPlayer.update();
-    floorValue = 100*sin(0.1*hr*ofGetElapsedTimef()); //PEND
 }
 
 

@@ -21,7 +21,6 @@ void FlockingMode::update(float hr) {
     for (int i = 0; i < boids.size(); i++) {
         boids[i].run(boids);  // Passing the entire list of boids to each boid individually
     }
-    floorValue = 125*sin(0.1*hr*ofGetElapsedTimef()); //PEND
 }
 
 
