@@ -60,6 +60,14 @@ void ModeManager::update() {
         if (now - modeStartTime >= modes[curMode]->duration) {
             next(-1);
         }
+        
+        if(heartAmplitude > .5 && lastHeartAmplitude <= .5) {
+            //            ofLog() << "beat";
+            midi.sendNoteOn(1, 65);
+            ofSleepMillis(5);
+            midi.sendNoteOff(1, 65);
+        }
+        lastHeartAmplitude = heartAmplitude;
     
         for (int i=0; i<modes.size(); i++) {
             if (modes[i]->playing) {
@@ -150,7 +158,7 @@ void ModeManager::start() {
     Tweenzor::addCompleteListener( Tweenzor::getTween(&mult), this, &ModeManager::onCompleteRampDown);
     
     midi.sendNoteOn(1, 64);
-    ofSleepMillis(100);
+    ofSleepMillis(30);
     midi.sendNoteOff(1, 64);
     
     playing = true;
