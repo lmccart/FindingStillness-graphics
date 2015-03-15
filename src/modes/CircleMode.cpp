@@ -14,6 +14,7 @@ CircleMode::CircleMode(string _name, float _duration) : Mode(_name, _duration) {
 
 
 void CircleMode::update(float hr) {
+    floorValue = 0;
 }
 
 
@@ -23,7 +24,7 @@ void CircleMode::draw() {
     ofSetColor(255);
     //ofEllipse(width/2, height/2, scale*diameter, scale*diameter);
     float d = scale*diameter;
-    img.draw(width/2-d/2, height/2-d/2, d, d);
+    img.draw(width/2-d/2, height/2-d/2 - 75, d, d);
     ofPopStyle();
 }
 

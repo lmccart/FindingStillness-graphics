@@ -17,7 +17,7 @@ void ModeManager::setup() {
     midi.openPort("IAC Driver Bus 1");
     
     Tweenzor::init();
-
+    
     modes.push_back(new PixelMode("Pixel", 15));
     modes.push_back(new FlockingMode("Flocking", 10));
     modes.push_back(new SeparationMode("Separate", 8, 0));
@@ -46,17 +46,11 @@ void ModeManager::update() {
     heartAmplitude = cos(TWO_PI * (heartRateTime / 1000.));
     heartAmplitude = ofMap(heartAmplitude, -1, +1, 0, 1);
     
-    float h = (incoming_hr+hrRamp)*0.5;
-    cur_hr = ofClamp(ofMap(h, 0, 140, 0, 1.0), 0, 1.0);
-    
-    ofLog() << cur_hr;
-    
+    cur_hr = (incoming_hr+hrRamp)*0.5;
+
     if (playing) {
         float now = ofGetElapsedTimef();
-        if (now - modeStartTime >= modes[curMode]->duration) {
-            next(-1);
-        }
-        
+
         if(heartAmplitude > .5 && lastHeartAmplitude <= .5) {
             //            ofLog() << "beat";
             midi.sendNoteOn(1, 65);
@@ -80,6 +74,11 @@ void ModeManager::update() {
             }
             dmx.update();
         }
+        
+        if (now - modeStartTime >= modes[curMode]->duration) {
+            next(-1);
+        }
+        
         
     } else {
         
