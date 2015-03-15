@@ -11,7 +11,7 @@
 FlickerMode::FlickerMode(string _name, float _duration) : Mode(_name, _duration) {
     fadeEnter = true;
     fadeDur = 3.0;
-    holdTime = 5.0;
+    holdTime = 10.0;
     val = 0;
     useHr = false;
 }

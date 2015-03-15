@@ -25,7 +25,7 @@ void ModeManager::setup() {
     modes[modes.size()-1]->fadeExit = true;
     modes.push_back(new VideoMode("Nature", 13));
     modes.push_back(new FaderMode("Fader", 24));
-    modes.push_back(new FlickerMode("Flicker", 13));
+    modes.push_back(new FlickerMode("Flicker", 18));
     
     idleMode = new CircleMode("Circle", 10000);
     
@@ -42,11 +42,11 @@ void ModeManager::setup() {
 }
 
 void ModeManager::update() {
+    cur_hr = (incoming_hr+hrRamp)*0.5;
+    
     heartRateTime += ((cur_hr / 60.) * 1000.) / ofGetTargetFrameRate();
     heartAmplitude = cos(TWO_PI * (heartRateTime / 1000.));
     heartAmplitude = ofMap(heartAmplitude, -1, +1, 0, 1);
-    
-    cur_hr = (incoming_hr+hrRamp)*0.5;
 
     if (playing) {
         float now = ofGetElapsedTimef();
@@ -145,7 +145,7 @@ void ModeManager::reset() {
     playing = false;
     showStartTime = 0;
     mult = 1.0;
-    hrRamp = 0;
+    hrRamp = 60;
     lastFloorValue = 255;
     
     cur_hr = 60.0;
@@ -172,7 +172,7 @@ void ModeManager::start() {
     
     Tweenzor::add(&mult, 1.0f, 0.1f, showStartTime+2.0f, showStartTime+5.0f, EASE_LINEAR);
     Tweenzor::addCompleteListener( Tweenzor::getTween(&mult), this, &ModeManager::onCompleteRampDown);
-    Tweenzor::add(&hrRamp, 100.0f, 40.0f, showStartTime, showStartTime+totalDuration-25.0, EASE_LINEAR);
+    Tweenzor::add(&hrRamp, 90.0f, 50.0f, showStartTime, showStartTime+totalDuration-20.0, EASE_LINEAR);
     
     midi.sendNoteOn(1, 64);
     ofSleepMillis(30);
