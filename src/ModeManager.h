@@ -50,6 +50,7 @@ private:
     float cur_hr;
     float totalDuration;
     float mult;
+    float hrRamp;
     float holdDuration;
     unsigned long heartRateTime;
     float heartAmplitude, lastHeartAmplitude;

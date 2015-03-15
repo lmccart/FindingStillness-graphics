@@ -31,6 +31,7 @@ void ModeManager::setup() {
     idleMode = new CircleMode("Circle", 10000);
     
     cur_hr = 60;
+    hrRamp = 0;
     heartRateTime = 0;
     
     modeStartTime = 0;
@@ -144,6 +145,7 @@ void ModeManager::reset() {
     modeStartTime = ofGetElapsedTimef();
     
     Tweenzor::removeTween(&mult);
+    Tweenzor::removeTween(&hrRamp);
     ofLog() << "ModeManager::reset";
     
     midi.sendNoteOn(1, 66);
@@ -160,6 +162,7 @@ void ModeManager::start() {
     mult = 1;
     Tweenzor::add(&mult, 1.0f, 0.1f, showStartTime+2.0f, showStartTime+5.0f, EASE_LINEAR);
     Tweenzor::addCompleteListener( Tweenzor::getTween(&mult), this, &ModeManager::onCompleteRampDown);
+    Tweenzor::add(&hrRamp, 100.0f, 40.0f, showStartTime, showStartTime+totalDuration-25.0, EASE_LINEAR);
     
     midi.sendNoteOn(1, 64);
     ofSleepMillis(30);
@@ -200,9 +203,10 @@ void ModeManager::next(int i) {
 
 void ModeManager::updateHeartrate(float hr) {
     //cur_hr = hr;
-    ofLog() << "heartrate updated to " << hr;
+    //ofLog() << "heartrate updated to " << hr;
     
-    cur_hr = ofClamp(ofMap(hr, 0, 100, 0, 1.0), 0, 1.0);
+    float h = (hr+hrRamp)*0.5;
+    cur_hr = ofClamp(ofMap(h, 0, 140, 0, 1.0), 0, 1.0);
     
 }
 
