@@ -39,7 +39,7 @@ void FaderMode::draw() {
     x -= diff;
     ofPopStyle();
     
-    float factor = ofMap(diff, 4, 1, 0.5, 1.0);
+    float factor = ofClamp(ofMap(diff, 4, 2, 0.5, 1.0), 0.5, 1.0);
     floorValue = factor*255+(1-factor)*floorValue;
 }
 
