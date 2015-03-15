@@ -36,6 +36,7 @@ void CircleMode::reset() {
     Tweenzor::add(&diameter, 0, width*1.3, 0.f, 1.f, EASE_IN_OUT_QUAD);
     Tweenzor::getTween(&diameter)->setRepeat( -1, true );
     Tweenzor::getTween(&scale)->setRepeat( -1, true );
+    floorValue = 0;
 }
 
 void CircleMode::preExit() {

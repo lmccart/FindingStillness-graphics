@@ -75,7 +75,7 @@ void Mode::drawWithHR(float _mult, float _ha) {
     ofPushStyle();
     _ha = useHr ? ofLerp(.5, 1, _ha) : 1.0;
     ofSetColor(255, 255*_ha*mult*enterMult*exitMult);
-    //ofLog() << name <<" " << alpha*mult*enterMult*exitMult << " " << mult << " " << exitMult;
+    //ofLog() << name <<" " << 255*_ha*mult*enterMult*exitMult << " " << mult << " " << exitMult;
     pulseFbo.draw(0, 0);
     ofPopStyle();
 }

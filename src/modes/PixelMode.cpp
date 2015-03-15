@@ -63,6 +63,7 @@ void PixelMode::reset() {
     ost = OscillatorStack();
     ost.setup(6);
     floor = 255.0;
+    floorValue = 255;
 }
 
 void PixelMode::preExit() {

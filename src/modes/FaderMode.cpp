@@ -21,6 +21,8 @@ void FaderMode::start() {
 }
 
 void FaderMode::update(float hr) {
+    float factor = ofClamp(ofMap(diff, 4, 2, 0.5, 1.0), 0.5, 1.0);
+    floorValue = factor*255+(1-factor)*floorValue;
 }
 
 
@@ -39,8 +41,6 @@ void FaderMode::draw() {
     x -= diff;
     ofPopStyle();
     
-    float factor = ofClamp(ofMap(diff, 4, 2, 0.5, 1.0), 0.5, 1.0);
-    floorValue = factor*255+(1-factor)*floorValue;
 }
 
 

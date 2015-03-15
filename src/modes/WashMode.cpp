@@ -27,6 +27,7 @@ void WashMode::draw() {
 
 
 void WashMode::reset() {
+    floorValue = 0;
 }
 
 void WashMode::preExit() {
