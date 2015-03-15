@@ -16,6 +16,8 @@ PixelMode::PixelMode(string _name, float _duration) : Mode(_name, _duration) {
 
 void PixelMode::start() {
     ost.poke(ofGetElapsedTimef(), 1);
+    Tweenzor::add(&floor, 255.0f, 0.0f, 0.0f, 4.0f, EASE_LINEAR);
+
 }
 
 void PixelMode::update(float hr) {    
@@ -44,6 +46,7 @@ void PixelMode::update(float hr) {
             }
         }
     }
+    floorValue = floor;
 }
 
 
@@ -59,8 +62,10 @@ void PixelMode::draw() {
 void PixelMode::reset() {
     ost = OscillatorStack();
     ost.setup(6);
+    floor = 255.0;
 }
 
 void PixelMode::preExit() {
+    Tweenzor::removeTween(&floor);
 }
 

@@ -128,6 +128,7 @@ public:
     
 private:
     OscillatorStack ost;
+    float floor;
 };
 
 
