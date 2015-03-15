@@ -19,6 +19,7 @@ void ofApp::setup(){
     ofEnableAlphaBlending();
     ofBackground(0);
     ofSetFrameRate(60);
+    ofSetFullscreen(true);
 }
 
 //--------------------------------------------------------------
@@ -39,7 +40,7 @@ void ofApp::update(){
             modeManager.modeStartTime = 0;
             modeManager.hold = false;
         } else if (oscMessage.getAddress() == "/heartrate") {
-            modeManager.updateHeartrate(oscMessage.getArgAsFloat(0));
+            modeManager.updateHeartrate(oscMessage.getArgAsInt32(0));
         } else {
             ofLog() << oscMessage.getAddress();
         }
@@ -50,8 +51,8 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 
-//    ofTranslate(0, 32);
-//    ofScale(192./1024., 160./768.);
+    ofTranslate(0, 32);
+    ofScale(192./1024., 160./768.);
     modeManager.draw();
 }
 

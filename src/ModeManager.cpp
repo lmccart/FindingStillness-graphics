@@ -145,6 +145,10 @@ void ModeManager::reset() {
     
     Tweenzor::removeTween(&mult);
     ofLog() << "ModeManager::reset";
+    
+    midi.sendNoteOn(1, 66);
+    ofSleepMillis(30);
+    midi.sendNoteOff(1, 66);
 }
 
 void ModeManager::start() {
