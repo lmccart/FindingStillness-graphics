@@ -46,6 +46,11 @@ void ModeManager::update() {
     heartAmplitude = cos(TWO_PI * (heartRateTime / 1000.));
     heartAmplitude = ofMap(heartAmplitude, -1, +1, 0, 1);
     
+    float h = (incoming_hr+hrRamp)*0.5;
+    cur_hr = ofClamp(ofMap(h, 0, 140, 0, 1.0), 0, 1.0);
+    
+    ofLog() << cur_hr;
+    
     if (playing) {
         float now = ofGetElapsedTimef();
         if (now - modeStartTime >= modes[curMode]->duration) {
@@ -200,8 +205,7 @@ void ModeManager::updateHeartrate(float hr) {
     //cur_hr = hr;
     //ofLog() << "heartrate updated to " << hr;
     
-    float h = (hr+hrRamp)*0.5;
-    cur_hr = ofClamp(ofMap(h, 0, 140, 0, 1.0), 0, 1.0);
+    incoming_hr = hr;
 }
 
 void ModeManager::exit() {
