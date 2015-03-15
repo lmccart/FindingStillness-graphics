@@ -48,6 +48,7 @@ void SeparationMode::reset() {
             vehicles[i].setup(ofRandom(-width*1.1, -width*0.1), ofRandom(height), width, height, color);
         }
     }
+    floorValue = color == 255 ? 0 : 255;
 }
 
 void SeparationMode::preExit() {

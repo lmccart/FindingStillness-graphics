@@ -21,7 +21,7 @@ void FlickerMode::update(float hr) {
     if (getModeElapsedTime() > holdTime) {
         baseC = 255*(duration - getModeElapsedTime())/(duration - holdTime);
     }
-    val = MAX(0, baseC+55*ofNoise(ofGetFrameNum()*0.05)), 255;
+    val = ofClamp(baseC+55*ofNoise(ofGetFrameNum()*0.05), 0, 255);
     floorValue = val;
 }
 
