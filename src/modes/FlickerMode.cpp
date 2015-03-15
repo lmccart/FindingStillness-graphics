@@ -12,6 +12,8 @@ FlickerMode::FlickerMode(string _name, float _duration) : Mode(_name, _duration)
     fadeEnter = true;
     fadeDur = 3.0;
     holdTime = 5.0;
+    val = 0;
+    useHr = false;
 }
 
 
@@ -19,12 +21,14 @@ void FlickerMode::update(float hr) {
     if (getModeElapsedTime() > holdTime) {
         baseC = 255*(duration - getModeElapsedTime())/(duration - holdTime);
     }
+    val = MAX(0, baseC+55*ofNoise(ofGetFrameNum()*0.05)), 255;
+    floorValue = val;
 }
 
 
 void FlickerMode::draw() {
     ofPushStyle();
-    ofClear(MAX(0, baseC+55*ofNoise(ofGetFrameNum()*0.05)), 255);
+    ofClear(val, 255);
     ofPopStyle();
 }
 

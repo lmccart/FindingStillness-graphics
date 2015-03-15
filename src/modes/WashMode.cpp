@@ -10,6 +10,7 @@
 
 WashMode::WashMode(string _name, float _duration, int _color) : Mode(_name, _duration) {
     color = _color;
+    useHr = false;
 }
 
 

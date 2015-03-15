@@ -20,6 +20,7 @@ Mode::Mode(string _name, float _duration) {
     fadeEnter = false;
     fadeExit = false;
     fadeDur = 1.5;
+    useHr = true;
     
     enterMult = 1;
     exitMult = 1;
@@ -72,7 +73,7 @@ void Mode::drawWithHR(float _mult, float _ha) {
     pulseFbo.end();
     
     ofPushStyle();
-    _ha = ofLerp(.5, 1, _ha);
+    _ha = useHr ? ofLerp(.5, 1, _ha) : 1.0;
     ofSetColor(255, 255*_ha*mult*enterMult*exitMult);
     //ofLog() << name <<" " << alpha*mult*enterMult*exitMult << " " << mult << " " << exitMult;
     pulseFbo.draw(0, 0);

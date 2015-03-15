@@ -21,6 +21,7 @@ void SeparationMode::update(float hr) {
         vehicles[i].update();
         vehicles[i].borders();
     }
+    floorValue = color == 255 ? 255*getModeElapsedTime()/duration : 255*(1-getModeElapsedTime()/duration);
 }
 
 

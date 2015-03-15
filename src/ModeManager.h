@@ -48,6 +48,7 @@ private:
     vector<Mode*> modes;
     Mode *idleMode;
     float cur_hr;
+    float incoming_hr;
     float totalDuration;
     float mult;
     float hrRamp;

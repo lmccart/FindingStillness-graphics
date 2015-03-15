@@ -23,6 +23,7 @@ void VideoMode::start() {
 
 void VideoMode::update(float hr) {
     videoPlayer.update();
+    floorValue = 255*ofNoise(ofGetFrameNum()*0.01);
 }
 
 

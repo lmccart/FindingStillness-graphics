@@ -27,17 +27,7 @@ void ModeManager::setup() {
     modes.push_back(new FaderMode("Fader", 24));
     modes.push_back(new FlickerMode("Flicker", 13));
     
-    
     idleMode = new CircleMode("Circle", 10000);
-    
-    cur_hr = 60;
-    hrRamp = 0;
-    heartRateTime = 0;
-    
-    modeStartTime = 0;
-    showStartTime = 0;
-    
-    mult = 0;
     
     totalDuration = 0;
     for (int i=0; i<modes.size(); i++) {
@@ -140,6 +130,11 @@ void ModeManager::reset() {
     playing = false;
     showStartTime = 0;
     mult = 1.0;
+    hrRamp = 0;
+    
+    cur_hr = 60.0;
+    incoming_hr = 60.0;
+    heartRateTime = 0;
     
     hold = true;
     modeStartTime = ofGetElapsedTimef();
@@ -207,7 +202,6 @@ void ModeManager::updateHeartrate(float hr) {
     
     float h = (hr+hrRamp)*0.5;
     cur_hr = ofClamp(ofMap(h, 0, 140, 0, 1.0), 0, 1.0);
-    
 }
 
 void ModeManager::exit() {

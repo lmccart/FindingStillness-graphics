@@ -36,6 +36,7 @@ public:
     float enterMult, exitMult;
     bool fadeEnter, fadeExit;
     float fadeDur;
+    bool useHr;
     
 private:
     ofFbo pulseFbo;

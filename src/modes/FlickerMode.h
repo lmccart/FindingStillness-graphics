@@ -22,6 +22,7 @@ public:
         
     float baseC;
     float holdTime;
+    float val;
 
 };
 
