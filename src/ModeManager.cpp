@@ -25,7 +25,7 @@ void ModeManager::setup() {
     modes[modes.size()-1]->fadeExit = true;
     modes.push_back(new VideoMode("Nature", 13));
     modes.push_back(new FaderMode("Fader", 24));
-    modes.push_back(new FlickerMode("Flicker", 18));
+    modes.push_back(new FlickerMode("Flicker", 14));
     
     idleMode = new CircleMode("Circle", 10000);
     
@@ -34,7 +34,7 @@ void ModeManager::setup() {
         totalDuration += modes[i]->duration;
     }
     
-    holdDuration = 120; // secs to wait after person before idle starts
+    holdDuration = 180; // secs to wait after person before idle starts
     hold = false;
     
     reset();
